@@ -31,16 +31,52 @@
             padding: 45px 35px 40px;
             box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8),
                         0 0 0 2px rgba(255, 200, 0, 0.15);
-            border: 1px solid rgba(255, 200, 0, 0.1);
+            border: 2px solid rgba(255, 200, 0, 0.2);
             text-align: center;
-            transition: 0.3s ease;
+            transition: all 0.3s ease;
             overflow: hidden;
+            cursor: pointer;
+            position: relative;
+        }
+
+        /* ===== افکت درخشش طلایی ===== */
+        .card::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            border-radius: 42px;
+            background: linear-gradient(135deg, #FFC800, #f5a800, #FFC800);
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            filter: blur(4px);
         }
 
         .card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 30px 70px rgba(0, 0, 0, 0.9),
-                        0 0 0 3px rgba(255, 200, 0, 0.25);
+            border-color: #FFC800;
+            box-shadow: 0 0 30px rgba(255, 200, 0, 0.2),
+                        0 25px 60px rgba(0, 0, 0, 0.9);
+        }
+
+        .card:hover::before {
+            opacity: 1;
+        }
+
+        /* ===== افکت کلیک (active) ===== */
+        .card:active {
+            transform: scale(0.97);
+            border-color: #FFC800;
+            box-shadow: 0 0 60px rgba(255, 200, 0, 0.5),
+                        0 0 80px rgba(255, 200, 0, 0.3);
+        }
+
+        .card:active::before {
+            opacity: 1;
+            filter: blur(8px);
         }
 
         .avatar {
@@ -56,6 +92,11 @@
             border: 4px solid #292929;
             outline: 2px solid rgba(255, 200, 0, 0.3);
             position: relative;
+            transition: 0.3s ease;
+        }
+
+        .card:hover .avatar {
+            box-shadow: 0 0 50px rgba(255, 200, 0, 0.5);
         }
 
         .avatar svg {
@@ -64,7 +105,6 @@
             fill: #292929;
         }
 
-        /* ===== اسم به لاتین ===== */
         .name {
             font-size: 38px;
             font-weight: 900;
@@ -74,6 +114,11 @@
             text-shadow: 0 2px 20px rgba(255, 200, 0, 0.15);
             word-break: keep-all;
             font-family: 'Vazirmatn', sans-serif;
+            transition: 0.3s ease;
+        }
+
+        .card:hover .name {
+            text-shadow: 0 0 30px rgba(255, 200, 0, 0.4);
         }
 
         .badge {
@@ -216,7 +261,7 @@
         .footer-note {
             margin-top: 30px;
             font-size: 14px;
-            color: rgba(255, 255, 255, 0.25);
+            color: rgba(255, 255, 255, 0.8);
             font-weight: 700;
             letter-spacing: 0.3px;
             border-top: 3px dashed rgba(255, 255, 255, 0.3);
@@ -228,8 +273,18 @@
         }
 
         .footer-note .icon {
-            font-size: 18px;
-            line-height: 1;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 22px;
+            height: 22px;
+            flex-shrink: 0;
+        }
+
+        .footer-note .icon svg {
+            width: 20px;
+            height: 20px;
+            fill: #FFC800;
         }
 
         @media (max-width: 500px) {
@@ -242,6 +297,8 @@
             .avatar svg { width: 58px; height: 58px; }
             .skill-item .icon svg { width: 18px; height: 18px; }
             .footer-note { font-size: 12px; }
+            .footer-note .icon { width: 18px; height: 18px; }
+            .footer-note .icon svg { width: 16px; height: 16px; }
         }
 
         @media (max-width: 420px) {
@@ -250,6 +307,8 @@
             .social-btn .icon { width: 24px; height: 24px; }
             .name { font-size: 26px; }
             .footer-note { font-size: 11px; }
+            .footer-note .icon { width: 16px; height: 16px; }
+            .footer-note .icon svg { width: 14px; height: 14px; }
         }
     </style>
 </head>
@@ -263,7 +322,6 @@
             </svg>
         </div>
 
-        <!-- ===== اسم به لاتین ===== -->
         <h1 class="name">mohamad hossein</h1>
         <span class="badge">✦ طراح و توسعه‌دهنده</span>
         <div class="divider"></div>
@@ -331,11 +389,15 @@
         </div>
 
         <div class="footer-note">
-            <span class="icon">✨</span>
-            هنر یک دنیای عجیبه!
+            <span class="icon">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/>
+                </svg>
+            </span>
+            هنر یک دنیای مجزا برای هرکسه! 
         </div>
 
     </div>
 
 </body>
-                    </html>
+</html>
