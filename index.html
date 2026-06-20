@@ -6,6 +6,7 @@
     <title>mohamad hossein | moarefi</title>
     <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@700;900&display=swap" rel="stylesheet" />
     <style>
+        /* ===== reset & base ===== */
         * {
             margin: 0;
             padding: 0;
@@ -241,7 +242,7 @@
         }
 
         /* ====================================================
-                   صفحه "سایت ها" با کارت‌های مجزا (۱ در ۱)
+                   صفحه "سایت ها" با کارت‌های افقی
                    ==================================================== */
         .site-page {
             display: none;
@@ -270,7 +271,7 @@
             text-align: center;
             border: 3px solid #FFC800;
             box-shadow: 0 0 80px rgba(255, 200, 0, 0.15);
-            max-width: 460px;
+            max-width: 500px;
             width: 100%;
             max-height: 90vh;
             overflow-y: auto;
@@ -316,30 +317,28 @@
             opacity: 0.3;
         }
 
-        /* ===== لیست کارت‌های سایت (۱ در ۱) ===== */
-        .site-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
+        /* ===== کارت‌های افقی ===== */
+        .site-list {
+            display: flex;
+            flex-direction: column;
             gap: 14px;
             margin-bottom: 20px;
         }
 
         .site-card {
             border-radius: 24px;
-            padding: 16px 12px 14px;
+            padding: 14px 18px;
             text-decoration: none;
             transition: 0.25s ease;
             display: flex;
-            flex-direction: column;
             align-items: center;
-            gap: 8px;
-            position: relative;
-            min-height: 160px;
-            justify-content: center;
+            gap: 16px;
+            min-height: 80px;
+            direction: ltr;
         }
 
         .site-card:hover {
-            transform: translateY(-4px);
+            transform: translateX(-4px);
             box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
         }
 
@@ -353,24 +352,46 @@
             background: #C55A2D;
             color: #FFF7EE;
             border-radius: 16px;
-            width: 48px;
-            height: 48px;
+            width: 52px;
+            height: 52px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 28px;
+            flex-shrink: 0;
+        }
+
+        .site-card.callfood .site-info {
+            text-align: right;
+            flex: 1;
         }
 
         .site-card.callfood .site-name {
             color: #C55A2D;
-            font-size: 15px;
+            font-size: 18px;
             font-weight: 900;
         }
 
         .site-card.callfood .site-desc {
             color: rgba(197, 90, 45, 0.5);
-            font-size: 10px;
+            font-size: 12px;
             font-weight: 700;
+        }
+
+        .site-card.callfood .site-thumb {
+            width: 60px;
+            height: 60px;
+            border-radius: 16px;
+            overflow: hidden;
+            flex-shrink: 0;
+            background: rgba(197, 90, 45, 0.06);
+            border: 1px solid rgba(197, 90, 45, 0.1);
+        }
+
+        .site-card.callfood .site-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         /* ===== کارت زروکس ===== */
@@ -383,24 +404,46 @@
             background: #B61C1C;
             color: #FFFFFF;
             border-radius: 16px;
-            width: 48px;
-            height: 48px;
+            width: 52px;
+            height: 52px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 28px;
+            flex-shrink: 0;
+        }
+
+        .site-card.zerox .site-info {
+            text-align: right;
+            flex: 1;
         }
 
         .site-card.zerox .site-name {
             color: #B61C1C;
-            font-size: 15px;
+            font-size: 18px;
             font-weight: 900;
         }
 
         .site-card.zerox .site-desc {
             color: rgba(182, 28, 28, 0.5);
-            font-size: 10px;
+            font-size: 12px;
             font-weight: 700;
+        }
+
+        .site-card.zerox .site-thumb {
+            width: 60px;
+            height: 60px;
+            border-radius: 16px;
+            overflow: hidden;
+            flex-shrink: 0;
+            background: rgba(182, 28, 28, 0.04);
+            border: 1px solid rgba(182, 28, 28, 0.08);
+        }
+
+        .site-card.zerox .site-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         /* ===== کارت‌های پیش‌فرض ===== */
@@ -413,66 +456,51 @@
             background: #FFC800;
             color: #292929;
             border-radius: 16px;
-            width: 48px;
-            height: 48px;
+            width: 52px;
+            height: 52px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 28px;
+            flex-shrink: 0;
+        }
+
+        .site-card.default .site-info {
+            text-align: right;
+            flex: 1;
         }
 
         .site-card.default .site-name {
             color: #FFC800;
-            font-size: 15px;
+            font-size: 18px;
             font-weight: 900;
         }
 
         .site-card.default .site-desc {
             color: rgba(255, 255, 255, 0.3);
-            font-size: 10px;
+            font-size: 12px;
             font-weight: 700;
         }
 
-        .site-card.default:hover {
-            border-color: rgba(255, 200, 0, 0.2);
-        }
-
-        /* ===== جای عکس ۱ در ۱ ===== */
-        .site-card .site-thumb {
-            width: 100%;
-            aspect-ratio: 1/1;
+        .site-card.default .site-thumb {
+            width: 60px;
+            height: 60px;
             border-radius: 16px;
-            background: rgba(0, 0, 0, 0.04);
+            overflow: hidden;
+            flex-shrink: 0;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.04);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 32px;
-            color: rgba(0, 0, 0, 0.15);
-            overflow: hidden;
-            margin-top: 2px;
+            font-size: 28px;
+            color: rgba(255, 255, 255, 0.1);
         }
 
-        .site-card.callfood .site-thumb {
-            background: rgba(197, 90, 45, 0.06);
-        }
-
-        .site-card.zerox .site-thumb {
-            background: rgba(182, 28, 28, 0.04);
-        }
-
-        .site-card.default .site-thumb {
-            background: rgba(255, 255, 255, 0.02);
-        }
-
-        .site-card .site-thumb img {
+        .site-card.default .site-thumb img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-        }
-
-        .site-card .site-thumb .placeholder {
-            font-size: 28px;
-            opacity: 0.2;
         }
 
         .site-box .close-btn {
@@ -518,10 +546,11 @@
             .footer-note .icon svg { width: 16px; height: 16px; }
             .site-box { padding: 20px 16px; }
             .site-box h2 { font-size: 22px; }
-            .site-grid { gap: 10px; }
-            .site-card { min-height: 130px; padding: 12px 8px; }
-            .site-card .site-icon { width: 40px; height: 40px; font-size: 22px; }
-            .site-card .site-name { font-size: 13px; }
+            .site-card { padding: 12px 14px; min-height: 70px; gap: 12px; }
+            .site-card .site-icon { width: 44px; height: 44px; font-size: 22px; }
+            .site-card .site-name { font-size: 15px; }
+            .site-card .site-desc { font-size: 10px; }
+            .site-card .site-thumb { width: 50px; height: 50px; }
         }
 
         @media (max-width: 420px) {
@@ -533,10 +562,11 @@
             .footer-note .icon { width: 16px; height: 16px; }
             .footer-note .icon svg { width: 14px; height: 14px; }
             .site-box h2 { font-size: 18px; }
-            .site-card { min-height: 110px; padding: 10px 6px; }
-            .site-card .site-icon { width: 34px; height: 34px; font-size: 18px; }
-            .site-card .site-name { font-size: 11px; }
-            .site-card .site-desc { font-size: 8px; }
+            .site-card { padding: 10px 12px; min-height: 60px; gap: 10px; }
+            .site-card .site-icon { width: 38px; height: 38px; font-size: 18px; }
+            .site-card .site-name { font-size: 13px; }
+            .site-card .site-desc { font-size: 9px; }
+            .site-card .site-thumb { width: 42px; height: 42px; }
         }
     </style>
 </head>
@@ -635,7 +665,7 @@
     </div>
 
     <!-- ====================================================
-    صفحه "سایت ها" با کارت‌های مجزا (۱ در ۱)
+    صفحه "سایت ها" با کارت‌های افقی
     ==================================================== -->
     <div class="site-page" id="sitePage">
         <div class="site-box">
@@ -644,46 +674,50 @@
             <div class="divider-site"></div>
             <p class="subtitle">✨ پروژه‌های آنلاین من</p>
 
-            <div class="site-grid">
+            <div class="site-list">
 
-                <!-- ===== کارت کالفود ===== -->
+                <!-- ===== کارت کالفود (افقی) ===== -->
                 <a href="https://zeroxgame74-afk.github.io/call-food.ir/" target="_blank" class="site-card callfood">
                     <div class="site-icon">🍽️</div>
-                    <div class="site-name">کالفود</div>
-                    <div class="site-desc">غذاهای ویژه</div>
+                    <div class="site-info">
+                        <div class="site-name">کالفود</div>
+                        <div class="site-desc">غذاهای ویژه و پرطرفدار</div>
+                    </div>
                     <div class="site-thumb">
-                        <img src="https://cdn.imgurl.ir/uploads/g827592_IMG_20260620_174834_450.png" alt="کالفود" />
+                        <img src="https://cdn.imgurl.ir/uploads/b107997_IMG_20260616_172831.jpg" alt="کالفود" />
                     </div>
                 </a>
 
-                <!-- ===== کارت زروکس ===== -->
+                <!-- ===== کارت زروکس (افقی) ===== -->
                 <a href="#" target="_blank" class="site-card zerox">
                     <div class="site-icon">🛡️</div>
-                    <div class="site-name">زروکس</div>
-                    <div class="site-desc">سایت گیم</div>
+                    <div class="site-info">
+                        <div class="site-name">زروکس</div>
+                        <div class="site-desc">سایت گیم</div>
+                    </div>
                     <div class="site-thumb">
-                        <span class="placeholder">🎮</span>
+                        <img src="https://uploadkon.ir/uploads/a55a20_26Negar-1780305389092.png" alt="زروکس" />
                     </div>
                 </a>
 
                 <!-- ===== کارت پیش‌فرض ۱ ===== -->
                 <a href="#" target="_blank" class="site-card default">
                     <div class="site-icon">🎨</div>
-                    <div class="site-name">سایت دیگه</div>
-                    <div class="site-desc">توضیح کوتاه</div>
-                    <div class="site-thumb">
-                        <span class="placeholder">🖼️</span>
+                    <div class="site-info">
+                        <div class="site-name">سایت دیگه</div>
+                        <div class="site-desc">توضیح کوتاه</div>
                     </div>
+                    <div class="site-thumb">🖼️</div>
                 </a>
 
                 <!-- ===== کارت پیش‌فرض ۲ ===== -->
                 <a href="#" target="_blank" class="site-card default">
                     <div class="site-icon">📱</div>
-                    <div class="site-name">سایت چهارم</div>
-                    <div class="site-desc">توضیح کوتاه</div>
-                    <div class="site-thumb">
-                        <span class="placeholder">📲</span>
+                    <div class="site-info">
+                        <div class="site-name">سایت چهارم</div>
+                        <div class="site-desc">توضیح کوتاه</div>
                     </div>
+                    <div class="site-thumb">📲</div>
                 </a>
 
             </div>
@@ -709,4 +743,4 @@
     </script>
 
 </body>
-                                                 </html>
+</html>
