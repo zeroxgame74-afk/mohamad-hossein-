@@ -240,7 +240,7 @@
         }
 
         /* ====================================================
-                   صفحه "سایت ها" با انیمیشن بهبودیافته
+                   صفحه "سایت ها" با انیمیشن درست
                    ==================================================== */
         .site-page {
             display: none;
@@ -256,12 +256,17 @@
             z-index: 9999;
             padding: 20px;
             opacity: 0;
-            transition: opacity 0.2s ease;
+            transition: opacity 0.15s ease; /* باز شدن سریع */
         }
 
         .site-page.show {
             display: flex;
             opacity: 1;
+        }
+
+        .site-page.hide {
+            opacity: 0;
+            transition: opacity 0.2s ease; /* بسته شدن کندتر */
         }
 
         .site-box {
@@ -276,12 +281,17 @@
             max-height: 90vh;
             overflow-y: auto;
             transform: scale(0.92);
-            transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+            transition: transform 0.15s ease; /* باز شدن سریع */
             font-family: 'Vazirmatn', sans-serif;
         }
 
         .site-page.show .site-box {
             transform: scale(1);
+        }
+
+        .site-page.hide .site-box {
+            transform: scale(0.92);
+            transition: transform 0.2s ease; /* بسته شدن کندتر */
         }
 
         .site-box::-webkit-scrollbar {
@@ -602,7 +612,7 @@
     </div>
 
     <!-- ====================================================
-    صفحه "سایت ها" با انیمیشن بهبودیافته
+    صفحه "سایت ها" با انیمیشن درست
     ==================================================== -->
     <div class="site-page" id="sitePage">
         <div class="site-box">
@@ -667,12 +677,16 @@
     <script>
         function showSites() {
             const page = document.getElementById('sitePage');
+            page.classList.remove('hide');
             page.classList.add('show');
         }
 
         function hideSites() {
             const page = document.getElementById('sitePage');
-            page.classList.remove('show');
+            page.classList.add('hide');
+            setTimeout(() => {
+                page.classList.remove('show');
+            }, 200); // صبر کن تا انیمیشن بسته شدن تموم بشه
         }
 
         document.getElementById('sitePage').addEventListener('click', function(e) {
