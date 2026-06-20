@@ -354,7 +354,7 @@
             opacity: 0.3;
         }
 
-        /* ===== لیست سایت‌ها ===== */
+        /* ===== لیست سایت‌ها (۳ کارت) ===== */
         .site-list {
             display: flex;
             flex-direction: column;
@@ -447,46 +447,42 @@
             object-fit: cover;
         }
 
-        .site-card.default {
-            background: rgba(255, 255, 255, 0.04);
-            border: 2px solid rgba(255, 200, 0, 0.08);
+        /* ===== کارت جدید میم نون ===== */
+        .site-card.mimnon {
+            background: #292929;
+            border: 2px solid #FFC800;
         }
-        .site-card.default .site-info {
+        .site-card.mimnon .site-info {
             text-align: right;
             flex: 1;
         }
-        .site-card.default .site-name {
+        .site-card.mimnon .site-name {
             color: #FFC800;
             font-size: 18px;
             font-weight: 900;
         }
-        .site-card.default .site-desc {
+        .site-card.mimnon .site-desc {
             color: #FFFFFF;
             font-size: 12px;
             font-weight: 700;
-            opacity: 0.6;
+            opacity: 0.8;
         }
-        .site-card.default .site-thumb {
+        .site-card.mimnon .site-thumb {
             width: 60px;
             height: 60px;
             border-radius: 16px;
             overflow: hidden;
             flex-shrink: 0;
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.04);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 28px;
-            color: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 200, 0, 0.1);
+            border: 1px solid rgba(255, 200, 0, 0.2);
         }
-        .site-card.default .site-thumb img {
+        .site-card.mimnon .site-thumb img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
 
-        /* ===== لیست فونت‌ها (کارت افقی جدید) ===== */
+        /* ===== لیست فونت‌ها ===== */
         .font-list {
             display: flex;
             flex-direction: column;
@@ -719,7 +715,7 @@
 
             <div class="font-list">
                 <!-- ===== کارت افقی میم نون ===== -->
-                <a href="#" target="_blank" class="font-card">
+                <a href="https://zeroxgame74-afk.github.io/mim.non.ir/" target="_blank" class="font-card">
                     <div class="font-thumb">
                         <img src="https://cdn.imgurl.ir/uploads/v28212_IMG_20260621_014339_765.jpg" alt="میم نون" />
                     </div>
@@ -738,7 +734,7 @@
         </div>
     </div>
 
-    <!-- ===== صفحه سایت‌های من ===== -->
+    <!-- ===== صفحه سایت‌های من (۳ کارت) ===== -->
     <div class="site-page" id="sitePage">
         <div class="site-box">
             <span class="header-icon">
@@ -748,6 +744,8 @@
             <div class="divider-site"></div>
             <p class="subtitle">سایت هایی که توسط من طراحی و ساخته شده!</p>
             <div class="site-list">
+
+                <!-- ===== کارت کالفود ===== -->
                 <a href="https://zeroxgame74-afk.github.io/call-food.ir/" target="_blank" class="site-card callfood">
                     <div class="site-info">
                         <div class="site-name">کالفود</div>
@@ -757,6 +755,8 @@
                         <img src="https://cdn.imgurl.ir/uploads/b107997_IMG_20260616_172831.jpg" alt="کالفود" />
                     </div>
                 </a>
+
+                <!-- ===== کارت زروکس ===== -->
                 <a href="https://zeroxgame74-afk.github.io/zeroxgamee/" target="_blank" class="site-card zerox">
                     <div class="site-info">
                         <div class="site-name">زروکس</div>
@@ -766,20 +766,18 @@
                         <img src="https://uploadkon.ir/uploads/a55a20_26Negar-1780305389092.png" alt="زروکس" />
                     </div>
                 </a>
-                <a href="#" target="_blank" class="site-card default">
+
+                <!-- ===== کارت جدید میم نون ===== -->
+                <a href="https://zeroxgame74-afk.github.io/mim.non.ir/" target="_blank" class="site-card mimnon">
                     <div class="site-info">
-                        <div class="site-name">سایت دیگه</div>
-                        <div class="site-desc">توضیح کوتاه</div>
+                        <div class="site-name">میم نون | مرجع فونت فارسی حرفه ای</div>
+                        <div class="site-desc">بهترین سایت برای خرید فونت</div>
                     </div>
-                    <div class="site-thumb">🖼️</div>
-                </a>
-                <a href="#" target="_blank" class="site-card default">
-                    <div class="site-info">
-                        <div class="site-name">سایت چهارم</div>
-                        <div class="site-desc">توضیح کوتاه</div>
+                    <div class="site-thumb">
+                        <img src="https://cdn.imgurl.ir/uploads/v28212_IMG_20260621_014339_765.jpg" alt="میم نون" />
                     </div>
-                    <div class="site-thumb">📲</div>
                 </a>
+
             </div>
             <button class="close-btn" onclick="hideSites()">
                 <span class="icon"><svg viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg></span>
@@ -819,4 +817,4 @@
     </script>
 
 </body>
-                    </html>
+</html>
