@@ -62,7 +62,6 @@
             fill: #292929;
         }
 
-        /* ===== اسم با نام کامل ===== */
         .name {
             font-size: 32px;
             font-weight: 900;
@@ -242,8 +241,8 @@
         }
 
         /* ====================================================
-                   صفحه "سایت ها" با انیمیشن درست
-                   ==================================================== */
+           انیمیشن ورود اسلاید از پایین (Slide Up)
+           ==================================================== */
         .site-page {
             display: none;
             position: fixed;
@@ -258,7 +257,7 @@
             z-index: 9999;
             padding: 20px;
             opacity: 0;
-            transition: opacity 0.15s ease;
+            transition: opacity 0.3s ease;
         }
 
         .site-page.show {
@@ -282,18 +281,21 @@
             width: 100%;
             max-height: 90vh;
             overflow-y: auto;
-            transform: scale(0.92);
-            transition: transform 0.15s ease;
+            transform: translateY(40px) scale(0.95);
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.3s ease;
+            opacity: 0;
             font-family: 'Vazirmatn', sans-serif;
         }
 
         .site-page.show .site-box {
-            transform: scale(1);
+            transform: translateY(0) scale(1);
+            opacity: 1;
         }
 
         .site-page.hide .site-box {
-            transform: scale(0.92);
-            transition: transform 0.2s ease;
+            transform: translateY(40px) scale(0.95);
+            opacity: 0;
+            transition: transform 0.2s ease, opacity 0.2s ease;
         }
 
         .site-box::-webkit-scrollbar {
@@ -557,7 +559,6 @@
             </svg>
         </div>
 
-        <!-- ===== اسم جدید ===== -->
         <h1 class="name">mohamad hossein sanati</h1>
         <span class="badge">✦ طراح و توسعه‌دهنده</span>
         <div class="divider"></div>
@@ -615,7 +616,7 @@
     </div>
 
     <!-- ====================================================
-    صفحه "سایت ها"
+    صفحه "سایت ها" با انیمیشن اسلاید از پایین
     ==================================================== -->
     <div class="site-page" id="sitePage">
         <div class="site-box">
@@ -689,7 +690,7 @@
             page.classList.add('hide');
             setTimeout(() => {
                 page.classList.remove('show');
-            }, 200);
+            }, 250);
         }
 
         document.getElementById('sitePage').addEventListener('click', function(e) {
