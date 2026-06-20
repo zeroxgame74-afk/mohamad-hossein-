@@ -240,7 +240,8 @@
 
         /* ========== صفحات بازشونده ========== */
         .site-page,
-        .font-page {
+        .font-page,
+        .order-page {
             display: none;
             position: fixed;
             top: 0;
@@ -258,19 +259,22 @@
         }
 
         .site-page.show,
-        .font-page.show {
+        .font-page.show,
+        .order-page.show {
             display: flex;
             opacity: 1;
         }
 
         .site-page.hide,
-        .font-page.hide {
+        .font-page.hide,
+        .order-page.hide {
             opacity: 0;
             transition: opacity 0.2s ease;
         }
 
         .site-box,
-        .font-box {
+        .font-box,
+        .order-box {
             background: #292929;
             border-radius: 40px;
             padding: 30px 25px 25px;
@@ -288,30 +292,35 @@
         }
 
         .site-page.show .site-box,
-        .font-page.show .font-box {
+        .font-page.show .font-box,
+        .order-page.show .order-box {
             transform: translateY(0) scale(1);
             opacity: 1;
         }
 
         .site-page.hide .site-box,
-        .font-page.hide .font-box {
+        .font-page.hide .font-box,
+        .order-page.hide .order-box {
             transform: translateY(40px) scale(0.95);
             opacity: 0;
             transition: transform 0.2s ease, opacity 0.2s ease;
         }
 
         .site-box::-webkit-scrollbar,
-        .font-box::-webkit-scrollbar {
+        .font-box::-webkit-scrollbar,
+        .order-box::-webkit-scrollbar {
             width: 4px;
         }
         .site-box::-webkit-scrollbar-thumb,
-        .font-box::-webkit-scrollbar-thumb {
+        .font-box::-webkit-scrollbar-thumb,
+        .order-box::-webkit-scrollbar-thumb {
             background: #FFC800;
             border-radius: 10px;
         }
 
         .site-box .header-icon,
-        .font-box .header-icon {
+        .font-box .header-icon,
+        .order-box .header-icon {
             display: inline-flex;
             align-items: center;
             justify-content: center;
@@ -321,14 +330,16 @@
         }
 
         .site-box .header-icon svg,
-        .font-box .header-icon svg {
+        .font-box .header-icon svg,
+        .order-box .header-icon svg {
             width: 48px;
             height: 48px;
             fill: #FFC800;
         }
 
         .site-box h2,
-        .font-box h2 {
+        .font-box h2,
+        .order-box h2 {
             color: #FFC800;
             font-size: 26px;
             font-weight: 900;
@@ -336,7 +347,8 @@
         }
 
         .site-box .subtitle,
-        .font-box .subtitle {
+        .font-box .subtitle,
+        .order-box .subtitle {
             color: #FFFFFF;
             font-size: 13px;
             font-weight: 700;
@@ -345,13 +357,89 @@
         }
 
         .site-box .divider-site,
-        .font-box .divider-font {
+        .font-box .divider-font,
+        .order-box .divider-order {
             width: 50px;
             height: 3px;
             background: #FFC800;
             margin: 6px auto 14px;
             border-radius: 10px;
             opacity: 0.3;
+        }
+
+        /* ===== فرم سفارش ===== */
+        .order-form {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            margin-bottom: 20px;
+            text-align: right;
+        }
+
+        .order-form label {
+            color: #FFC800;
+            font-size: 14px;
+            font-weight: 700;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .order-form input,
+        .order-form select,
+        .order-form textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border-radius: 16px;
+            border: 2px solid rgba(255, 200, 0, 0.15);
+            background: rgba(255, 255, 255, 0.04);
+            color: #FFFFFF;
+            font-family: 'Vazirmatn', sans-serif;
+            font-size: 14px;
+            font-weight: 700;
+            transition: 0.25s ease;
+            outline: none;
+        }
+
+        .order-form input:focus,
+        .order-form select:focus,
+        .order-form textarea:focus {
+            border-color: #FFC800;
+            background: rgba(255, 200, 0, 0.05);
+        }
+
+        .order-form input::placeholder,
+        .order-form textarea::placeholder {
+            color: rgba(255, 255, 255, 0.2);
+        }
+
+        .order-form textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .order-form select option {
+            background: #292929;
+            color: #FFFFFF;
+        }
+
+        .order-form .submit-btn {
+            background: #FFC800;
+            color: #292929;
+            border: none;
+            padding: 14px 28px;
+            border-radius: 60px;
+            font-size: 16px;
+            font-weight: 900;
+            cursor: pointer;
+            transition: 0.25s ease;
+            font-family: 'Vazirmatn', sans-serif;
+            margin-top: 6px;
+        }
+
+        .order-form .submit-btn:hover {
+            background: #ffd633;
+            transform: scale(1.02);
+            box-shadow: 0 8px 30px rgba(255, 200, 0, 0.3);
         }
 
         /* ===== لیست سایت‌ها ===== */
@@ -447,7 +535,6 @@
             object-fit: cover;
         }
 
-        /* ===== کارت میم نون (رنگ‌های جدید) ===== */
         .site-card.mimnon {
             background: #292929;
             border: 2px solid #FFC800;
@@ -551,7 +638,8 @@
 
         /* ===== دکمه بستن ===== */
         .site-box .close-btn,
-        .font-box .close-btn {
+        .font-box .close-btn,
+        .order-box .close-btn {
             background: rgba(255, 200, 0, 0.06);
             border: 1px solid rgba(255, 200, 0, 0.12);
             border-radius: 60px;
@@ -568,7 +656,8 @@
         }
 
         .site-box .close-btn .icon,
-        .font-box .close-btn .icon {
+        .font-box .close-btn .icon,
+        .order-box .close-btn .icon {
             display: inline-flex;
             align-items: center;
             justify-content: center;
@@ -577,14 +666,16 @@
         }
 
         .site-box .close-btn .icon svg,
-        .font-box .close-btn .icon svg {
+        .font-box .close-btn .icon svg,
+        .order-box .close-btn .icon svg {
             width: 16px;
             height: 16px;
             fill: #FFC800;
         }
 
         .site-box .close-btn:hover,
-        .font-box .close-btn:hover {
+        .font-box .close-btn:hover,
+        .order-box .close-btn:hover {
             background: rgba(255, 200, 0, 0.12);
             border-color: rgba(255, 200, 0, 0.2);
             transform: scale(1.03);
@@ -603,9 +694,11 @@
             .footer-note .icon { width: 18px; height: 18px; }
             .footer-note .icon svg { width: 16px; height: 16px; }
             .site-box,
-            .font-box { padding: 20px 16px; }
+            .font-box,
+            .order-box { padding: 20px 16px; }
             .site-box h2,
-            .font-box h2 { font-size: 22px; }
+            .font-box h2,
+            .order-box h2 { font-size: 22px; }
             .site-card,
             .font-card { padding: 10px 12px; min-height: 66px; gap: 12px; }
             .site-card .site-name,
@@ -614,6 +707,10 @@
             .font-card .font-desc { font-size: 10px; }
             .site-card .site-thumb,
             .font-card .font-thumb { width: 50px; height: 50px; }
+            .order-form input,
+            .order-form select,
+            .order-form textarea { padding: 10px 14px; font-size: 13px; }
+            .order-form .submit-btn { padding: 12px 24px; font-size: 14px; }
         }
         @media (max-width: 420px) {
             .skill-item { font-size: 12px; padding: 6px 12px; gap: 6px; }
@@ -624,7 +721,8 @@
             .footer-note .icon { width: 16px; height: 16px; }
             .footer-note .icon svg { width: 14px; height: 14px; }
             .site-box h2,
-            .font-box h2 { font-size: 18px; }
+            .font-box h2,
+            .order-box h2 { font-size: 18px; }
             .site-card,
             .font-card { padding: 8px 10px; min-height: 56px; gap: 10px; }
             .site-card .site-name,
@@ -633,6 +731,10 @@
             .font-card .font-desc { font-size: 9px; }
             .site-card .site-thumb,
             .font-card .font-thumb { width: 42px; height: 42px; }
+            .order-form input,
+            .order-form select,
+            .order-form textarea { padding: 8px 12px; font-size: 12px; }
+            .order-form .submit-btn { padding: 10px 20px; font-size: 13px; }
         }
     </style>
 </head>
@@ -679,6 +781,11 @@
             <span class="skill-item" onclick="showSites()">
                 <span class="icon"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg></span>
                 سایت ها
+            </span>
+            <!-- ===== تب جدید سفارش ===== -->
+            <span class="skill-item" onclick="showOrderPage()">
+                <span class="icon"><svg viewBox="0 0 24 24"><path d="M19 3h-4.18C14.4 1.84 13.3 1 12 1c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm2 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg></span>
+                سفارش!
             </span>
         </div>
 
@@ -764,7 +871,6 @@
                     </div>
                 </a>
 
-                <!-- ===== کارت میم نون با اسم درست ===== -->
                 <a href="https://zeroxgame74-afk.github.io/mim.non.ir/" target="_blank" class="site-card mimnon">
                     <div class="site-info">
                         <div class="site-name">میم نون</div>
@@ -777,6 +883,51 @@
 
             </div>
             <button class="close-btn" onclick="hideSites()">
+                <span class="icon"><svg viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg></span>
+                بستن
+            </button>
+        </div>
+    </div>
+
+    <!-- ===== صفحه سفارش ===== -->
+    <div class="order-page" id="orderPage">
+        <div class="order-box">
+            <span class="header-icon">
+                <svg viewBox="0 0 24 24"><path d="M19 3h-4.18C14.4 1.84 13.3 1 12 1c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm2 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
+            </span>
+            <h2>سفارش!</h2>
+            <div class="divider-order"></div>
+            <p class="subtitle">✨ فرم سفارش طراحی سایت</p>
+
+            <form class="order-form" onsubmit="event.preventDefault(); alert('سفارش شما با موفقیت ثبت شد!');">
+                <div>
+                    <label>نام و نام خانوادگی</label>
+                    <input type="text" placeholder="مثلا: محمد حسین صنعتی" required />
+                </div>
+                <div>
+                    <label>شماره تماس</label>
+                    <input type="tel" placeholder="مثلا: ۰۹۹۰۲۶۸۴۳۰۳" required />
+                </div>
+                <div>
+                    <label>نوع سایت مورد نظر</label>
+                    <select required>
+                        <option value="">انتخاب کنید...</option>
+                        <option value="فروشگاهی">سایت فروشگاهی</option>
+                        <option value="شرکتی">سایت شرکتی</option>
+                        <option value="شخصی">سایت شخصی</option>
+                        <option value="خبری">سایت خبری</option>
+                        <option value="خدماتی">سایت خدماتی</option>
+                        <option value="سفارشی">سفارشی (با توضیحات)</option>
+                    </select>
+                </div>
+                <div>
+                    <label>توضیحات سفارش</label>
+                    <textarea placeholder="توضیح بده چه سایتی میخوای، چه قابلیت‌هایی باید داشته باشه..." required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">🚀 ثبت سفارش</button>
+            </form>
+
+            <button class="close-btn" onclick="hideOrderPage()">
                 <span class="icon"><svg viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg></span>
                 بستن
             </button>
@@ -810,6 +961,20 @@
         }
         document.getElementById('sitePage').addEventListener('click', function(e) {
             if (e.target === this) hideSites();
+        });
+
+        // ===== سفارش =====
+        function showOrderPage() {
+            document.getElementById('orderPage').classList.remove('hide');
+            document.getElementById('orderPage').classList.add('show');
+        }
+        function hideOrderPage() {
+            const el = document.getElementById('orderPage');
+            el.classList.add('hide');
+            setTimeout(() => el.classList.remove('show'), 250);
+        }
+        document.getElementById('orderPage').addEventListener('click', function(e) {
+            if (e.target === this) hideOrderPage();
         });
     </script>
 
