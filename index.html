@@ -62,14 +62,16 @@
             fill: #292929;
         }
 
+        /* ===== اسم با نام کامل ===== */
         .name {
-            font-size: 38px;
+            font-size: 32px;
             font-weight: 900;
             color: #FFC800;
             letter-spacing: 0.5px;
             margin-bottom: 4px;
             text-shadow: 0 2px 20px rgba(255, 200, 0, 0.15);
             font-family: 'Vazirmatn', sans-serif;
+            word-break: keep-all;
         }
 
         .badge {
@@ -256,7 +258,7 @@
             z-index: 9999;
             padding: 20px;
             opacity: 0;
-            transition: opacity 0.15s ease; /* باز شدن سریع */
+            transition: opacity 0.15s ease;
         }
 
         .site-page.show {
@@ -266,7 +268,7 @@
 
         .site-page.hide {
             opacity: 0;
-            transition: opacity 0.2s ease; /* بسته شدن کندتر */
+            transition: opacity 0.2s ease;
         }
 
         .site-box {
@@ -281,7 +283,7 @@
             max-height: 90vh;
             overflow-y: auto;
             transform: scale(0.92);
-            transition: transform 0.15s ease; /* باز شدن سریع */
+            transition: transform 0.15s ease;
             font-family: 'Vazirmatn', sans-serif;
         }
 
@@ -291,7 +293,7 @@
 
         .site-page.hide .site-box {
             transform: scale(0.92);
-            transition: transform 0.2s ease; /* بسته شدن کندتر */
+            transition: transform 0.2s ease;
         }
 
         .site-box::-webkit-scrollbar {
@@ -511,7 +513,7 @@
 
         @media (max-width: 500px) {
             .card { padding: 30px 18px 28px; }
-            .name { font-size: 30px; }
+            .name { font-size: 26px; }
             .skill-item { font-size: 14px; padding: 8px 14px; }
             .social-btn { font-size: 14px; padding: 10px 16px; }
             .social-btn .icon { width: 28px; height: 28px; }
@@ -532,7 +534,7 @@
             .skill-item { font-size: 12px; padding: 6px 12px; gap: 6px; }
             .social-btn { font-size: 12px; padding: 8px 12px; gap: 6px; }
             .social-btn .icon { width: 24px; height: 24px; }
-            .name { font-size: 26px; }
+            .name { font-size: 22px; }
             .footer-note { font-size: 11px; }
             .footer-note .icon { width: 16px; height: 16px; }
             .footer-note .icon svg { width: 14px; height: 14px; }
@@ -555,7 +557,8 @@
             </svg>
         </div>
 
-        <h1 class="name">mohamad hossein</h1>
+        <!-- ===== اسم جدید ===== -->
+        <h1 class="name">mohamad hossein sanati</h1>
         <span class="badge">✦ طراح و توسعه‌دهنده</span>
         <div class="divider"></div>
 
@@ -612,7 +615,7 @@
     </div>
 
     <!-- ====================================================
-    صفحه "سایت ها" با انیمیشن درست
+    صفحه "سایت ها"
     ==================================================== -->
     <div class="site-page" id="sitePage">
         <div class="site-box">
@@ -686,7 +689,7 @@
             page.classList.add('hide');
             setTimeout(() => {
                 page.classList.remove('show');
-            }, 200); // صبر کن تا انیمیشن بسته شدن تموم بشه
+            }, 200);
         }
 
         document.getElementById('sitePage').addEventListener('click', function(e) {
@@ -695,5 +698,6 @@
             }
         });
     </script>
+
 </body>
 </html>
