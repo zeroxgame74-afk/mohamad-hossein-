@@ -211,15 +211,24 @@
             box-shadow: none;
         }
 
-        /* ===== فوتر با خط نقطه‌چین سفید و پررنگ ===== */
+        /* ===== فوتر با جمله جدید ===== */
         .footer-note {
             margin-top: 30px;
-            font-size: 13px;
-            color: rgba(255, 255, 255, 0.2);
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.25);
             font-weight: 700;
             letter-spacing: 0.3px;
             border-top: 3px dashed rgba(255, 255, 255, 0.3);
             padding-top: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .footer-note .icon {
+            font-size: 18px;
+            line-height: 1;
         }
 
         @media (max-width: 500px) {
@@ -231,6 +240,7 @@
             .avatar { width: 110px; height: 110px; }
             .avatar svg { width: 58px; height: 58px; }
             .skill-item .icon svg { width: 18px; height: 18px; }
+            .footer-note { font-size: 12px; }
         }
 
         @media (max-width: 420px) {
@@ -238,6 +248,7 @@
             .social-btn { font-size: 12px; padding: 8px 12px; gap: 6px; }
             .social-btn .icon { width: 24px; height: 24px; }
             .name { font-size: 26px; }
+            .footer-note { font-size: 11px; }
         }
     </style>
 </head>
@@ -317,8 +328,10 @@
             </a>
         </div>
 
+        <!-- ===== فوتر با جمله جدید ===== -->
         <div class="footer-note">
-            ⚡ همیشه در حال خلق چیزهای جدید
+            <span class="icon">✨</span>
+            هنر یک دنیای عجیبه!
         </div>
 
     </div>
