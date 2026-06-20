@@ -6,7 +6,6 @@
     <title>mohamad hossein | moarefi</title>
     <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@700;900&display=swap" rel="stylesheet" />
     <style>
-        /* ===== RESET & BASE ===== */
         * {
             margin: 0;
             padding: 0;
@@ -24,7 +23,6 @@
             padding: 20px;
         }
 
-        /* ===== کارت اصلی ===== */
         .card {
             max-width: 480px;
             width: 100%;
@@ -240,9 +238,8 @@
             fill: #FFC800;
         }
 
-        /* ====================================================
-           صفحه "فروشنده فونت"
-           ==================================================== */
+        /* ========== صفحات بازشونده ========== */
+        .site-page,
         .font-page {
             display: none;
             position: fixed;
@@ -260,16 +257,19 @@
             transition: opacity 0.3s ease;
         }
 
+        .site-page.show,
         .font-page.show {
             display: flex;
             opacity: 1;
         }
 
+        .site-page.hide,
         .font-page.hide {
             opacity: 0;
             transition: opacity 0.2s ease;
         }
 
+        .site-box,
         .font-box {
             background: #292929;
             border-radius: 40px;
@@ -287,25 +287,30 @@
             font-family: 'Vazirmatn', sans-serif;
         }
 
+        .site-page.show .site-box,
         .font-page.show .font-box {
             transform: translateY(0) scale(1);
             opacity: 1;
         }
 
+        .site-page.hide .site-box,
         .font-page.hide .font-box {
             transform: translateY(40px) scale(0.95);
             opacity: 0;
             transition: transform 0.2s ease, opacity 0.2s ease;
         }
 
+        .site-box::-webkit-scrollbar,
         .font-box::-webkit-scrollbar {
             width: 4px;
         }
+        .site-box::-webkit-scrollbar-thumb,
         .font-box::-webkit-scrollbar-thumb {
             background: #FFC800;
             border-radius: 10px;
         }
 
+        .site-box .header-icon,
         .font-box .header-icon {
             display: inline-flex;
             align-items: center;
@@ -315,12 +320,14 @@
             margin-bottom: 4px;
         }
 
+        .site-box .header-icon svg,
         .font-box .header-icon svg {
             width: 48px;
             height: 48px;
             fill: #FFC800;
         }
 
+        .site-box h2,
         .font-box h2 {
             color: #FFC800;
             font-size: 26px;
@@ -328,6 +335,7 @@
             margin-bottom: 2px;
         }
 
+        .site-box .subtitle,
         .font-box .subtitle {
             color: #FFFFFF;
             font-size: 13px;
@@ -336,6 +344,7 @@
             opacity: 1;
         }
 
+        .site-box .divider-site,
         .font-box .divider-font {
             width: 50px;
             height: 3px;
@@ -345,7 +354,140 @@
             opacity: 0.3;
         }
 
-        .font-box .font-list {
+        /* ===== لیست سایت‌ها ===== */
+        .site-list {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            margin-bottom: 20px;
+        }
+
+        .site-card {
+            border-radius: 24px;
+            padding: 12px 16px;
+            text-decoration: none;
+            transition: 0.25s ease;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            min-height: 76px;
+            direction: ltr;
+        }
+
+        .site-card:hover {
+            transform: translateX(-4px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .site-card.callfood {
+            background: #FFF7EE;
+            border: 2px solid #C55A2D;
+        }
+        .site-card.callfood .site-info {
+            text-align: right;
+            flex: 1;
+        }
+        .site-card.callfood .site-name {
+            color: #C55A2D;
+            font-size: 18px;
+            font-weight: 900;
+        }
+        .site-card.callfood .site-desc {
+            color: #C55A2D;
+            font-size: 12px;
+            font-weight: 700;
+            opacity: 0.7;
+        }
+        .site-card.callfood .site-thumb {
+            width: 60px;
+            height: 60px;
+            border-radius: 16px;
+            overflow: hidden;
+            flex-shrink: 0;
+            background: rgba(197, 90, 45, 0.06);
+            border: 1px solid rgba(197, 90, 45, 0.1);
+        }
+        .site-card.callfood .site-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .site-card.zerox {
+            background: #B61C1C;
+            border: 2px solid #FFFFFF;
+        }
+        .site-card.zerox .site-info {
+            text-align: right;
+            flex: 1;
+        }
+        .site-card.zerox .site-name {
+            color: #FFFFFF;
+            font-size: 18px;
+            font-weight: 900;
+        }
+        .site-card.zerox .site-desc {
+            color: #FFFFFF;
+            font-size: 12px;
+            font-weight: 700;
+            opacity: 1;
+        }
+        .site-card.zerox .site-thumb {
+            width: 60px;
+            height: 60px;
+            border-radius: 16px;
+            overflow: hidden;
+            flex-shrink: 0;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .site-card.zerox .site-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .site-card.default {
+            background: rgba(255, 255, 255, 0.04);
+            border: 2px solid rgba(255, 200, 0, 0.08);
+        }
+        .site-card.default .site-info {
+            text-align: right;
+            flex: 1;
+        }
+        .site-card.default .site-name {
+            color: #FFC800;
+            font-size: 18px;
+            font-weight: 900;
+        }
+        .site-card.default .site-desc {
+            color: #FFFFFF;
+            font-size: 12px;
+            font-weight: 700;
+            opacity: 0.6;
+        }
+        .site-card.default .site-thumb {
+            width: 60px;
+            height: 60px;
+            border-radius: 16px;
+            overflow: hidden;
+            flex-shrink: 0;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            color: rgba(255, 255, 255, 0.1);
+        }
+        .site-card.default .site-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* ===== لیست فونت‌ها ===== */
+        .font-list {
             display: flex;
             flex-direction: column;
             gap: 14px;
@@ -361,7 +503,6 @@
             align-items: center;
             gap: 14px;
             transition: 0.25s ease;
-            text-decoration: none;
             cursor: pointer;
             direction: ltr;
         }
@@ -408,6 +549,8 @@
             opacity: 0.4;
         }
 
+        /* ===== دکمه بستن ===== */
+        .site-box .close-btn,
         .font-box .close-btn {
             background: rgba(255, 200, 0, 0.06);
             border: 1px solid rgba(255, 200, 0, 0.12);
@@ -424,6 +567,7 @@
             gap: 8px;
         }
 
+        .site-box .close-btn .icon,
         .font-box .close-btn .icon {
             display: inline-flex;
             align-items: center;
@@ -432,12 +576,14 @@
             height: 18px;
         }
 
+        .site-box .close-btn .icon svg,
         .font-box .close-btn .icon svg {
             width: 16px;
             height: 16px;
             fill: #FFC800;
         }
 
+        .site-box .close-btn:hover,
         .font-box .close-btn:hover {
             background: rgba(255, 200, 0, 0.12);
             border-color: rgba(255, 200, 0, 0.2);
@@ -456,8 +602,14 @@
             .footer-note { font-size: 12px; }
             .footer-note .icon { width: 18px; height: 18px; }
             .footer-note .icon svg { width: 16px; height: 16px; }
+            .site-box,
             .font-box { padding: 20px 16px; }
+            .site-box h2,
             .font-box h2 { font-size: 22px; }
+            .site-card { padding: 10px 12px; min-height: 66px; gap: 12px; }
+            .site-card .site-name { font-size: 15px; }
+            .site-card .site-desc { font-size: 10px; }
+            .site-card .site-thumb { width: 50px; height: 50px; }
             .font-item { padding: 12px 14px; }
             .font-item .font-icon { width: 40px; height: 40px; font-size: 22px; }
             .font-item .font-name { font-size: 14px; }
@@ -470,9 +622,15 @@
             .footer-note { font-size: 11px; }
             .footer-note .icon { width: 16px; height: 16px; }
             .footer-note .icon svg { width: 14px; height: 14px; }
+            .site-box h2,
             .font-box h2 { font-size: 18px; }
+            .site-card { padding: 8px 10px; min-height: 56px; gap: 10px; }
+            .site-card .site-name { font-size: 13px; }
+            .site-card .site-desc { font-size: 9px; }
+            .site-card .site-thumb { width: 42px; height: 42px; }
             .font-item .font-name { font-size: 12px; }
             .font-item .font-desc { font-size: 10px; }
+            .font-item .font-icon { width: 36px; height: 36px; font-size: 18px; }
         }
     </style>
 </head>
@@ -482,7 +640,7 @@
     <div class="card">
 
         <div class="avatar">
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <svg viewBox="0 0 24 24">
                 <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 4c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm0 14c-2.5 0-4.67-1.5-5.8-3.6.18-.4.62-.8 1.2-1.1 1.3-.7 2.8-1.1 4.6-1.1s3.3.4 4.6 1.1c.58.3 1.02.7 1.2 1.1C16.67 18.5 14.5 20 12 20z"/>
             </svg>
         </div>
@@ -538,25 +696,20 @@
         </div>
 
         <div class="footer-note">
-            <span class="icon"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/></svg></span>
+            <span class="icon"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/></svg></span>
             هنر یک دنیای عجیبه!
         </div>
     </div>
 
-    <!-- ====================================================
-    صفحه "فروشنده فونت"
-    ==================================================== -->
+    <!-- ===== صفحه فروشنده فونت ===== -->
     <div class="font-page" id="fontPage">
         <div class="font-box">
             <span class="header-icon">
-                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M5 3h14v2H5V3zm0 4h14v2H5V7zm0 4h14v2H5v-2zm0 4h10v2H5v-2zm0 4h10v2H5v-2z"/>
-                </svg>
+                <svg viewBox="0 0 24 24"><path d="M5 3h14v2H5V3zm0 4h14v2H5V7zm0 4h14v2H5v-2zm0 4h10v2H5v-2zm0 4h10v2H5v-2z"/></svg>
             </span>
             <h2>فروشنده فونت</h2>
             <div class="divider-font"></div>
             <p class="subtitle">✨ فونت‌های اختصاصی و با کیفیت</p>
-
             <div class="font-list">
                 <div class="font-item">
                     <span class="font-icon">🔤</span>
@@ -591,32 +744,22 @@
                     <span class="font-arrow">›</span>
                 </div>
             </div>
-
             <button class="close-btn" onclick="hideFontPage()">
-                <span class="icon">
-                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
-                    </svg>
-                </span>
+                <span class="icon"><svg viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg></span>
                 بستن
             </button>
         </div>
     </div>
 
-    <!-- ====================================================
-    صفحه "سایت‌های‌من"
-    ==================================================== -->
+    <!-- ===== صفحه سایت‌های من ===== -->
     <div class="site-page" id="sitePage">
         <div class="site-box">
             <span class="header-icon">
-                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
-                </svg>
+                <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
             </span>
             <h2>سایت‌های‌من</h2>
             <div class="divider-site"></div>
             <p class="subtitle">سایت هایی که توسط من طراحی و ساخته شده!</p>
-
             <div class="site-list">
                 <a href="https://zeroxgame74-afk.github.io/call-food.ir/" target="_blank" class="site-card callfood">
                     <div class="site-info">
@@ -627,7 +770,6 @@
                         <img src="https://cdn.imgurl.ir/uploads/b107997_IMG_20260616_172831.jpg" alt="کالفود" />
                     </div>
                 </a>
-
                 <a href="https://zeroxgame74-afk.github.io/zeroxgamee/" target="_blank" class="site-card zerox">
                     <div class="site-info">
                         <div class="site-name">زروکس</div>
@@ -637,7 +779,6 @@
                         <img src="https://uploadkon.ir/uploads/a55a20_26Negar-1780305389092.png" alt="زروکس" />
                     </div>
                 </a>
-
                 <a href="#" target="_blank" class="site-card default">
                     <div class="site-info">
                         <div class="site-name">سایت دیگه</div>
@@ -645,7 +786,6 @@
                     </div>
                     <div class="site-thumb">🖼️</div>
                 </a>
-
                 <a href="#" target="_blank" class="site-card default">
                     <div class="site-info">
                         <div class="site-name">سایت چهارم</div>
@@ -654,61 +794,42 @@
                     <div class="site-thumb">📲</div>
                 </a>
             </div>
-
             <button class="close-btn" onclick="hideSites()">
-                <span class="icon">
-                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
-                    </svg>
-                </span>
+                <span class="icon"><svg viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg></span>
                 بستن
             </button>
         </div>
     </div>
 
     <script>
-        // ===== توابع صفحه "فروشنده فونت" =====
+        // ===== فروشنده فونت =====
         function showFontPage() {
-            const page = document.getElementById('fontPage');
-            page.classList.remove('hide');
-            page.classList.add('show');
+            document.getElementById('fontPage').classList.remove('hide');
+            document.getElementById('fontPage').classList.add('show');
         }
-
         function hideFontPage() {
-            const page = document.getElementById('fontPage');
-            page.classList.add('hide');
-            setTimeout(() => {
-                page.classList.remove('show');
-            }, 250);
+            const el = document.getElementById('fontPage');
+            el.classList.add('hide');
+            setTimeout(() => el.classList.remove('show'), 250);
         }
-
         document.getElementById('fontPage').addEventListener('click', function(e) {
-            if (e.target === this) {
-                hideFontPage();
-            }
+            if (e.target === this) hideFontPage();
         });
 
-        // ===== توابع صفحه "سایت‌های‌من" =====
+        // ===== سایت‌های من =====
         function showSites() {
-            const page = document.getElementById('sitePage');
-            page.classList.remove('hide');
-            page.classList.add('show');
+            document.getElementById('sitePage').classList.remove('hide');
+            document.getElementById('sitePage').classList.add('show');
         }
-
         function hideSites() {
-            const page = document.getElementById('sitePage');
-            page.classList.add('hide');
-            setTimeout(() => {
-                page.classList.remove('show');
-            }, 250);
+            const el = document.getElementById('sitePage');
+            el.classList.add('hide');
+            setTimeout(() => el.classList.remove('show'), 250);
         }
-
         document.getElementById('sitePage').addEventListener('click', function(e) {
-            if (e.target === this) {
-                hideSites();
-            }
+            if (e.target === this) hideSites();
         });
     </script>
 
 </body>
-                                                                </html>
+                    </html>
