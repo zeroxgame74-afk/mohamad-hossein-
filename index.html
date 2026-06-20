@@ -194,20 +194,21 @@
         }
 
         .social-btn.primary {
-            background: #FFC800;
-            border: none;
-            color: #292929;
-            box-shadow: 0 6px 25px rgba(255, 200, 0, 0.25);
+            background: #292929;
+            border: 1px solid rgba(255, 200, 0, 0.15);
+            color: #FFC800;
+            box-shadow: none;
         }
 
         .social-btn.primary .icon svg {
-            fill: #292929;
+            fill: #FFC800;
         }
 
         .social-btn.primary:hover {
-            box-shadow: 0 10px 35px rgba(255, 200, 0, 0.4);
-            transform: translateY(-3px) scale(1.02);
-            background: #ffd633;
+            background: rgba(255, 200, 0, 0.08);
+            border-color: rgba(255, 200, 0, 0.2);
+            transform: translateY(-3px);
+            box-shadow: none;
         }
 
         .footer-note {
@@ -216,7 +217,7 @@
             color: rgba(255, 255, 255, 0.2);
             font-weight: 700;
             letter-spacing: 0.3px;
-            border-top: 1px solid rgba(255, 200, 0, 0.05);
+            border-top: 2px dashed rgba(255, 200, 0, 0.15);
             padding-top: 22px;
         }
 
@@ -278,10 +279,22 @@
                 </span>
                 طراح فونت
             </span>
+            <!-- ===== مهارت‌های جدید ===== -->
+            <span class="skill-item">
+                <span class="icon">
+                    <svg viewBox="0 0 24 24"><path d="M18 4l2 4h-3l-2-4h-2l2 4h-3l-2-4H8l2 4H7L5 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4h-4z"/></svg>
+                </span>
+                تدوینگر
+            </span>
+            <span class="skill-item">
+                <span class="icon">
+                    <svg viewBox="0 0 24 24"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
+                </span>
+                تدوینگر صدا
+            </span>
         </div>
 
         <div class="socials">
-            <!-- دکمه تماس -->
             <a href="#" class="social-btn primary">
                 <span class="icon">
                     <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.15 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
@@ -289,7 +302,6 @@
                 تماس
             </a>
 
-            <!-- ===== دکمه ایتا با لینک تصویر PNG ===== -->
             <a href="https://eitaa.com/ya_ali_ir" target="_blank" class="social-btn">
                 <span class="icon">
                     <img src="https://cdn.imgurl.ir/uploads/v63993_IMG_20260620_175231_492.png" alt="ایتا" />
@@ -297,7 +309,6 @@
                 ایتا
             </a>
 
-            <!-- ===== دکمه روبیکا با لینک تصویر PNG ===== -->
             <a href="https://rubika.ir/mohamad_hossein_ev18" target="_blank" class="social-btn">
                 <span class="icon">
                     <img src="https://cdn.imgurl.ir/uploads/g827592_IMG_20260620_174834_450.png" alt="روبیکا" />
