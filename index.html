@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>محمد حسین صنعتی | کارت معرفی</title>
+    <!-- فونت وزیر از گوگل فونتس -->
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@700;900&display=swap" rel="stylesheet" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(145deg, #0f0c29, #302b63, #24243e);
+            font-family: 'Vazirmatn', sans-serif;
+            font-weight: 700; /* بُلد در همه جای سایت */
+            padding: 20px;
+        }
+
+        .card {
+            max-width: 500px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.06);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 48px;
+            padding: 40px 30px 35px;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6),
+                        0 0 0 1px rgba(255, 255, 255, 0.05);
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+        }
+
+        /* آواتار با آیکون کاستوم */
+        .avatar {
+            width: 130px;
+            height: 130px;
+            margin: 0 auto 20px;
+            background: linear-gradient(135deg, #f093fb, #f5576c, #4facfe);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 64px;
+            box-shadow: 0 12px 35px rgba(245, 87, 108, 0.4);
+            border: 3px solid rgba(255, 255, 255, 0.25);
+            user-select: none;
+        }
+
+        .name {
+            font-size: 34px;
+            font-weight: 900; /* فوق‌بُلد برای نام */
+            color: #ffffff;
+            letter-spacing: 0.5px;
+            margin-bottom: 6px;
+            text-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.10);
+            backdrop-filter: blur(4px);
+            padding: 6px 20px;
+            border-radius: 40px;
+            font-size: 15px;
+            color: #c8d6e5;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            margin-bottom: 24px;
+            font-weight: 700;
+        }
+
+        .divider {
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, #f5576c, #4facfe);
+            margin: 6px auto 20px;
+            border-radius: 10px;
+        }
+
+        /* لیست مهارت‌ها با آیکون کاستوم (اموجی) */
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px 10px;
+            margin: 22px 0 28px;
+        }
+
+        .skill-item {
+            background: rgba(255, 255, 255, 0.07);
+            backdrop-filter: blur(4px);
+            padding: 10px 20px;
+            border-radius: 60px;
+            font-size: 17px;
+            color: #f0f3ff;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 700;
+            transition: 0.2s ease;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .skill-item:hover {
+            background: rgba(255, 255, 255, 0.14);
+            transform: scale(1.03);
+            border-color: rgba(255, 255, 255, 0.15);
+        }
+
+        .skill-item .icon {
+            font-size: 22px;
+            line-height: 1;
+        }
+
+        /* دکمه‌های اجتماعی با آیکون کاستوم */
+        .socials {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-top: 10px;
+        }
+
+        .social-btn {
+            background: rgba(255, 255, 255, 0.06);
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 60px;
+            padding: 12px 28px;
+            font-size: 18px;
+            font-weight: 700;
+            color: #e8ecf9;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            transition: 0.25s ease;
+            text-decoration: none;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+        }
+
+        .social-btn .icon {
+            font-size: 24px;
+            line-height: 1;
+        }
+
+        .social-btn:hover {
+            background: rgba(255, 255, 255, 0.14);
+            transform: translateY(-3px);
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .social-btn.primary {
+            background: linear-gradient(135deg, #f5576c, #4facfe);
+            border: none;
+            color: #fff;
+            box-shadow: 0 6px 20px rgba(79, 172, 254, 0.35);
+        }
+
+        .social-btn.primary:hover {
+            box-shadow: 0 10px 30px rgba(79, 172, 254, 0.5);
+            transform: translateY(-3px) scale(1.02);
+        }
+
+        /* فوتر کوچک */
+        .footer-note {
+            margin-top: 28px;
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.25);
+            font-weight: 700;
+            letter-spacing: 0.3px;
+        }
+
+        /* ریسپانسیو */
+        @media (max-width: 480px) {
+            .card { padding: 30px 18px 25px; }
+            .name { font-size: 28px; }
+            .skill-item { font-size: 15px; padding: 8px 16px; }
+            .social-btn { padding: 10px 18px; font-size: 15px; }
+            .avatar { width: 110px; height: 110px; font-size: 54px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+
+        <!-- آواتار با آیکون کاستوم (شخصی‌سازی شده) -->
+        <div class="avatar">🧑‍💻</div>
+
+        <!-- نام -->
+        <h1 class="name">محمد حسین صنعتی</h1>
+        <span class="badge">✨ طراح و توسعه‌دهنده</span>
+        <div class="divider"></div>
+
+        <!-- مهارت‌ها با آیکون‌های کاستوم -->
+        <div class="skills">
+            <span class="skill-item"><span class="icon">🖥️</span> طراح سایت</span>
+            <span class="skill-item"><span class="icon">🎨</span> طراح فتوشاپ</span>
+            <span class="skill-item"><span class="icon">🔤</span> فروشنده فونت</span>
+            <span class="skill-item"><span class="icon">✍️</span> طراح فونت</span>
+        </div>
+
+        <!-- دکمه‌های ارتباطی با آیکون کاستوم -->
+        <div class="socials">
+            <a href="#" class="social-btn primary">
+                <span class="icon">📞</span> تماس
+            </a>
+            <a href="#" class="social-btn">
+                <span class="icon">📷</span> اینستا
+            </a>
+            <a href="#" class="social-btn">
+                <span class="icon">💬</span> تلگرام
+            </a>
+        </div>
+
+        <div class="footer-note">
+            ⚡ همیشه در حال خلق چیزهای جدید
+        </div>
+    </div>
+
+</body>
+</html>
