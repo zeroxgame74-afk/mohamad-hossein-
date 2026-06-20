@@ -30,7 +30,7 @@
             border-radius: 40px;
             padding: 45px 35px 40px;
             box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8);
-            border: 3px solid #FFC800; /* ← دور همیشه زرد */
+            border: 3px solid #FFC800;
             text-align: center;
             transition: transform 0.2s ease;
             overflow: hidden;
@@ -239,72 +239,108 @@
             fill: #FFC800;
         }
 
-        /* ===== صفحه "به زودی" ===== */
-        .soon-page {
+        /* ===== صفحه "سایت کالفود" ===== */
+        .site-page {
             display: none;
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.85);
-            backdrop-filter: blur(10px);
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(8px);
             justify-content: center;
             align-items: center;
             z-index: 9999;
             animation: fadeIn 0.3s ease;
         }
 
-        .soon-page.show {
+        .site-page.show {
             display: flex;
         }
 
-        .soon-box {
-            background: #292929;
+        .site-box {
+            background: #FFF7EE;
             border-radius: 40px;
-            padding: 50px 40px;
+            padding: 40px 35px;
             text-align: center;
-            border: 2px solid #FFC800;
-            box-shadow: 0 0 60px rgba(255, 200, 0, 0.2);
-            max-width: 400px;
+            border: 3px solid #C55A2D;
+            box-shadow: 0 0 80px rgba(197, 90, 45, 0.3);
+            max-width: 420px;
             width: 90%;
-            animation: scaleUp 0.3s ease;
+            animation: scaleUp 0.4s ease;
+            font-family: 'Vazirmatn', sans-serif;
         }
 
-        .soon-box .icon-big {
-            font-size: 60px;
-            margin-bottom: 16px;
-        }
-
-        .soon-box h2 {
-            color: #FFC800;
-            font-size: 28px;
+        .site-box .icon-big {
+            font-size: 70px;
             margin-bottom: 10px;
+            display: block;
         }
 
-        .soon-box p {
-            color: rgba(255, 255, 255, 0.6);
-            font-size: 16px;
-            margin-bottom: 24px;
+        .site-box h2 {
+            color: #C55A2D;
+            font-size: 32px;
+            font-weight: 900;
+            margin-bottom: 6px;
         }
 
-        .soon-box .close-btn {
-            background: rgba(255, 255, 255, 0.06);
-            border: 1px solid rgba(255, 200, 0, 0.15);
-            border-radius: 60px;
-            padding: 12px 32px;
+        .site-box .subtitle {
+            color: #a04020;
             font-size: 16px;
             font-weight: 700;
-            color: #e8e8e8;
+            margin-bottom: 20px;
+            opacity: 0.7;
+        }
+
+        .site-box .site-link {
+            display: inline-block;
+            background: #C55A2D;
+            color: #FFF7EE;
+            padding: 14px 32px;
+            border-radius: 60px;
+            font-size: 18px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: 0.25s ease;
+            margin-bottom: 20px;
+            border: none;
+            cursor: pointer;
+            font-family: 'Vazirmatn', sans-serif;
+        }
+
+        .site-box .site-link:hover {
+            background: #a04020;
+            transform: scale(1.03);
+            box-shadow: 0 8px 30px rgba(197, 90, 45, 0.4);
+        }
+
+        .site-box .close-btn {
+            background: rgba(197, 90, 45, 0.08);
+            border: 1px solid rgba(197, 90, 45, 0.2);
+            border-radius: 60px;
+            padding: 10px 28px;
+            font-size: 15px;
+            font-weight: 700;
+            color: #C55A2D;
             cursor: pointer;
             transition: 0.25s ease;
             font-family: 'Vazirmatn', sans-serif;
         }
 
-        .soon-box .close-btn:hover {
-            background: rgba(255, 200, 0, 0.08);
-            border-color: #FFC800;
+        .site-box .close-btn:hover {
+            background: rgba(197, 90, 45, 0.15);
+            border-color: #C55A2D;
             transform: scale(1.03);
+        }
+
+        .site-box .divider-site {
+            width: 60px;
+            height: 3px;
+            background: #C55A2D;
+            margin: 12px auto 18px;
+            border-radius: 10px;
+            opacity: 0.3;
         }
 
         @keyframes fadeIn {
@@ -329,8 +365,9 @@
             .footer-note { font-size: 12px; }
             .footer-note .icon { width: 18px; height: 18px; }
             .footer-note .icon svg { width: 16px; height: 16px; }
-            .soon-box { padding: 30px 20px; }
-            .soon-box h2 { font-size: 22px; }
+            .site-box { padding: 30px 20px; }
+            .site-box h2 { font-size: 26px; }
+            .site-box .site-link { font-size: 16px; padding: 12px 24px; }
         }
 
         @media (max-width: 420px) {
@@ -341,8 +378,8 @@
             .footer-note { font-size: 11px; }
             .footer-note .icon { width: 16px; height: 16px; }
             .footer-note .icon svg { width: 14px; height: 14px; }
-            .soon-box h2 { font-size: 18px; }
-            .soon-box p { font-size: 14px; }
+            .site-box h2 { font-size: 22px; }
+            .site-box .site-link { font-size: 14px; padding: 10px 20px; }
         }
     </style>
 </head>
@@ -398,7 +435,8 @@
                 </span>
                 تدوینگر صدا
             </span>
-            <span class="skill-item" onclick="showSoon()">
+            <!-- ===== بخش "سایت ها" با کلیک ===== -->
+            <span class="skill-item" onclick="showSite('callfood')">
                 <span class="icon">
                     <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
                 </span>
@@ -440,28 +478,36 @@
 
     </div>
 
-    <!-- ===== صفحه "به زودی" ===== -->
-    <div class="soon-page" id="soonPage">
-        <div class="soon-box">
-            <div class="icon-big">🚀</div>
-            <h2>به زودی...</h2>
-            <p>سایت‌های من در حال آپدیت شدن هستن!</p>
-            <button class="close-btn" onclick="hideSoon()">بازگشت</button>
+    <!-- ===== صفحه "سایت کالفود" ===== -->
+    <div class="site-page" id="sitePage">
+        <div class="site-box">
+            <span class="icon-big">🍽️</span>
+            <h2>کالفود</h2>
+            <div class="divider-site"></div>
+            <p class="subtitle">✨ غذاهای ویژه و پرطرفدار</p>
+            <a href="https://zeroxgame74-afk.github.io/call-food.ir/" target="_blank" class="site-link">
+                🚀 ورود به سایت کالفود
+            </a>
+            <br />
+            <button class="close-btn" onclick="hideSite()">✕ بازگشت</button>
         </div>
     </div>
 
     <script>
-        function showSoon() {
-            document.getElementById('soonPage').classList.add('show');
+        function showSite(type) {
+            if (type === 'callfood') {
+                document.getElementById('sitePage').classList.add('show');
+            }
         }
 
-        function hideSoon() {
-            document.getElementById('soonPage').classList.remove('show');
+        function hideSite() {
+            document.getElementById('sitePage').classList.remove('show');
         }
 
-        document.getElementById('soonPage').addEventListener('click', function(e) {
+        // بستن با کلیک خارج از باکس
+        document.getElementById('sitePage').addEventListener('click', function(e) {
             if (e.target === this) {
-                hideSoon();
+                hideSite();
             }
         });
     </script>
