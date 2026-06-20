@@ -23,6 +23,7 @@
             padding: 20px;
         }
 
+        /* ===== کارت اصلی ===== */
         .card {
             max-width: 480px;
             width: 100%;
@@ -239,7 +240,7 @@
             fill: #FFC800;
         }
 
-        /* ===== صفحه "سایت کالفود" ===== */
+        /* ===== صفحه "سایت ها" (چندسایته) ===== */
         .site-page {
             display: none;
             position: fixed;
@@ -253,6 +254,7 @@
             align-items: center;
             z-index: 9999;
             animation: fadeIn 0.3s ease;
+            padding: 20px;
         }
 
         .site-page.show {
@@ -262,57 +264,118 @@
         .site-box {
             background: #FFF7EE;
             border-radius: 40px;
-            padding: 40px 35px;
+            padding: 35px 30px;
             text-align: center;
             border: 3px solid #C55A2D;
             box-shadow: 0 0 80px rgba(197, 90, 45, 0.3);
-            max-width: 420px;
-            width: 90%;
+            max-width: 460px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
             animation: scaleUp 0.4s ease;
             font-family: 'Vazirmatn', sans-serif;
         }
 
-        .site-box .icon-big {
-            font-size: 70px;
-            margin-bottom: 10px;
+        .site-box::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        .site-box::-webkit-scrollbar-thumb {
+            background: #C55A2D;
+            border-radius: 10px;
+        }
+
+        .site-box .header-icon {
+            font-size: 50px;
             display: block;
+            margin-bottom: 4px;
         }
 
         .site-box h2 {
             color: #C55A2D;
-            font-size: 32px;
+            font-size: 28px;
             font-weight: 900;
-            margin-bottom: 6px;
+            margin-bottom: 2px;
         }
 
         .site-box .subtitle {
             color: #a04020;
-            font-size: 16px;
+            font-size: 14px;
             font-weight: 700;
-            margin-bottom: 20px;
-            opacity: 0.7;
+            opacity: 0.6;
+            margin-bottom: 18px;
         }
 
-        .site-box .site-link {
-            display: inline-block;
+        .site-box .divider-site {
+            width: 50px;
+            height: 3px;
             background: #C55A2D;
-            color: #FFF7EE;
-            padding: 14px 32px;
-            border-radius: 60px;
-            font-size: 18px;
-            font-weight: 700;
-            text-decoration: none;
-            transition: 0.25s ease;
-            margin-bottom: 20px;
-            border: none;
-            cursor: pointer;
-            font-family: 'Vazirmatn', sans-serif;
+            margin: 8px auto 16px;
+            border-radius: 10px;
+            opacity: 0.3;
         }
 
-        .site-box .site-link:hover {
-            background: #a04020;
-            transform: scale(1.03);
-            box-shadow: 0 8px 30px rgba(197, 90, 45, 0.4);
+        /* ===== لیست سایت‌ها ===== */
+        .site-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 22px;
+        }
+
+        .site-item {
+            background: rgba(197, 90, 45, 0.06);
+            border: 1px solid rgba(197, 90, 45, 0.12);
+            border-radius: 20px;
+            padding: 14px 18px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            transition: 0.25s ease;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .site-item:hover {
+            background: rgba(197, 90, 45, 0.12);
+            border-color: #C55A2D;
+            transform: translateX(4px);
+        }
+
+        .site-item .site-icon {
+            font-size: 30px;
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #C55A2D;
+            border-radius: 14px;
+            color: #FFF7EE;
+            flex-shrink: 0;
+        }
+
+        .site-item .site-info {
+            text-align: right;
+            flex: 1;
+        }
+
+        .site-item .site-name {
+            font-size: 16px;
+            font-weight: 900;
+            color: #292929;
+        }
+
+        .site-item .site-desc {
+            font-size: 12px;
+            font-weight: 700;
+            color: rgba(0, 0, 0, 0.4);
+        }
+
+        .site-item .site-arrow {
+            color: #C55A2D;
+            font-size: 18px;
+            opacity: 0.4;
         }
 
         .site-box .close-btn {
@@ -332,15 +395,6 @@
             background: rgba(197, 90, 45, 0.15);
             border-color: #C55A2D;
             transform: scale(1.03);
-        }
-
-        .site-box .divider-site {
-            width: 60px;
-            height: 3px;
-            background: #C55A2D;
-            margin: 12px auto 18px;
-            border-radius: 10px;
-            opacity: 0.3;
         }
 
         @keyframes fadeIn {
@@ -365,9 +419,11 @@
             .footer-note { font-size: 12px; }
             .footer-note .icon { width: 18px; height: 18px; }
             .footer-note .icon svg { width: 16px; height: 16px; }
-            .site-box { padding: 30px 20px; }
-            .site-box h2 { font-size: 26px; }
-            .site-box .site-link { font-size: 16px; padding: 12px 24px; }
+            .site-box { padding: 25px 18px; }
+            .site-box h2 { font-size: 24px; }
+            .site-item { padding: 12px 14px; }
+            .site-item .site-icon { width: 36px; height: 36px; font-size: 24px; }
+            .site-item .site-name { font-size: 14px; }
         }
 
         @media (max-width: 420px) {
@@ -378,8 +434,9 @@
             .footer-note { font-size: 11px; }
             .footer-note .icon { width: 16px; height: 16px; }
             .footer-note .icon svg { width: 14px; height: 14px; }
-            .site-box h2 { font-size: 22px; }
-            .site-box .site-link { font-size: 14px; padding: 10px 20px; }
+            .site-box h2 { font-size: 20px; }
+            .site-item .site-name { font-size: 12px; }
+            .site-item .site-desc { font-size: 10px; }
         }
     </style>
 </head>
@@ -435,8 +492,7 @@
                 </span>
                 تدوینگر صدا
             </span>
-            <!-- ===== بخش "سایت ها" با کلیک ===== -->
-            <span class="skill-item" onclick="showSite('callfood')">
+            <span class="skill-item" onclick="showSites()">
                 <span class="icon">
                     <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
                 </span>
@@ -478,39 +534,76 @@
 
     </div>
 
-    <!-- ===== صفحه "سایت کالفود" ===== -->
+    <!-- ===== صفحه "سایت ها" (چندسایته) ===== -->
     <div class="site-page" id="sitePage">
         <div class="site-box">
-            <span class="icon-big">🍽️</span>
-            <h2>کالفود</h2>
+            <span class="header-icon">🌐</span>
+            <h2>سایت‌های من</h2>
             <div class="divider-site"></div>
-            <p class="subtitle">✨ غذاهای ویژه و پرطرفدار</p>
-            <a href="https://zeroxgame74-afk.github.io/call-food.ir/" target="_blank" class="site-link">
-                🚀 ورود به سایت کالفود
-            </a>
-            <br />
-            <button class="close-btn" onclick="hideSite()">✕ بازگشت</button>
+            <p class="subtitle">✨ پروژه‌های آنلاین من</p>
+
+            <div class="site-list">
+                <!-- ===== سایت ۱: کالفود ===== -->
+                <a href="https://zeroxgame74-afk.github.io/call-food.ir/" target="_blank" class="site-item">
+                    <span class="site-icon">🍽️</span>
+                    <span class="site-info">
+                        <span class="site-name">کالفود</span>
+                        <span class="site-desc">غذاهای ویژه و پرطرفدار</span>
+                    </span>
+                    <span class="site-arrow">›</span>
+                </a>
+
+                <!-- ===== سایت ۲: (خالی برای سایت بعدی) ===== -->
+                <a href="#" target="_blank" class="site-item">
+                    <span class="site-icon">🛒</span>
+                    <span class="site-info">
+                        <span class="site-name">سایت بعدی</span>
+                        <span class="site-desc">توضیح کوتاه سایت</span>
+                    </span>
+                    <span class="site-arrow">›</span>
+                </a>
+
+                <!-- ===== سایت ۳: (خالی برای سایت بعدی) ===== -->
+                <a href="#" target="_blank" class="site-item">
+                    <span class="site-icon">🎨</span>
+                    <span class="site-info">
+                        <span class="site-name">سایت دیگه</span>
+                        <span class="site-desc">توضیح کوتاه سایت</span>
+                    </span>
+                    <span class="site-arrow">›</span>
+                </a>
+
+                <!-- ===== سایت ۴: (خالی برای سایت بعدی) ===== -->
+                <a href="#" target="_blank" class="site-item">
+                    <span class="site-icon">📱</span>
+                    <span class="site-info">
+                        <span class="site-name">سایت چهارم</span>
+                        <span class="site-desc">توضیح کوتاه سایت</span>
+                    </span>
+                    <span class="site-arrow">›</span>
+                </a>
+            </div>
+
+            <button class="close-btn" onclick="hideSites()">✕ بستن</button>
         </div>
     </div>
 
     <script>
-        function showSite(type) {
-            if (type === 'callfood') {
-                document.getElementById('sitePage').classList.add('show');
-            }
+        function showSites() {
+            document.getElementById('sitePage').classList.add('show');
         }
 
-        function hideSite() {
+        function hideSites() {
             document.getElementById('sitePage').classList.remove('show');
         }
 
         // بستن با کلیک خارج از باکس
         document.getElementById('sitePage').addEventListener('click', function(e) {
             if (e.target === this) {
-                hideSite();
+                hideSites();
             }
         });
     </script>
 
 </body>
-</html>
+    </html>
