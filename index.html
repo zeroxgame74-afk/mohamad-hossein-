@@ -240,7 +240,9 @@
             fill: #FFC800;
         }
 
-        /* ===== صفحه "سایت ها" (چندسایته) ===== */
+        /* ====================================================
+                   صفحه "سایت ها" با کارت‌های مجزا (۱ در ۱)
+                   ==================================================== */
         .site-page {
             display: none;
             position: fixed;
@@ -262,12 +264,12 @@
         }
 
         .site-box {
-            background: #FFF7EE;
+            background: #292929;
             border-radius: 40px;
-            padding: 35px 30px;
+            padding: 30px 25px 25px;
             text-align: center;
-            border: 3px solid #C55A2D;
-            box-shadow: 0 0 80px rgba(197, 90, 45, 0.3);
+            border: 3px solid #FFC800;
+            box-shadow: 0 0 80px rgba(255, 200, 0, 0.15);
             max-width: 460px;
             width: 100%;
             max-height: 90vh;
@@ -281,119 +283,214 @@
         }
 
         .site-box::-webkit-scrollbar-thumb {
-            background: #C55A2D;
+            background: #FFC800;
             border-radius: 10px;
         }
 
         .site-box .header-icon {
-            font-size: 50px;
+            font-size: 42px;
             display: block;
-            margin-bottom: 4px;
+            margin-bottom: 2px;
         }
 
         .site-box h2 {
-            color: #C55A2D;
-            font-size: 28px;
+            color: #FFC800;
+            font-size: 26px;
             font-weight: 900;
             margin-bottom: 2px;
         }
 
         .site-box .subtitle {
-            color: #a04020;
-            font-size: 14px;
+            color: rgba(255, 200, 0, 0.4);
+            font-size: 13px;
             font-weight: 700;
-            opacity: 0.6;
-            margin-bottom: 18px;
+            margin-bottom: 16px;
         }
 
         .site-box .divider-site {
             width: 50px;
             height: 3px;
-            background: #C55A2D;
-            margin: 8px auto 16px;
+            background: #FFC800;
+            margin: 6px auto 14px;
             border-radius: 10px;
             opacity: 0.3;
         }
 
-        /* ===== لیست سایت‌ها ===== */
-        .site-list {
+        /* ===== لیست کارت‌های سایت (۱ در ۱) ===== */
+        .site-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+            margin-bottom: 20px;
+        }
+
+        .site-card {
+            border-radius: 24px;
+            padding: 16px 12px 14px;
+            text-decoration: none;
+            transition: 0.25s ease;
             display: flex;
             flex-direction: column;
-            gap: 12px;
-            margin-bottom: 22px;
-        }
-
-        .site-item {
-            background: rgba(197, 90, 45, 0.06);
-            border: 1px solid rgba(197, 90, 45, 0.12);
-            border-radius: 20px;
-            padding: 14px 18px;
-            display: flex;
             align-items: center;
-            gap: 14px;
-            transition: 0.25s ease;
-            text-decoration: none;
-            cursor: pointer;
+            gap: 8px;
+            position: relative;
+            min-height: 160px;
+            justify-content: center;
         }
 
-        .site-item:hover {
-            background: rgba(197, 90, 45, 0.12);
-            border-color: #C55A2D;
-            transform: translateX(4px);
+        .site-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
         }
 
-        .site-item .site-icon {
-            font-size: 30px;
-            width: 44px;
-            height: 44px;
+        /* ===== کارت کالفود ===== */
+        .site-card.callfood {
+            background: #FFF7EE;
+            border: 2px solid #C55A2D;
+        }
+
+        .site-card.callfood .site-icon {
+            background: #C55A2D;
+            color: #FFF7EE;
+            border-radius: 16px;
+            width: 48px;
+            height: 48px;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: #C55A2D;
-            border-radius: 14px;
-            color: #FFF7EE;
-            flex-shrink: 0;
+            font-size: 28px;
         }
 
-        .site-item .site-info {
-            text-align: right;
-            flex: 1;
-        }
-
-        .site-item .site-name {
-            font-size: 16px;
-            font-weight: 900;
-            color: #292929;
-        }
-
-        .site-item .site-desc {
-            font-size: 12px;
-            font-weight: 700;
-            color: rgba(0, 0, 0, 0.4);
-        }
-
-        .site-item .site-arrow {
+        .site-card.callfood .site-name {
             color: #C55A2D;
-            font-size: 18px;
-            opacity: 0.4;
+            font-size: 15px;
+            font-weight: 900;
+        }
+
+        .site-card.callfood .site-desc {
+            color: rgba(197, 90, 45, 0.5);
+            font-size: 10px;
+            font-weight: 700;
+        }
+
+        /* ===== کارت زروکس ===== */
+        .site-card.zerox {
+            background: #FFFFFF;
+            border: 2px solid #B61C1C;
+        }
+
+        .site-card.zerox .site-icon {
+            background: #B61C1C;
+            color: #FFFFFF;
+            border-radius: 16px;
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+        }
+
+        .site-card.zerox .site-name {
+            color: #B61C1C;
+            font-size: 15px;
+            font-weight: 900;
+        }
+
+        .site-card.zerox .site-desc {
+            color: rgba(182, 28, 28, 0.5);
+            font-size: 10px;
+            font-weight: 700;
+        }
+
+        /* ===== کارت‌های پیش‌فرض ===== */
+        .site-card.default {
+            background: rgba(255, 255, 255, 0.04);
+            border: 2px solid rgba(255, 200, 0, 0.08);
+        }
+
+        .site-card.default .site-icon {
+            background: #FFC800;
+            color: #292929;
+            border-radius: 16px;
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+        }
+
+        .site-card.default .site-name {
+            color: #FFC800;
+            font-size: 15px;
+            font-weight: 900;
+        }
+
+        .site-card.default .site-desc {
+            color: rgba(255, 255, 255, 0.3);
+            font-size: 10px;
+            font-weight: 700;
+        }
+
+        .site-card.default:hover {
+            border-color: rgba(255, 200, 0, 0.2);
+        }
+
+        /* ===== جای عکس ۱ در ۱ ===== */
+        .site-card .site-thumb {
+            width: 100%;
+            aspect-ratio: 1/1;
+            border-radius: 16px;
+            background: rgba(0, 0, 0, 0.04);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            color: rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+            margin-top: 2px;
+        }
+
+        .site-card.callfood .site-thumb {
+            background: rgba(197, 90, 45, 0.06);
+        }
+
+        .site-card.zerox .site-thumb {
+            background: rgba(182, 28, 28, 0.04);
+        }
+
+        .site-card.default .site-thumb {
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .site-card .site-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .site-card .site-thumb .placeholder {
+            font-size: 28px;
+            opacity: 0.2;
         }
 
         .site-box .close-btn {
-            background: rgba(197, 90, 45, 0.08);
-            border: 1px solid rgba(197, 90, 45, 0.2);
+            background: rgba(255, 200, 0, 0.06);
+            border: 1px solid rgba(255, 200, 0, 0.12);
             border-radius: 60px;
             padding: 10px 28px;
             font-size: 15px;
             font-weight: 700;
-            color: #C55A2D;
+            color: #FFC800;
             cursor: pointer;
             transition: 0.25s ease;
             font-family: 'Vazirmatn', sans-serif;
         }
 
         .site-box .close-btn:hover {
-            background: rgba(197, 90, 45, 0.15);
-            border-color: #C55A2D;
+            background: rgba(255, 200, 0, 0.12);
+            border-color: rgba(255, 200, 0, 0.2);
             transform: scale(1.03);
         }
 
@@ -419,11 +516,12 @@
             .footer-note { font-size: 12px; }
             .footer-note .icon { width: 18px; height: 18px; }
             .footer-note .icon svg { width: 16px; height: 16px; }
-            .site-box { padding: 25px 18px; }
-            .site-box h2 { font-size: 24px; }
-            .site-item { padding: 12px 14px; }
-            .site-item .site-icon { width: 36px; height: 36px; font-size: 24px; }
-            .site-item .site-name { font-size: 14px; }
+            .site-box { padding: 20px 16px; }
+            .site-box h2 { font-size: 22px; }
+            .site-grid { gap: 10px; }
+            .site-card { min-height: 130px; padding: 12px 8px; }
+            .site-card .site-icon { width: 40px; height: 40px; font-size: 22px; }
+            .site-card .site-name { font-size: 13px; }
         }
 
         @media (max-width: 420px) {
@@ -434,9 +532,11 @@
             .footer-note { font-size: 11px; }
             .footer-note .icon { width: 16px; height: 16px; }
             .footer-note .icon svg { width: 14px; height: 14px; }
-            .site-box h2 { font-size: 20px; }
-            .site-item .site-name { font-size: 12px; }
-            .site-item .site-desc { font-size: 10px; }
+            .site-box h2 { font-size: 18px; }
+            .site-card { min-height: 110px; padding: 10px 6px; }
+            .site-card .site-icon { width: 34px; height: 34px; font-size: 18px; }
+            .site-card .site-name { font-size: 11px; }
+            .site-card .site-desc { font-size: 8px; }
         }
     </style>
 </head>
@@ -534,7 +634,9 @@
 
     </div>
 
-    <!-- ===== صفحه "سایت ها" (چندسایته) ===== -->
+    <!-- ====================================================
+    صفحه "سایت ها" با کارت‌های مجزا (۱ در ۱)
+    ==================================================== -->
     <div class="site-page" id="sitePage">
         <div class="site-box">
             <span class="header-icon">🌐</span>
@@ -542,46 +644,48 @@
             <div class="divider-site"></div>
             <p class="subtitle">✨ پروژه‌های آنلاین من</p>
 
-            <div class="site-list">
-                <!-- ===== سایت ۱: کالفود ===== -->
-                <a href="https://zeroxgame74-afk.github.io/call-food.ir/" target="_blank" class="site-item">
-                    <span class="site-icon">🍽️</span>
-                    <span class="site-info">
-                        <span class="site-name">کالفود</span>
-                        <span class="site-desc">غذاهای ویژه و پرطرفدار</span>
-                    </span>
-                    <span class="site-arrow">›</span>
+            <div class="site-grid">
+
+                <!-- ===== کارت کالفود ===== -->
+                <a href="https://zeroxgame74-afk.github.io/call-food.ir/" target="_blank" class="site-card callfood">
+                    <div class="site-icon">🍽️</div>
+                    <div class="site-name">کالفود</div>
+                    <div class="site-desc">غذاهای ویژه</div>
+                    <div class="site-thumb">
+                        <img src="https://cdn.imgurl.ir/uploads/g827592_IMG_20260620_174834_450.png" alt="کالفود" />
+                    </div>
                 </a>
 
-                <!-- ===== سایت ۲: (خالی برای سایت بعدی) ===== -->
-                <a href="#" target="_blank" class="site-item">
-                    <span class="site-icon">🛒</span>
-                    <span class="site-info">
-                        <span class="site-name">سایت بعدی</span>
-                        <span class="site-desc">توضیح کوتاه سایت</span>
-                    </span>
-                    <span class="site-arrow">›</span>
+                <!-- ===== کارت زروکس ===== -->
+                <a href="#" target="_blank" class="site-card zerox">
+                    <div class="site-icon">🛡️</div>
+                    <div class="site-name">زروکس</div>
+                    <div class="site-desc">سایت گیم</div>
+                    <div class="site-thumb">
+                        <span class="placeholder">🎮</span>
+                    </div>
                 </a>
 
-                <!-- ===== سایت ۳: (خالی برای سایت بعدی) ===== -->
-                <a href="#" target="_blank" class="site-item">
-                    <span class="site-icon">🎨</span>
-                    <span class="site-info">
-                        <span class="site-name">سایت دیگه</span>
-                        <span class="site-desc">توضیح کوتاه سایت</span>
-                    </span>
-                    <span class="site-arrow">›</span>
+                <!-- ===== کارت پیش‌فرض ۱ ===== -->
+                <a href="#" target="_blank" class="site-card default">
+                    <div class="site-icon">🎨</div>
+                    <div class="site-name">سایت دیگه</div>
+                    <div class="site-desc">توضیح کوتاه</div>
+                    <div class="site-thumb">
+                        <span class="placeholder">🖼️</span>
+                    </div>
                 </a>
 
-                <!-- ===== سایت ۴: (خالی برای سایت بعدی) ===== -->
-                <a href="#" target="_blank" class="site-item">
-                    <span class="site-icon">📱</span>
-                    <span class="site-info">
-                        <span class="site-name">سایت چهارم</span>
-                        <span class="site-desc">توضیح کوتاه سایت</span>
-                    </span>
-                    <span class="site-arrow">›</span>
+                <!-- ===== کارت پیش‌فرض ۲ ===== -->
+                <a href="#" target="_blank" class="site-card default">
+                    <div class="site-icon">📱</div>
+                    <div class="site-name">سایت چهارم</div>
+                    <div class="site-desc">توضیح کوتاه</div>
+                    <div class="site-thumb">
+                        <span class="placeholder">📲</span>
+                    </div>
                 </a>
+
             </div>
 
             <button class="close-btn" onclick="hideSites()">✕ بستن</button>
@@ -597,7 +701,6 @@
             document.getElementById('sitePage').classList.remove('show');
         }
 
-        // بستن با کلیک خارج از باکس
         document.getElementById('sitePage').addEventListener('click', function(e) {
             if (e.target === this) {
                 hideSites();
@@ -606,4 +709,4 @@
     </script>
 
 </body>
-    </html>
+                                                 </html>
