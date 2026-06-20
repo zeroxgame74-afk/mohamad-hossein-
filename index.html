@@ -486,7 +486,7 @@
             object-fit: cover;
         }
 
-        /* ===== لیست فونت‌ها ===== */
+        /* ===== لیست فونت‌ها (کارت افقی جدید) ===== */
         .font-list {
             display: flex;
             flex-direction: column;
@@ -494,56 +494,60 @@
             margin-bottom: 20px;
         }
 
-        .font-item {
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 200, 0, 0.08);
-            border-radius: 20px;
-            padding: 14px 18px;
+        .font-card {
+            background: #292929;
+            border: 2px solid #FFC800;
+            border-radius: 24px;
+            padding: 12px 16px;
             display: flex;
             align-items: center;
-            gap: 14px;
+            gap: 16px;
+            min-height: 76px;
             transition: 0.25s ease;
-            cursor: pointer;
+            text-decoration: none;
             direction: ltr;
         }
 
-        .font-item:hover {
-            background: rgba(255, 200, 0, 0.08);
-            border-color: rgba(255, 200, 0, 0.2);
+        .font-card:hover {
             transform: translateX(-4px);
+            box-shadow: 0 8px 30px rgba(255, 200, 0, 0.2);
         }
 
-        .font-item .font-icon {
-            font-size: 28px;
-            width: 48px;
-            height: 48px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: #FFC800;
-            border-radius: 14px;
-            color: #292929;
+        .font-card .font-thumb {
+            width: 60px;
+            height: 60px;
+            border-radius: 16px;
+            overflow: hidden;
             flex-shrink: 0;
+            background: rgba(255, 200, 0, 0.1);
+            border: 1px solid rgba(255, 200, 0, 0.2);
         }
 
-        .font-item .font-info {
+        .font-card .font-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .font-card .font-info {
             text-align: right;
             flex: 1;
         }
 
-        .font-item .font-name {
-            font-size: 16px;
-            font-weight: 900;
+        .font-card .font-name {
             color: #FFC800;
+            font-size: 18px;
+            font-weight: 900;
         }
 
-        .font-item .font-desc {
+        .font-card .font-desc {
+            color: #FFFFFF;
             font-size: 12px;
             font-weight: 700;
-            color: rgba(255, 255, 255, 0.4);
+            opacity: 0.7;
         }
 
-        .font-item .font-arrow {
+        .font-card .font-arrow {
             color: #FFC800;
             font-size: 18px;
             opacity: 0.4;
@@ -606,13 +610,14 @@
             .font-box { padding: 20px 16px; }
             .site-box h2,
             .font-box h2 { font-size: 22px; }
-            .site-card { padding: 10px 12px; min-height: 66px; gap: 12px; }
-            .site-card .site-name { font-size: 15px; }
-            .site-card .site-desc { font-size: 10px; }
-            .site-card .site-thumb { width: 50px; height: 50px; }
-            .font-item { padding: 12px 14px; }
-            .font-item .font-icon { width: 40px; height: 40px; font-size: 22px; }
-            .font-item .font-name { font-size: 14px; }
+            .site-card,
+            .font-card { padding: 10px 12px; min-height: 66px; gap: 12px; }
+            .site-card .site-name,
+            .font-card .font-name { font-size: 15px; }
+            .site-card .site-desc,
+            .font-card .font-desc { font-size: 10px; }
+            .site-card .site-thumb,
+            .font-card .font-thumb { width: 50px; height: 50px; }
         }
         @media (max-width: 420px) {
             .skill-item { font-size: 12px; padding: 6px 12px; gap: 6px; }
@@ -624,13 +629,14 @@
             .footer-note .icon svg { width: 14px; height: 14px; }
             .site-box h2,
             .font-box h2 { font-size: 18px; }
-            .site-card { padding: 8px 10px; min-height: 56px; gap: 10px; }
-            .site-card .site-name { font-size: 13px; }
-            .site-card .site-desc { font-size: 9px; }
-            .site-card .site-thumb { width: 42px; height: 42px; }
-            .font-item .font-name { font-size: 12px; }
-            .font-item .font-desc { font-size: 10px; }
-            .font-item .font-icon { width: 36px; height: 36px; font-size: 18px; }
+            .site-card,
+            .font-card { padding: 8px 10px; min-height: 56px; gap: 10px; }
+            .site-card .site-name,
+            .font-card .font-name { font-size: 13px; }
+            .site-card .site-desc,
+            .font-card .font-desc { font-size: 9px; }
+            .site-card .site-thumb,
+            .font-card .font-thumb { width: 42px; height: 42px; }
         }
     </style>
 </head>
@@ -710,40 +716,21 @@
             <h2>فروشنده فونت</h2>
             <div class="divider-font"></div>
             <p class="subtitle">✨ فونت‌های اختصاصی و با کیفیت</p>
+
             <div class="font-list">
-                <div class="font-item">
-                    <span class="font-icon">🔤</span>
-                    <span class="font-info">
-                        <span class="font-name">فونت وزیر</span>
-                        <span class="font-desc">فونت فارسی مدرن و خوانا</span>
-                    </span>
+                <!-- ===== کارت افقی میم نون ===== -->
+                <a href="#" target="_blank" class="font-card">
+                    <div class="font-thumb">
+                        <img src="https://cdn.imgurl.ir/uploads/v28212_IMG_20260621_014339_765.jpg" alt="میم نون" />
+                    </div>
+                    <div class="font-info">
+                        <div class="font-name">میم نون | مرجع فونت فارسی حرفه ای!</div>
+                        <div class="font-desc">یک سایت فروش فونت با قیمت مناسب و خوب</div>
+                    </div>
                     <span class="font-arrow">›</span>
-                </div>
-                <div class="font-item">
-                    <span class="font-icon">✒️</span>
-                    <span class="font-info">
-                        <span class="font-name">فونت استاد</span>
-                        <span class="font-desc">فونت رسمی و کلاسیک</span>
-                    </span>
-                    <span class="font-arrow">›</span>
-                </div>
-                <div class="font-item">
-                    <span class="font-icon">🖌️</span>
-                    <span class="font-info">
-                        <span class="font-name">فونت دست‌نویس</span>
-                        <span class="font-desc">طبیعی و صمیمی</span>
-                    </span>
-                    <span class="font-arrow">›</span>
-                </div>
-                <div class="font-item">
-                    <span class="font-icon">📝</span>
-                    <span class="font-info">
-                        <span class="font-name">فونت نمایشی</span>
-                        <span class="font-desc">خاص و جذاب برای تیتر</span>
-                    </span>
-                    <span class="font-arrow">›</span>
-                </div>
+                </a>
             </div>
+
             <button class="close-btn" onclick="hideFontPage()">
                 <span class="icon"><svg viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg></span>
                 بستن
