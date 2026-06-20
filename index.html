@@ -30,25 +30,14 @@
             border-radius: 40px;
             padding: 45px 35px 40px;
             box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8);
-            border: 2px solid rgba(255, 200, 0, 0.25);
+            border: 3px solid #FFC800; /* ← دور همیشه زرد */
             text-align: center;
-            transition: all 0.3s ease;
+            transition: transform 0.2s ease;
             overflow: hidden;
         }
 
-        /* ===== افکت فقط روی دور کارت ===== */
         .card:hover {
             transform: translateY(-5px);
-            border-color: #FFC800;
-            box-shadow: 0 0 30px rgba(255, 200, 0, 0.2),
-                        0 25px 60px rgba(0, 0, 0, 0.9);
-        }
-
-        .card:active {
-            transform: scale(0.98);
-            border-color: #FFC800;
-            box-shadow: 0 0 50px rgba(255, 200, 0, 0.5),
-                        0 0 80px rgba(255, 200, 0, 0.3);
         }
 
         .avatar {
@@ -124,6 +113,7 @@
             font-weight: 700;
             transition: 0.2s ease;
             white-space: nowrap;
+            cursor: pointer;
         }
 
         .skill-item:hover {
@@ -249,6 +239,84 @@
             fill: #FFC800;
         }
 
+        /* ===== صفحه "به زودی" ===== */
+        .soon-page {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(10px);
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .soon-page.show {
+            display: flex;
+        }
+
+        .soon-box {
+            background: #292929;
+            border-radius: 40px;
+            padding: 50px 40px;
+            text-align: center;
+            border: 2px solid #FFC800;
+            box-shadow: 0 0 60px rgba(255, 200, 0, 0.2);
+            max-width: 400px;
+            width: 90%;
+            animation: scaleUp 0.3s ease;
+        }
+
+        .soon-box .icon-big {
+            font-size: 60px;
+            margin-bottom: 16px;
+        }
+
+        .soon-box h2 {
+            color: #FFC800;
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .soon-box p {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 16px;
+            margin-bottom: 24px;
+        }
+
+        .soon-box .close-btn {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 200, 0, 0.15);
+            border-radius: 60px;
+            padding: 12px 32px;
+            font-size: 16px;
+            font-weight: 700;
+            color: #e8e8e8;
+            cursor: pointer;
+            transition: 0.25s ease;
+            font-family: 'Vazirmatn', sans-serif;
+        }
+
+        .soon-box .close-btn:hover {
+            background: rgba(255, 200, 0, 0.08);
+            border-color: #FFC800;
+            transform: scale(1.03);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes scaleUp {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
         @media (max-width: 500px) {
             .card { padding: 30px 18px 28px; }
             .name { font-size: 30px; }
@@ -261,6 +329,8 @@
             .footer-note { font-size: 12px; }
             .footer-note .icon { width: 18px; height: 18px; }
             .footer-note .icon svg { width: 16px; height: 16px; }
+            .soon-box { padding: 30px 20px; }
+            .soon-box h2 { font-size: 22px; }
         }
 
         @media (max-width: 420px) {
@@ -271,11 +341,14 @@
             .footer-note { font-size: 11px; }
             .footer-note .icon { width: 16px; height: 16px; }
             .footer-note .icon svg { width: 14px; height: 14px; }
+            .soon-box h2 { font-size: 18px; }
+            .soon-box p { font-size: 14px; }
         }
     </style>
 </head>
 <body>
 
+    <!-- ===== کارت اصلی ===== -->
     <div class="card">
 
         <div class="avatar">
@@ -325,6 +398,12 @@
                 </span>
                 تدوینگر صدا
             </span>
+            <span class="skill-item" onclick="showSoon()">
+                <span class="icon">
+                    <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                </span>
+                سایت ها
+            </span>
         </div>
 
         <div class="socials">
@@ -360,6 +439,32 @@
         </div>
 
     </div>
+
+    <!-- ===== صفحه "به زودی" ===== -->
+    <div class="soon-page" id="soonPage">
+        <div class="soon-box">
+            <div class="icon-big">🚀</div>
+            <h2>به زودی...</h2>
+            <p>سایت‌های من در حال آپدیت شدن هستن!</p>
+            <button class="close-btn" onclick="hideSoon()">بازگشت</button>
+        </div>
+    </div>
+
+    <script>
+        function showSoon() {
+            document.getElementById('soonPage').classList.add('show');
+        }
+
+        function hideSoon() {
+            document.getElementById('soonPage').classList.remove('show');
+        }
+
+        document.getElementById('soonPage').addEventListener('click', function(e) {
+            if (e.target === this) {
+                hideSoon();
+            }
+        });
+    </script>
 
 </body>
 </html>
