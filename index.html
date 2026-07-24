@@ -353,7 +353,7 @@
             margin: 0;
         }
 
-        /* ===== کارت‌های سایت (لیست سایت‌ها) ===== */
+        /* ===== کارت‌های سایت ===== */
         .sites-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -361,7 +361,6 @@
             margin-top: 1.5rem;
         }
 
-        /* کارت عریض */
         .site-card-wide {
             grid-column: 1 / -1;
             background: #1a1111;
@@ -439,87 +438,27 @@
             border-color: #f5b042;
         }
 
-        /* کارت باریک */
-        .site-card-narrow {
-            background: rgba(255, 255, 255, 0.02);
-            border-radius: 20px;
-            padding: 1.2rem;
-            border: 1px solid rgba(255, 215, 100, 0.06);
-            transition: 0.3s;
-            display: flex;
-            flex-direction: column;
-            gap: 0.8rem;
+        /* کارت کالفود با رنگ آبی */
+        .site-card-wide.call-food {
+            border-right-color: #2a6b8f;
+            border-color: rgba(42, 107, 143, 0.2);
         }
 
-        .site-card-narrow:hover {
-            background: rgba(255, 215, 100, 0.04);
-            border-color: rgba(255, 215, 100, 0.12);
-            transform: translateY(-4px);
+        .site-card-wide.call-food:hover {
+            border-color: rgba(42, 107, 143, 0.4);
         }
 
-        .site-card-narrow .card-header {
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
+        .site-card-wide.call-food .site-link {
+            color: #4a9bc4;
+            border-color: rgba(42, 107, 143, 0.3);
         }
 
-        .site-card-narrow .site-logo-sm {
-            width: 48px;
-            height: 48px;
-            border-radius: 12px;
-            overflow: hidden;
-            flex-shrink: 0;
-            background: #0b0b0e;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
+        .site-card-wide.call-food .site-link:hover {
+            background: rgba(42, 107, 143, 0.1);
+            border-color: #4a9bc4;
         }
 
-        .site-card-narrow .site-logo-sm img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .site-card-narrow .site-title {
-            font-family: 'Vazirmatn', sans-serif;
-            font-weight: 700;
-            font-size: 1rem;
-            color: #f5efe6;
-            margin: 0;
-        }
-
-        .site-card-narrow .site-desc {
-            font-family: 'Noto Sans Arabic', sans-serif;
-            font-size: 0.85rem;
-            color: #b0a99b;
-            margin: 0;
-        }
-
-        .site-card-narrow .site-link {
-            font-family: 'Vazirmatn', sans-serif;
-            font-weight: 600;
-            color: #f5b042;
-            text-decoration: none;
-            padding: 0.2rem 0.8rem;
-            border: 1px solid rgba(245, 176, 66, 0.2);
-            border-radius: 40px;
-            transition: 0.3s;
-            font-size: 0.8rem;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.3rem;
-            align-self: flex-start;
-        }
-
-        .site-card-narrow .site-link:hover {
-            background: rgba(245, 176, 66, 0.1);
-            border-color: #f5b042;
-        }
-
-        /* ===== کارت طراحی (با درخشش و 1:1) ===== */
+        /* ===== کارت طراحی ===== */
         .design-card-new {
             width: 1080px;
             max-width: 100%;
@@ -533,7 +472,6 @@
             overflow: hidden;
         }
 
-        /* ===== درخشش ۳ ثانیه‌ای فقط برای کارت طراحی ===== */
         .design-card-new::before {
             content: '';
             position: absolute;
@@ -570,7 +508,6 @@
             z-index: 1;
         }
 
-        /* عکس 1:1 */
         .design-card-new .design-image {
             width: 100%;
             aspect-ratio: 1/1;
@@ -601,6 +538,11 @@
             font-weight: 800;
             font-size: 1.8rem;
             color: #f5efe6;
+        }
+
+        .design-card-new .design-title i {
+            color: #f5b042;
+            margin-left: 0.5rem;
         }
 
         .design-card-new .toggle-details {
@@ -960,7 +902,7 @@
                     </div>
 
                     <!-- کارت عریض کالفود -->
-                    <div class="site-card-wide" style="border-right-color: #2a6b8f;">
+                    <div class="site-card-wide call-food">
                         <div style="display:flex; align-items:center; gap:1.5rem; flex-wrap:wrap;">
                             <div class="site-logo">
                                 <img src="https://uploadkon.ir/uploads/bb4824_26IMG-20260616-172831.jpg" alt="لوگوی سایت کالفود" />
@@ -970,33 +912,9 @@
                                 <p>پلتفرم خاص برای سفارش غذای لذیذ!</p>
                             </div>
                         </div>
-                        <a href="https://zeroxgame74-afk.github.io/call-food.ir/" target="_blank" class="site-link" style="border-color:rgba(42,107,143,0.3); color:#4a9bc4;">
+                        <a href="https://zeroxgame74-afk.github.io/call-food.ir/" target="_blank" class="site-link">
                             <i class="fas fa-external-link-alt"></i> مشاهده سایت
                         </a>
-                    </div>
-
-                    <!-- کارت باریک ۱ -->
-                    <div class="site-card-narrow">
-                        <div class="card-header">
-                            <div class="site-logo-sm" style="background:#0b0b0e; color:#6b2a8f;">
-                                <i class="fas fa-chart-line"></i>
-                            </div>
-                            <h4 class="site-title">📊 داده‌ورز</h4>
-                        </div>
-                        <p class="site-desc">داشبورد تحلیلی با Vue.js و Chart.js</p>
-                        <a href="#" class="site-link"><i class="fas fa-external-link-alt"></i> مشاهده</a>
-                    </div>
-
-                    <!-- کارت باریک ۲ -->
-                    <div class="site-card-narrow">
-                        <div class="card-header">
-                            <div class="site-logo-sm" style="background:#0b0b0e; color:#2a8f6b;">
-                                <i class="fas fa-user-md"></i>
-                            </div>
-                            <h4 class="site-title">👨‍⚕️ دکتر رضایی</h4>
-                        </div>
-                        <p class="site-desc">وب‌سایت شخصی با سیستم مدیریت محتوای ساده</p>
-                        <a href="#" class="site-link"><i class="fas fa-external-link-alt"></i> مشاهده</a>
                     </div>
                 </div>
 
@@ -1019,7 +937,7 @@
                         <img src="https://uploadkon.ir/uploads/99ce24_26jonoob-iran.png" alt="طراحی جنوب ایران" />
                     </div>
                     <div class="design-header">
-                        <h3 class="design-title">🌅 اهواز خاک غسل شده با شهیدانت...</h3>
+                        <h3 class="design-title"><i class="fas fa-heart" style="color:#f5b042;"></i> اهواز خاک غسل شده با شهیدانت...</h3>
                         <button class="toggle-details" onclick="toggleDetails(this)">
                             <span>توضیحات بیشتر</span>
                             <i class="fas fa-chevron-down"></i>
@@ -1051,7 +969,9 @@
                 <a href="#" aria-label="ایمیل"><i class="fas fa-envelope"></i></a>
                 <a href="#" aria-label="لینکدین"><i class="fab fa-linkedin-in"></i></a>
                 <a href="#" aria-label="گیت‌هاب"><i class="fab fa-github"></i></a>
-                <a href="#" aria-label="توییتر"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.instagram.com/mohamad_hossein_ev18" target="_blank" aria-label="اینستاگرام">
+                    <i class="fab fa-instagram"></i>
+                </a>
             </div>
         </footer>
 
@@ -1136,4 +1056,4 @@
     </script>
 
 </body>
-    </html>
+</html>
