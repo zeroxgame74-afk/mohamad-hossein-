@@ -424,6 +424,33 @@
             gap: 2rem;
             transition: 0.3s;
             margin: 1.5rem auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* ===== درخشش ۳ ثانیه‌ای ===== */
+        .site-card-wide::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg,
+                    transparent 30%,
+                    rgba(255, 215, 0, 0.15) 50%,
+                    transparent 70%);
+            animation: shine 3s infinite;
+            pointer-events: none;
+        }
+
+        @keyframes shine {
+            0% {
+                transform: translateX(-100%) rotate(25deg);
+            }
+            100% {
+                transform: translateX(100%) rotate(25deg);
+            }
         }
 
         .site-card-wide:hover {
@@ -440,6 +467,7 @@
             flex-shrink: 0;
             background: #0b0b0e;
             border: 1px solid rgba(255, 255, 255, 0.05);
+            z-index: 1;
         }
 
         .site-card-wide .site-logo img {
@@ -451,6 +479,7 @@
         .site-card-wide .site-info {
             flex: 1;
             min-width: 150px;
+            z-index: 1;
         }
 
         .site-card-wide .site-info h3 {
@@ -482,11 +511,127 @@
             align-items: center;
             gap: 0.5rem;
             white-space: nowrap;
+            z-index: 1;
         }
 
         .site-card-wide .site-link:hover {
             background: rgba(245, 176, 66, 0.1);
             border-color: #f5b042;
+        }
+
+        /* ===== کارت طراحی جدید ===== */
+        .design-card-new {
+            width: 1080px;
+            max-width: 100%;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 24px;
+            padding: 1.5rem;
+            border: 1px solid rgba(255, 215, 100, 0.06);
+            margin: 1.5rem auto;
+            transition: 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .design-card-new::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg,
+                    transparent 30%,
+                    rgba(255, 215, 0, 0.12) 50%,
+                    transparent 70%);
+            animation: shine 3s infinite;
+            pointer-events: none;
+        }
+
+        .design-card-new:hover {
+            background: rgba(255, 215, 100, 0.04);
+            border-color: rgba(255, 215, 100, 0.12);
+            transform: translateY(-4px);
+        }
+
+        .design-card-new .design-image {
+            width: 100%;
+            height: 400px;
+            border-radius: 16px;
+            overflow: hidden;
+            margin-bottom: 1.2rem;
+            background: #0b0b0e;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            position: relative;
+            z-index: 1;
+        }
+
+        .design-card-new .design-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .design-card-new .design-title {
+            font-family: 'Vazirmatn', sans-serif;
+            font-weight: 800;
+            font-size: 1.8rem;
+            color: #f5efe6;
+            margin-bottom: 0.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .design-card-new .design-desc {
+            font-family: 'Noto Sans Arabic', sans-serif;
+            font-size: 1rem;
+            color: #b0a99b;
+            margin-bottom: 0.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .design-card-new .design-author {
+            font-family: 'Noto Sans Arabic', sans-serif;
+            font-size: 0.95rem;
+            color: #f5b042;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .design-card-new .download-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 1;
+        }
+
+        .design-card-new .download-buttons a {
+            font-family: 'Vazirmatn', sans-serif;
+            font-weight: 600;
+            color: #f5efe6;
+            text-decoration: none;
+            padding: 0.4rem 1.2rem;
+            border: 1px solid rgba(255, 215, 100, 0.15);
+            border-radius: 40px;
+            transition: 0.3s;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255, 215, 100, 0.05);
+        }
+
+        .design-card-new .download-buttons a:hover {
+            background: rgba(255, 215, 100, 0.12);
+            border-color: #f5b042;
+            transform: scale(1.02);
+        }
+
+        .design-card-new .download-buttons a i {
+            color: #f5b042;
         }
 
         /* ===== فوتر ===== */
@@ -562,6 +707,12 @@
             .site-card-wide .site-link {
                 align-self: flex-start;
             }
+            .design-card-new .design-image {
+                height: 250px;
+            }
+            .design-card-new .design-title {
+                font-size: 1.4rem;
+            }
             .footer {
                 flex-direction: column-reverse;
                 align-items: center;
@@ -575,6 +726,13 @@
             }
             .bio-intro p {
                 font-size: 1rem;
+            }
+            .design-card-new .download-buttons {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .design-card-new .download-buttons a {
+                justify-content: center;
             }
         }
 
@@ -609,6 +767,12 @@
             .site-card-wide .site-info h3 {
                 font-size: 1.1rem;
             }
+            .design-card-new .design-image {
+                height: 200px;
+            }
+            .design-card-new .design-title {
+                font-size: 1.2rem;
+            }
         }
     </style>
 </head>
@@ -640,6 +804,7 @@
                 <a href="#" data-tab="activities"><i class="fas fa-bolt"></i> فعالیت</a>
                 <a href="#" data-tab="interests"><i class="fas fa-heart"></i> علایق</a>
                 <a href="#" data-tab="sites"><i class="fas fa-laptop-code"></i> سایت‌های طراحی شده</a>
+                <a href="#" data-tab="design"><i class="fas fa-palette"></i> طراحی</a>
             </nav>
         </div>
 
@@ -764,6 +929,30 @@
                         در حال اضافه کردن پروژه‌های جدید... 
                         <span style="display:inline-block; font-weight:700; color:#f5b042;">(به‌زودی)</span>
                     </p>
+                </div>
+            </div>
+
+            <!-- ===== طراحی ===== -->
+            <div class="tab-content" id="design">
+                <h2><i class="fas fa-palette" style="color:#f5b042; margin-left:0.8rem;"></i> طراحی</h2>
+                <p style="margin-bottom:1.5rem;">نمونه‌ای از طراحی‌های هنری و گرافیکی:</p>
+
+                <!-- کارت طراحی جدید -->
+                <div class="design-card-new">
+                    <div class="design-image">
+                        <img src="https://uploadkon.ir/uploads/99ce24_26jonoob-iran.png" alt="طراحی جنوب ایران" />
+                    </div>
+                    <h3 class="design-title">🌅 اهواز خاک غسل شده با شهیدانت...</h3>
+                    <p class="design-desc">کشویی شیک و زیبا: یک تصویر زیبا در وصف جنوب کشور ایران</p>
+                    <p class="design-author"><i class="fas fa-user-astronaut"></i> طراح: محمد حسین صنعتی</p>
+                    <div class="download-buttons">
+                        <a href="https://uploadkon.ir/uploads/99ce24_26jonoob-iran.png" download target="_blank">
+                            <i class="fas fa-download"></i> دانلود 2K
+                        </a>
+                        <a href="https://uploadkon.ir/uploads/828624_26jonnob-mohamad-hossein-sanati-.png" download target="_blank">
+                            <i class="fas fa-download"></i> دانلود 1080p
+                        </a>
+                    </div>
                 </div>
             </div>
 
