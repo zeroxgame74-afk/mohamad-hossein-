@@ -634,7 +634,7 @@
             color: #f5b042;
         }
 
-        /* ===== فوتر ===== */
+        /* ===== فوتر با آیکون روبیکا ===== */
         .footer {
             margin-top: 2rem;
             padding-top: 1.5rem;
@@ -653,11 +653,28 @@
             font-size: 1.3rem;
             margin-right: 1.2rem;
             transition: 0.2s;
+            display: inline-flex;
+            align-items: center;
         }
 
         .footer-social a:hover {
             color: #f5b042;
             transform: translateY(-2px);
+        }
+
+        .footer-social .rubika-icon {
+            width: 28px;
+            height: 28px;
+            border-radius: 6px;
+            overflow: hidden;
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        .footer-social .rubika-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         .footer-copy {
@@ -768,6 +785,10 @@
             .design-card-new .design-title {
                 font-size: 1.2rem;
             }
+            .footer-social .rubika-icon {
+                width: 24px;
+                height: 24px;
+            }
         }
     </style>
 </head>
@@ -797,7 +818,6 @@
                 <a href="#" data-tab="home" class="active"><i class="fas fa-home"></i> خانه</a>
                 <a href="#" data-tab="about"><i class="fas fa-user"></i> درباره من</a>
                 <a href="#" data-tab="activities"><i class="fas fa-bolt"></i> فعالیت</a>
-                <a href="#" data-tab="interests"><i class="fas fa-heart"></i> علایق</a>
                 <a href="#" data-tab="sites"><i class="fas fa-laptop-code"></i> سایت‌های طراحی شده</a>
                 <a href="#" data-tab="design"><i class="fas fa-palette"></i> طراحی</a>
             </nav>
@@ -863,22 +883,6 @@
                 </div>
             </div>
 
-            <!-- ===== علایق ===== -->
-            <div class="tab-content" id="interests">
-                <h2>علایق</h2>
-                <p>بزرگ‌ترین علاقه‌ی من فراتر از کد زدن، چیزهایی هست که به زندگیم رنگ می‌دن:</p>
-                <ul style="list-style:none; padding-right:0.5rem;">
-                    <li style="position:relative; padding-right:2rem; margin-bottom:0.7rem;">📚 <strong>کتاب‌خوانی</strong> – مخصوصاً کتاب‌های تخصصی برنامه‌نویسی، فلسفه و داستان‌های علمی-تخیلی</li>
-                    <li style="position:relative; padding-right:2rem; margin-bottom:0.7rem;">🎧 <strong>موسیقی</strong> – گیتار می‌زنم و به موسیقی کلاسیک و فیلم‌های سینمایی علاقه دارم</li>
-                    <li style="position:relative; padding-right:2rem; margin-bottom:0.7rem;">🏔️ <strong>طبیعت‌گردی</strong> – کوهنوردی و پیاده‌روی در جنگل، بهترین راه برای شارژ مجدد ذهنم</li>
-                    <li style="position:relative; padding-right:2rem; margin-bottom:0.7rem;">🎮 <strong>بازی‌های استراتژی</strong> – مخصوصاً بازی‌هایی که تفکر سیستمی رو تقویت می‌کنن</li>
-                    <li style="position:relative; padding-right:2rem; margin-bottom:0.7rem;">✍️ <strong>نویسندگی</strong> – گاهی برای وبلاگ شخصی‌ام مطلب می‌نویسم یا تجربه‌های کدنویسی رو ثبت می‌کنم</li>
-                </ul>
-                <div style="background:rgba(255,215,100,0.04); border-radius:24px; padding:1.5rem 2rem; margin-top:1rem; border:1px solid rgba(255,215,100,0.06);">
-                    <p style="margin:0;"><i class="fas fa-lightbulb" style="color:#f5b042; margin-left:0.5rem;"></i>معتقدم که بهترین ایده‌ها وقتی به ذهن می‌رسن که ذهن در آرامش باشه.</p>
-                </div>
-            </div>
-
             <!-- ===== سایت‌های طراحی شده ===== -->
             <div class="tab-content" id="sites">
                 <h2>سایت‌های طراحی شده</h2>
@@ -937,7 +941,7 @@
                         <img src="https://uploadkon.ir/uploads/99ce24_26jonoob-iran.png" alt="طراحی جنوب ایران" />
                     </div>
                     <div class="design-header">
-                        <h3 class="design-title"><i class="fas fa-heart" style="color:#f5b042;"></i> اهواز خاک غسل شده با شهیدانت...</h3>
+                        <h3 class="design-title"><i class="fas fa-heart"></i> اهواز خاک غسل شده با شهیدانت...</h3>
                         <button class="toggle-details" onclick="toggleDetails(this)">
                             <span>توضیحات بیشتر</span>
                             <i class="fas fa-chevron-down"></i>
@@ -968,7 +972,11 @@
             <div class="footer-social">
                 <a href="#" aria-label="ایمیل"><i class="fas fa-envelope"></i></a>
                 <a href="#" aria-label="لینکدین"><i class="fab fa-linkedin-in"></i></a>
-                <a href="#" aria-label="گیت‌هاب"><i class="fab fa-github"></i></a>
+                <a href="#" aria-label="روبیکا" target="_blank">
+                    <span class="rubika-icon">
+                        <img src="https://uploadkon.ir/uploads/6ccc25_26IMG-20260620-174834-450.png" alt="روبیکا" />
+                    </span>
+                </a>
                 <a href="https://www.instagram.com/mohamad_hossein_ev18" target="_blank" aria-label="اینستاگرام">
                     <i class="fab fa-instagram"></i>
                 </a>
@@ -1056,4 +1064,4 @@
     </script>
 
 </body>
-</html>
+    </html>
