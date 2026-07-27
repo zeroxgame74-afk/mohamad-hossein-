@@ -730,7 +730,8 @@
             z-index: 1;
         }
 
-        .design-card-new .design-image {
+        /* ===== تصویر با افکت 3D ===== */
+        .design-image {
             width: 100%;
             aspect-ratio: 1/1;
             border-radius: 16px;
@@ -739,6 +740,68 @@
             background: #0b0b0e;
             border: 1px solid rgba(255, 255, 255, 0.05);
             transition: 0.4s;
+            position: relative;
+            cursor: pointer;
+            perspective: 1000px;
+        }
+
+        .design-image .image-wrapper {
+            width: 100%;
+            height: 100%;
+            transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+            transform-style: preserve-3d;
+            position: relative;
+        }
+
+        .design-image .image-wrapper.rotated {
+            transform: rotateY(15deg) rotateX(5deg) scale(1.02);
+        }
+
+        .design-image .image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+            display: block;
+        }
+
+        .design-image .image-overlay {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(2px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            gap: 0.5rem;
+            border-radius: 16px;
+        }
+
+        .design-image:hover .image-overlay {
+            opacity: 1;
+        }
+
+        .design-image .image-overlay i {
+            font-size: 2.5rem;
+            color: #f5b042;
+            animation: floatIcon 2s ease-in-out infinite;
+        }
+
+        .design-image .image-overlay span {
+            color: #f5efe6;
+            font-family: 'Vazirmatn', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 0.3rem 1.2rem;
+            border-radius: 40px;
+            backdrop-filter: blur(4px);
         }
 
         .design-card-new:hover .design-image {
@@ -746,15 +809,217 @@
             box-shadow: 0 8px 32px -8px rgba(0, 0, 0, 0.3);
         }
 
-        .design-card-new .design-image img {
+        .design-card-new:hover .design-image img {
+            transform: scale(1.03);
+        }
+
+        /* ===== مودال شیشه‌ای ===== */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(12px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            animation: fadeInModal 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+            padding: 1rem;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        @keyframes fadeInModal {
+            0% {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .modal-content {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 215, 100, 0.15);
+            border-radius: 32px;
+            padding: 2rem;
+            max-width: 700px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 24px 80px -16px rgba(0, 0, 0, 0.6);
+            animation: slideUpModal 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        @keyframes slideUpModal {
+            0% {
+                opacity: 0;
+                transform: translateY(40px) scale(0.96);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .modal-content .modal-close {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 215, 100, 0.1);
+            color: #f5efe6;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: 0.3s;
+            z-index: 10;
+        }
+
+        .modal-content .modal-close:hover {
+            background: rgba(255, 215, 100, 0.15);
+            transform: rotate(90deg) scale(1.1);
+            border-color: #f5b042;
+        }
+
+        .modal-content .modal-image {
+            width: 100%;
+            aspect-ratio: 1/1;
+            border-radius: 20px;
+            overflow: hidden;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(255, 215, 100, 0.08);
+            transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+            transform-style: preserve-3d;
+            perspective: 1000px;
+        }
+
+        .modal-content .modal-image .modal-img-wrapper {
+            width: 100%;
+            height: 100%;
+            transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+            transform-style: preserve-3d;
+        }
+
+        .modal-content .modal-image .modal-img-wrapper.rotated-3d {
+            transform: rotateY(180deg) rotateX(10deg) scale(1.05);
+        }
+
+        .modal-content .modal-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
 
-        .design-card-new:hover .design-image img {
-            transform: scale(1.03);
+        .modal-content .modal-title {
+            font-family: 'Vazirmatn', sans-serif;
+            font-weight: 800;
+            font-size: 1.5rem;
+            color: #f5efe6;
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+
+        .modal-content .modal-title i {
+            color: #f5b042;
+        }
+
+        .modal-content .modal-controls {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.8rem;
+            margin: 1.5rem 0;
+        }
+
+        .modal-content .modal-controls button {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 215, 100, 0.1);
+            color: #d6d0c4;
+            padding: 0.7rem 1rem;
+            border-radius: 16px;
+            cursor: pointer;
+            font-family: 'Vazirmatn', sans-serif;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .modal-content .modal-controls button i {
+            color: #f5b042;
+            font-size: 1.1rem;
+        }
+
+        .modal-content .modal-controls button:hover {
+            background: rgba(255, 215, 100, 0.08);
+            border-color: rgba(255, 215, 100, 0.25);
+            transform: scale(1.04);
+            color: #f5efe6;
+        }
+
+        .modal-content .modal-controls button:active {
+            transform: scale(0.96);
+        }
+
+        .modal-content .modal-controls button.active-3d {
+            background: rgba(245, 176, 66, 0.15);
+            border-color: #f5b042;
+            color: #f5b042;
+        }
+
+        .modal-content .modal-controls button.active-3d i {
+            color: #f5b042;
+        }
+
+        .modal-content .modal-copyright {
+            background: rgba(255, 215, 100, 0.05);
+            border: 1px solid rgba(255, 215, 100, 0.08);
+            border-radius: 16px;
+            padding: 1rem;
+            margin-top: 1rem;
+            display: none;
+            animation: fadeUp 0.4s ease;
+        }
+
+        .modal-content .modal-copyright.active {
+            display: block;
+        }
+
+        .modal-content .modal-copyright p {
+            font-family: 'Noto Sans Arabic', sans-serif;
+            font-size: 0.9rem;
+            color: #b0a99b;
+            line-height: 2;
+            margin: 0;
+        }
+
+        .modal-content .modal-copyright p strong {
+            color: #f5b042;
+        }
+
+        .modal-content .modal-footer-text {
+            text-align: center;
+            margin-top: 1rem;
+            font-family: 'Noto Sans Arabic', sans-serif;
+            font-size: 0.8rem;
+            color: #8f887c;
         }
 
         .design-card-new .design-header {
@@ -1036,6 +1301,13 @@
             .design-card-new .download-buttons a {
                 justify-content: center;
             }
+            .modal-content {
+                padding: 1.5rem;
+                margin: 0.5rem;
+            }
+            .modal-content .modal-controls {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
 
         @media (max-width: 480px) {
@@ -1069,6 +1341,14 @@
             }
             .design-card-new .design-title {
                 font-size: 1.2rem;
+            }
+            .modal-content .modal-controls {
+                grid-template-columns: 1fr 1fr;
+                gap: 0.5rem;
+            }
+            .modal-content .modal-controls button {
+                font-size: 0.8rem;
+                padding: 0.5rem 0.8rem;
             }
         }
     </style>
@@ -1239,8 +1519,14 @@
                 <p style="margin-bottom:1.5rem;">نمونه‌ای از طراحی‌های هنری و گرافیکی:</p>
 
                 <div class="design-card-new">
-                    <div class="design-image">
-                        <img src="https://uploadkon.ir/uploads/99ce24_26jonoob-iran.png" alt="طراحی جنوب ایران" />
+                    <div class="design-image" id="designImage" onclick="openModal()">
+                        <div class="image-wrapper" id="imageWrapper">
+                            <img src="https://uploadkon.ir/uploads/99ce24_26jonoob-iran.png" alt="طراحی جنوب ایران" />
+                        </div>
+                        <div class="image-overlay">
+                            <i class="fas fa-expand"></i>
+                            <span>برای مشاهده کلیک کن</span>
+                        </div>
                     </div>
                     <div class="design-header">
                         <h3 class="design-title"><i class="fas fa-heart"></i> اهواز خاک غسل شده با شهیدانت...</h3>
@@ -1281,6 +1567,56 @@
             </div>
         </footer>
 
+    </div>
+
+    <!-- ========== مودال شیشه‌ای ========== -->
+    <div class="modal-overlay" id="modalOverlay" onclick="closeModalOutside(event)">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()">
+                <i class="fas fa-times"></i>
+            </button>
+
+            <div class="modal-image" id="modalImage">
+                <div class="modal-img-wrapper" id="modalImgWrapper">
+                    <img src="https://uploadkon.ir/uploads/99ce24_26jonoob-iran.png" alt="طراحی جنوب ایران" />
+                </div>
+            </div>
+
+            <h3 class="modal-title"><i class="fas fa-heart"></i> اهواز خاک غسل شده با شهیدانت...</h3>
+
+            <div class="modal-controls">
+                <button onclick="rotate3D('left')">
+                    <i class="fas fa-arrow-left"></i> چپ
+                </button>
+                <button onclick="rotate3D('right')">
+                    <i class="fas fa-arrow-right"></i> راست
+                </button>
+                <button onclick="rotate3D('up')">
+                    <i class="fas fa-arrow-up"></i> بالا
+                </button>
+                <button onclick="rotate3D('down')">
+                    <i class="fas fa-arrow-down"></i> پایین
+                </button>
+                <button onclick="toggle3D()" id="btn3d">
+                    <i class="fas fa-cube"></i> ۳D
+                </button>
+                <button onclick="showCopyright()">
+                    <i class="fas fa-copyright"></i> کپی رایت
+                </button>
+            </div>
+
+            <div class="modal-copyright" id="copyrightBox">
+                <p>
+                    <strong>© 2026 Mohammad Hossein Sanati.</strong> تمامی حقوق محفوظ است.
+                    <br><br>
+                    تمامی محتوای این وب‌سایت، از جمله متن‌ها، تصاویر، طرح‌ها، لوگو، پروژه‌ها، کدها و سایر آثار، متعلق به <strong>Mohammad Hossein Sanati</strong> است. هرگونه کپی، بازنشر، انتشار، ویرایش یا استفاده از این محتوا بدون کسب اجازه کتبی ممنوع بوده و مطابق قوانین مربوط به حقوق مالکیت فکری قابل پیگیری است.
+                </p>
+            </div>
+
+            <div class="modal-footer-text">
+                <i class="fas fa-arrows-alt" style="color:#f5b042;"></i> برای چرخش ۳D از دکمه‌ها استفاده کنید
+            </div>
+        </div>
     </div>
 
     <!-- ========== اسکریپت ========== -->
@@ -1360,6 +1696,80 @@
             }
         }
 
+        // ===== مودال =====
+        let is3D = false;
+        let currentRotationX = 0;
+        let currentRotationY = 0;
+
+        function openModal() {
+            const overlay = document.getElementById('modalOverlay');
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            // ریست چرخش‌ها
+            currentRotationX = 0;
+            currentRotationY = 0;
+            const wrapper = document.getElementById('modalImgWrapper');
+            wrapper.style.transform = 'rotateX(0deg) rotateY(0deg) scale(1)';
+            is3D = false;
+            document.getElementById('btn3d').classList.remove('active-3d');
+            document.getElementById('copyrightBox').classList.remove('active');
+        }
+
+        function closeModal() {
+            const overlay = document.getElementById('modalOverlay');
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function closeModalOutside(e) {
+            if (e.target === e.currentTarget) {
+                closeModal();
+            }
+        }
+
+        function rotate3D(direction) {
+            const wrapper = document.getElementById('modalImgWrapper');
+            const step = 20;
+
+            switch (direction) {
+                case 'left':
+                    currentRotationY -= step;
+                    break;
+                case 'right':
+                    currentRotationY += step;
+                    break;
+                case 'up':
+                    currentRotationX += step;
+                    break;
+                case 'down':
+                    currentRotationX -= step;
+                    break;
+            }
+
+            wrapper.style.transform = `rotateX(${currentRotationX}deg) rotateY(${currentRotationY}deg) scale(${is3D ? 1.05 : 1})`;
+        }
+
+        function toggle3D() {
+            const wrapper = document.getElementById('modalImgWrapper');
+            const btn = document.getElementById('btn3d');
+            is3D = !is3D;
+
+            if (is3D) {
+                wrapper.style.transform = `rotateX(${currentRotationX}deg) rotateY(${currentRotationY}deg) scale(1.05)`;
+                btn.classList.add('active-3d');
+                btn.innerHTML = '<i class="fas fa-cube"></i> ۳D (فعال)';
+            } else {
+                wrapper.style.transform = `rotateX(${currentRotationX}deg) rotateY(${currentRotationY}deg) scale(1)`;
+                btn.classList.remove('active-3d');
+                btn.innerHTML = '<i class="fas fa-cube"></i> ۳D';
+            }
+        }
+
+        function showCopyright() {
+            const box = document.getElementById('copyrightBox');
+            box.classList.toggle('active');
+        }
+
         // ===== انیمیشن اسکرول =====
         document.addEventListener('DOMContentLoaded', function() {
             const cards = document.querySelectorAll('.home-design-card, .site-card-wide, .design-card-new');
@@ -1378,11 +1788,11 @@
             cards.forEach((card, index) => {
                 card.style.opacity = '0';
                 card.style.transform = 'translateY(30px) scale(0.97)';
-                card.style.transition = `opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1), transform 0.6s cubic-bezier(0.22, 1, 0.36, 1)`;
+                card.style.transition =
+                    `opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1), transform 0.6s cubic-bezier(0.22, 1, 0.36, 1)`;
                 observer.observe(card);
             });
 
-            // نمایش کارت‌هایی که از قبل قابل مشاهده هستند
             setTimeout(() => {
                 cards.forEach(card => {
                     const rect = card.getBoundingClientRect();
@@ -1393,7 +1803,17 @@
                 });
             }, 100);
         });
+
+        // ===== کیبورد برای بستن مودال =====
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                const overlay = document.getElementById('modalOverlay');
+                if (overlay.classList.contains('active')) {
+                    closeModal();
+                }
+            }
+        });
     </script>
 
 </body>
-                                                                         </html>
+                        </html>
