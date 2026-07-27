@@ -37,6 +37,21 @@
             background-image: radial-gradient(circle at 30% 20%, rgba(255, 200, 80, 0.03) 0%, transparent 60%);
         }
 
+        /* ========== اسکرول‌بار ========== */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0b0b0e;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #f5b042;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #d48f2b;
+        }
+
         /* ========== کانتینر ========== */
         .container {
             min-height: 100vh;
@@ -80,11 +95,23 @@
             color: #0b0b0e;
             box-shadow: 0 8px 18px -6px rgba(200, 150, 50, 0.25);
             flex-shrink: 0;
-            transition: 0.2s;
+            transition: 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            animation: floatLogo 4s ease-in-out infinite;
+        }
+
+        @keyframes floatLogo {
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-6px);
+            }
         }
 
         .logo:hover {
-            transform: scale(1.03) rotate(-2deg);
+            transform: scale(1.08) rotate(-4deg);
+            box-shadow: 0 12px 28px -8px rgba(200, 150, 50, 0.4);
         }
 
         .brand {
@@ -99,6 +126,23 @@
             font-size: 1.5rem;
             letter-spacing: -0.5px;
             color: #f5f0e8;
+            position: relative;
+            display: inline-block;
+        }
+
+        .brand-name::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            right: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #f5b042, transparent);
+            transition: width 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .brand-name:hover::after {
+            width: 100%;
         }
 
         .brand-sub {
@@ -127,6 +171,7 @@
         .hamburger:hover {
             background: rgba(255, 215, 100, 0.08);
             border-color: rgba(255, 215, 100, 0.15);
+            transform: scale(1.05);
         }
 
         .hamburger span {
@@ -142,11 +187,10 @@
             transform: rotate(45deg) translate(5px, 6px);
             background: #f5b042;
         }
-
         .hamburger.active span:nth-child(2) {
             opacity: 0;
+            transform: scaleX(0);
         }
-
         .hamburger.active span:nth-child(3) {
             transform: rotate(-45deg) translate(5px, -6px);
             background: #f5b042;
@@ -164,7 +208,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: right 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+            transition: right 0.6s cubic-bezier(0.22, 1, 0.36, 1);
             z-index: 1000;
         }
 
@@ -197,6 +241,25 @@
             border-radius: 20px;
             letter-spacing: 0.5px;
             border: 1px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-menu a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 0;
+            height: 100%;
+            background: rgba(255, 215, 100, 0.05);
+            transition: width 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+            z-index: -1;
+            border-radius: 20px;
+        }
+
+        .nav-menu a:hover::before {
+            width: 100%;
         }
 
         .nav-menu a i {
@@ -210,11 +273,11 @@
             color: #f5efe6;
             background: rgba(255, 215, 100, 0.06);
             border-color: rgba(255, 215, 100, 0.1);
-            transform: scale(1.02);
+            transform: scale(1.04) translateX(-4px);
         }
 
         .nav-menu a:hover i {
-            transform: scale(1.15) rotate(-5deg);
+            transform: scale(1.2) rotate(-8deg) translateX(-4px);
         }
 
         .nav-menu a.active {
@@ -226,6 +289,17 @@
         .nav-menu a.active i {
             color: #f5b042;
             transform: scale(1.1);
+            animation: pulseIcon 2s ease-in-out infinite;
+        }
+
+        @keyframes pulseIcon {
+            0%,
+            100% {
+                transform: scale(1.1);
+            }
+            50% {
+                transform: scale(1.25);
+            }
         }
 
         /* ========== محتوای اصلی ========== */
@@ -239,7 +313,7 @@
 
         .tab-content {
             display: none;
-            animation: fadeUp 0.4s ease;
+            animation: fadeUp 0.5s cubic-bezier(0.22, 1, 0.36, 1);
         }
 
         .tab-content.active {
@@ -249,11 +323,11 @@
         @keyframes fadeUp {
             0% {
                 opacity: 0;
-                transform: translateY(20px);
+                transform: translateY(30px) scale(0.98);
             }
             100% {
                 opacity: 1;
-                transform: translateY(0);
+                transform: translateY(0) scale(1);
             }
         }
 
@@ -266,6 +340,15 @@
             letter-spacing: -0.5px;
             border-right: 6px solid #f5b042;
             padding-right: 1.5rem;
+            position: relative;
+        }
+
+        .tab-content h2 i {
+            transition: 0.3s;
+        }
+
+        .tab-content h2:hover i {
+            transform: rotate(10deg) scale(1.1);
         }
 
         .tab-content p {
@@ -284,12 +367,44 @@
             background: rgba(255, 255, 255, 0.02);
             border-radius: 24px;
             border: 1px solid rgba(255, 215, 100, 0.06);
+            transition: 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .bio-intro::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 30% 40%, rgba(255, 215, 100, 0.03), transparent 70%);
+            animation: shimmerBg 8s ease-in-out infinite alternate;
+            pointer-events: none;
+        }
+
+        @keyframes shimmerBg {
+            0% {
+                transform: translate(-10%, -10%);
+            }
+            100% {
+                transform: translate(10%, 10%);
+            }
+        }
+
+        .bio-intro:hover {
+            border-color: rgba(255, 215, 100, 0.15);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px -12px rgba(0, 0, 0, 0.4);
         }
 
         .bio-intro p {
             font-size: 1.15rem;
             line-height: 2.2;
             margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
         }
 
         .bio-intro p:last-child {
@@ -309,14 +424,34 @@
             border-radius: 24px;
             padding: 2rem 1.5rem;
             border: 1px solid rgba(255, 215, 100, 0.06);
-            transition: 0.3s;
+            transition: 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .home-design-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, #f5b042, transparent);
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .home-design-card:hover::after {
+            transform: scaleX(1);
         }
 
         .home-design-card:hover {
             background: rgba(255, 215, 100, 0.04);
             border-color: rgba(255, 215, 100, 0.12);
-            transform: translateY(-4px);
+            transform: translateY(-8px) scale(1.01);
+            box-shadow: 0 16px 40px -12px rgba(0, 0, 0, 0.5);
         }
 
         .home-design-card .icon {
@@ -324,18 +459,37 @@
             color: #f5b042;
             margin-bottom: 1rem;
             display: inline-block;
+            animation: floatIcon 3s ease-in-out infinite;
+        }
+
+        .home-design-card:nth-child(2) .icon {
+            animation-delay: 0.5s;
+        }
+        .home-design-card:nth-child(3) .icon {
+            animation-delay: 1s;
+        }
+
+        @keyframes floatIcon {
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-6px);
+            }
         }
 
         .home-design-card .icon i {
             background: rgba(255, 215, 100, 0.08);
             padding: 0.8rem;
             border-radius: 20px;
-            transition: 0.3s;
+            transition: 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
 
         .home-design-card:hover .icon i {
             background: rgba(255, 215, 100, 0.15);
-            transform: scale(1.05);
+            transform: scale(1.1) rotate(-6deg);
+            box-shadow: 0 8px 24px -8px rgba(245, 176, 66, 0.2);
         }
 
         .home-design-card h3 {
@@ -371,14 +525,33 @@
             align-items: center;
             gap: 1.5rem;
             flex-wrap: wrap;
-            transition: 0.3s;
+            transition: 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
             border: 1px solid rgba(182, 28, 28, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .site-card-wide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(182, 28, 28, 0.03), transparent 60%);
+            opacity: 0;
+            transition: 0.5s;
+        }
+
+        .site-card-wide:hover::before {
+            opacity: 1;
         }
 
         .site-card-wide:hover {
             background: #1f1414;
             border-color: rgba(182, 28, 28, 0.4);
-            transform: translateX(-4px);
+            transform: translateX(-6px) scale(1.005);
+            box-shadow: 0 12px 32px -12px rgba(182, 28, 28, 0.15);
         }
 
         .site-card-wide .site-logo {
@@ -389,6 +562,12 @@
             flex-shrink: 0;
             background: #0b0b0e;
             border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: 0.3s;
+        }
+
+        .site-card-wide:hover .site-logo {
+            transform: scale(1.05) rotate(-2deg);
+            border-color: rgba(255, 215, 100, 0.2);
         }
 
         .site-card-wide .site-logo img {
@@ -408,6 +587,11 @@
             font-size: 1.3rem;
             color: #f5efe6;
             margin: 0 0 0.3rem 0;
+            transition: 0.3s;
+        }
+
+        .site-card-wide:hover .site-info h3 {
+            color: #f5b042;
         }
 
         .site-card-wide .site-info p {
@@ -431,11 +615,39 @@
             align-items: center;
             gap: 0.5rem;
             white-space: nowrap;
+            position: relative;
+        }
+
+        .site-card-wide .site-link::after {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            border-radius: 40px;
+            padding: 2px;
+            background: linear-gradient(135deg, #f5b042, transparent);
+            opacity: 0;
+            transition: 0.3s;
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+        }
+
+        .site-card-wide .site-link:hover::after {
+            opacity: 1;
         }
 
         .site-card-wide .site-link:hover {
             background: rgba(245, 176, 66, 0.1);
-            border-color: #f5b042;
+            border-color: transparent;
+            transform: scale(1.04);
+            box-shadow: 0 0 20px -6px rgba(245, 176, 66, 0.15);
+        }
+
+        .site-card-wide .site-link i {
+            transition: 0.3s;
+        }
+        .site-card-wide .site-link:hover i {
+            transform: translateX(-4px) scale(1.1);
         }
 
         /* کارت کالفود با رنگ E97510 */
@@ -446,6 +658,7 @@
 
         .site-card-wide.call-food:hover {
             border-color: rgba(233, 117, 16, 0.4);
+            box-shadow: 0 12px 32px -12px rgba(233, 117, 16, 0.15);
         }
 
         .site-card-wide.call-food .site-link {
@@ -453,9 +666,17 @@
             border-color: rgba(233, 117, 16, 0.3);
         }
 
+        .site-card-wide.call-food .site-link::after {
+            background: linear-gradient(135deg, #E97510, transparent);
+        }
+
         .site-card-wide.call-food .site-link:hover {
             background: rgba(233, 117, 16, 0.1);
-            border-color: #E97510;
+            border-color: transparent;
+        }
+
+        .site-card-wide.call-food:hover .site-info h3 {
+            color: #E97510;
         }
 
         /* ===== کارت طراحی ===== */
@@ -467,7 +688,7 @@
             padding: 1.5rem;
             border: 1px solid rgba(255, 215, 100, 0.06);
             margin: 1.5rem auto;
-            transition: 0.3s;
+            transition: 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
             position: relative;
             overflow: hidden;
         }
@@ -481,14 +702,14 @@
             height: 200%;
             background: linear-gradient(45deg,
                     transparent 30%,
-                    rgba(255, 215, 0, 0.15) 50%,
+                    rgba(255, 215, 0, 0.08) 50%,
                     transparent 70%);
-            animation: shine 3s infinite;
+            animation: shineDesign 4s ease-in-out infinite;
             pointer-events: none;
             z-index: 0;
         }
 
-        @keyframes shine {
+        @keyframes shineDesign {
             0% {
                 transform: translateX(-100%) rotate(25deg);
             }
@@ -499,8 +720,9 @@
 
         .design-card-new:hover {
             background: rgba(255, 215, 100, 0.04);
-            border-color: rgba(255, 215, 100, 0.12);
-            transform: translateY(-4px);
+            border-color: rgba(255, 215, 100, 0.15);
+            transform: translateY(-6px) scale(1.005);
+            box-shadow: 0 16px 48px -12px rgba(0, 0, 0, 0.5);
         }
 
         .design-card-new>* {
@@ -516,12 +738,23 @@
             margin-bottom: 1.2rem;
             background: #0b0b0e;
             border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: 0.4s;
+        }
+
+        .design-card-new:hover .design-image {
+            border-color: rgba(255, 215, 100, 0.15);
+            box-shadow: 0 8px 32px -8px rgba(0, 0, 0, 0.3);
         }
 
         .design-card-new .design-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            transition: 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .design-card-new:hover .design-image img {
+            transform: scale(1.03);
         }
 
         .design-card-new .design-header {
@@ -538,11 +771,36 @@
             font-weight: 800;
             font-size: 1.8rem;
             color: #f5efe6;
+            transition: 0.3s;
+        }
+
+        .design-card-new:hover .design-title {
+            color: #f5b042;
         }
 
         .design-card-new .design-title i {
             color: #f5b042;
             margin-left: 0.5rem;
+            animation: heartBeat 2s ease-in-out infinite;
+        }
+
+        @keyframes heartBeat {
+            0%,
+            100% {
+                transform: scale(1);
+            }
+            15% {
+                transform: scale(1.25);
+            }
+            30% {
+                transform: scale(1);
+            }
+            45% {
+                transform: scale(1.15);
+            }
+            60% {
+                transform: scale(1);
+            }
         }
 
         .design-card-new .toggle-details {
@@ -564,10 +822,11 @@
         .design-card-new .toggle-details:hover {
             background: rgba(255, 215, 100, 0.08);
             border-color: #f5b042;
+            transform: scale(1.04);
         }
 
         .design-card-new .toggle-details i {
-            transition: 0.3s;
+            transition: 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
 
         .design-card-new .toggle-details.open i {
@@ -577,7 +836,7 @@
         .design-card-new .design-details {
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.5s ease, opacity 0.3s ease, margin 0.3s ease;
+            transition: max-height 0.6s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.4s ease, margin 0.3s ease;
             opacity: 0;
             margin: 0;
         }
@@ -622,16 +881,40 @@
             align-items: center;
             gap: 0.5rem;
             background: rgba(255, 215, 100, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .design-card-new .download-buttons a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 0;
+            height: 100%;
+            background: rgba(255, 215, 100, 0.08);
+            transition: width 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+            border-radius: 40px;
+        }
+
+        .design-card-new .download-buttons a:hover::before {
+            width: 100%;
         }
 
         .design-card-new .download-buttons a:hover {
             background: rgba(255, 215, 100, 0.12);
             border-color: #f5b042;
-            transform: scale(1.02);
+            transform: scale(1.04) translateY(-2px);
+            box-shadow: 0 8px 24px -8px rgba(245, 176, 66, 0.15);
         }
 
         .design-card-new .download-buttons a i {
             color: #f5b042;
+            transition: 0.3s;
+        }
+
+        .design-card-new .download-buttons a:hover i {
+            transform: translateY(-2px) scale(1.1);
         }
 
         /* ===== فوتر ===== */
@@ -652,14 +935,31 @@
             color: #b8b2a6;
             font-size: 1.3rem;
             margin-right: 1.2rem;
-            transition: 0.2s;
+            transition: 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
             display: inline-flex;
             align-items: center;
+            position: relative;
+        }
+
+        .footer-social a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            right: 50%;
+            width: 0;
+            height: 2px;
+            background: #f5b042;
+            transition: 0.3s;
+            transform: translateX(50%);
+        }
+
+        .footer-social a:hover::after {
+            width: 100%;
         }
 
         .footer-social a:hover {
             color: #f5b042;
-            transform: translateY(-2px);
+            transform: translateY(-4px) scale(1.1);
         }
 
         .footer-copy {
@@ -839,8 +1139,9 @@
             <div class="tab-content" id="about">
                 <h2>درباره من</h2>
                 <p>سلام! من <strong>محمدحسین صنعتی</strong> هستم، توسعه‌دهنده‌ی وب با عشق به کد تمیز، طراحی مینیمال و تجربه‌ی کاربری روان. از سال ۱۴۰۰ وارد دنیای برنامه‌نویسی شدم و از اون موقع تا حالا پروژه‌های مختلفی رو از صفر تا صد اجرا کردم.</p>
-                <div style="background:rgba(255,215,100,0.04); border-radius:24px; padding:1.5rem 2rem; margin:1.5rem 0; border:1px solid rgba(255,215,100,0.06);">
-                    <p style="margin:0;"><i class="fas fa-quote-right" style="color:#f5b042; margin-left:0.5rem;"></i>هدف من اینه که با ترکیب هنر و تکنولوژی، فضاهای دیجیتالی بسازم که نه تنها کاربردی باشن، بلکه حس خوبی به کاربر منتقل کنن.</p>
+                <div style="background:rgba(255,215,100,0.04); border-radius:24px; padding:1.5rem 2rem; margin:1.5rem 0; border:1px solid rgba(255,215,100,0.06); transition:0.3s; position:relative; overflow:hidden;">
+                    <div style="position:absolute; top:-50%; right:-50%; width:200%; height:200%; background:radial-gradient(circle at 30% 40%, rgba(255,215,100,0.03), transparent 70%); animation:shimmerBg 8s ease-in-out infinite alternate; pointer-events:none;"></div>
+                    <p style="margin:0; position:relative; z-index:1;"><i class="fas fa-quote-right" style="color:#f5b042; margin-left:0.5rem;"></i>هدف من اینه که با ترکیب هنر و تکنولوژی، فضاهای دیجیتالی بسازم که نه تنها کاربردی باشن، بلکه حس خوبی به کاربر منتقل کنن.</p>
                 </div>
                 <p>الان به عنوان فریلنسر و هم‌بنیان‌گذار یه استارتاپ کوچیک، روزانه دارم روی پروژه‌های فرانت‌اند و بک‌اند کار می‌کنم. عاشق یادگیری تکنولوژی‌های جدید و به‌اشتراک‌گذاری دانشم.</p>
             </div>
@@ -849,18 +1150,38 @@
             <div class="tab-content" id="activities">
                 <h2>فعالیت‌ها</h2>
                 <ul style="list-style:none; padding-right:0.5rem;">
-                    <li style="position:relative; padding-right:2rem; margin-bottom:0.7rem;">▹ توسعه و طراحی بیش از ۱۵ وب‌سایت شرکتی و شخصی</li>
-                    <li style="position:relative; padding-right:2rem; margin-bottom:0.7rem;">▹ همکاری با آژانس‌های دیجیتال مارکتینگ به عنوان توسعه‌دهنده فرانت‌اند</li>
-                    <li style="position:relative; padding-right:2rem; margin-bottom:0.7rem;">▹ مدرس دوره‌های مقدماتی و پیشرفته HTML/CSS و JavaScript</li>
-                    <li style="position:relative; padding-right:2rem; margin-bottom:0.7rem;">▹ شرکت در هکاتون‌های داخلی و کسب رتبه‌های برتر</li>
-                    <li style="position:relative; padding-right:2rem; margin-bottom:0.7rem;">▹ ساخت اپلیکیشن‌های تک‌صفحه‌ای با React و Vue.js</li>
+                    <li style="position:relative; padding-right:2rem; margin-bottom:0.7rem; transition:0.3s;">
+                        <span style="display:inline-block; transition:0.3s;">▹ توسعه و طراحی بیش از ۱۵ وب‌سایت شرکتی و شخصی</span>
+                    </li>
+                    <li style="position:relative; padding-right:2rem; margin-bottom:0.7rem; transition:0.3s;">
+                        <span style="display:inline-block; transition:0.3s;">▹ همکاری با آژانس‌های دیجیتال مارکتینگ به عنوان توسعه‌دهنده فرانت‌اند</span>
+                    </li>
+                    <li style="position:relative; padding-right:2rem; margin-bottom:0.7rem; transition:0.3s;">
+                        <span style="display:inline-block; transition:0.3s;">▹ مدرس دوره‌های مقدماتی و پیشرفته HTML/CSS و JavaScript</span>
+                    </li>
+                    <li style="position:relative; padding-right:2rem; margin-bottom:0.7rem; transition:0.3s;">
+                        <span style="display:inline-block; transition:0.3s;">▹ شرکت در هکاتون‌های داخلی و کسب رتبه‌های برتر</span>
+                    </li>
+                    <li style="position:relative; padding-right:2rem; margin-bottom:0.7rem; transition:0.3s;">
+                        <span style="display:inline-block; transition:0.3s;">▹ ساخت اپلیکیشن‌های تک‌صفحه‌ای با React و Vue.js</span>
+                    </li>
                 </ul>
                 <div style="display:flex; flex-wrap:wrap; gap:0.6rem 1rem; margin:1.2rem 0;">
-                    <span style="background:rgba(255,215,100,0.06); border:1px solid rgba(255,215,100,0.08); padding:0.3rem 1.2rem; border-radius:40px; font-size:0.95rem; color:#d4c9b8;"><i class="fas fa-code" style="margin-left:0.3rem;"></i> HTML/CSS</span>
-                    <span style="background:rgba(255,215,100,0.06); border:1px solid rgba(255,215,100,0.08); padding:0.3rem 1.2rem; border-radius:40px; font-size:0.95rem; color:#d4c9b8;"><i class="fab fa-js" style="margin-left:0.3rem;"></i> JavaScript</span>
-                    <span style="background:rgba(255,215,100,0.06); border:1px solid rgba(255,215,100,0.08); padding:0.3rem 1.2rem; border-radius:40px; font-size:0.95rem; color:#d4c9b8;"><i class="fab fa-react" style="margin-left:0.3rem;"></i> React</span>
-                    <span style="background:rgba(255,215,100,0.06); border:1px solid rgba(255,215,100,0.08); padding:0.3rem 1.2rem; border-radius:40px; font-size:0.95rem; color:#d4c9b8;"><i class="fab fa-vuejs" style="margin-left:0.3rem;"></i> Vue</span>
-                    <span style="background:rgba(255,215,100,0.06); border:1px solid rgba(255,215,100,0.08); padding:0.3rem 1.2rem; border-radius:40px; font-size:0.95rem; color:#d4c9b8;"><i class="fas fa-database" style="margin-left:0.3rem;"></i> Node.js</span>
+                    <span style="background:rgba(255,215,100,0.06); border:1px solid rgba(255,215,100,0.08); padding:0.3rem 1.2rem; border-radius:40px; font-size:0.95rem; color:#d4c9b8; transition:0.3s; cursor:default;">
+                        <i class="fas fa-code" style="margin-left:0.3rem;"></i> HTML/CSS
+                    </span>
+                    <span style="background:rgba(255,215,100,0.06); border:1px solid rgba(255,215,100,0.08); padding:0.3rem 1.2rem; border-radius:40px; font-size:0.95rem; color:#d4c9b8; transition:0.3s; cursor:default;">
+                        <i class="fab fa-js" style="margin-left:0.3rem;"></i> JavaScript
+                    </span>
+                    <span style="background:rgba(255,215,100,0.06); border:1px solid rgba(255,215,100,0.08); padding:0.3rem 1.2rem; border-radius:40px; font-size:0.95rem; color:#d4c9b8; transition:0.3s; cursor:default;">
+                        <i class="fab fa-react" style="margin-left:0.3rem;"></i> React
+                    </span>
+                    <span style="background:rgba(255,215,100,0.06); border:1px solid rgba(255,215,100,0.08); padding:0.3rem 1.2rem; border-radius:40px; font-size:0.95rem; color:#d4c9b8; transition:0.3s; cursor:default;">
+                        <i class="fab fa-vuejs" style="margin-left:0.3rem;"></i> Vue
+                    </span>
+                    <span style="background:rgba(255,215,100,0.06); border:1px solid rgba(255,215,100,0.08); padding:0.3rem 1.2rem; border-radius:40px; font-size:0.95rem; color:#d4c9b8; transition:0.3s; cursor:default;">
+                        <i class="fas fa-database" style="margin-left:0.3rem;"></i> Node.js
+                    </span>
                 </div>
             </div>
 
@@ -903,9 +1224,9 @@
                     </div>
                 </div>
 
-                <div style="margin-top:1.5rem; padding:1rem; background:rgba(255,215,100,0.03); border-radius:16px; border:1px solid rgba(255,215,100,0.06);">
+                <div style="margin-top:1.5rem; padding:1rem; background:rgba(255,215,100,0.03); border-radius:16px; border:1px solid rgba(255,215,100,0.06); transition:0.3s;">
                     <p style="margin:0; font-size:0.95rem; color:#b0a99b;">
-                        <i class="fas fa-rocket" style="color:#f5b042; margin-left:0.5rem;"></i>
+                        <i class="fas fa-rocket" style="color:#f5b042; margin-left:0.5rem; animation:floatIcon 3s ease-in-out infinite;"></i>
                         در حال اضافه کردن پروژه‌های جدید... 
                         <span style="display:inline-block; font-weight:700; color:#f5b042;">(به‌زودی)</span>
                     </p>
@@ -1038,7 +1359,41 @@
                 btn.innerHTML = 'توضیحات بیشتر <i class="fas fa-chevron-down"></i>';
             }
         }
+
+        // ===== انیمیشن اسکرول =====
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.home-design-card, .site-card-wide, .design-card-new');
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry, index) => {
+                    if (entry.isIntersecting) {
+                        setTimeout(() => {
+                            entry.target.style.opacity = '1';
+                            entry.target.style.transform = 'translateY(0) scale(1)';
+                        }, index * 100);
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            cards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px) scale(0.97)';
+                card.style.transition = `opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1), transform 0.6s cubic-bezier(0.22, 1, 0.36, 1)`;
+                observer.observe(card);
+            });
+
+            // نمایش کارت‌هایی که از قبل قابل مشاهده هستند
+            setTimeout(() => {
+                cards.forEach(card => {
+                    const rect = card.getBoundingClientRect();
+                    if (rect.top < window.innerHeight && rect.bottom > 0) {
+                        card.style.opacity = '1';
+                        card.style.transform = 'translateY(0) scale(1)';
+                    }
+                });
+            }, 100);
+        });
     </script>
 
 </body>
-</html>
+                                                                         </html>
