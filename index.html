@@ -1249,110 +1249,97 @@
             letter-spacing: 0.5px;
         }
 
-        /* ===== بنر نصب PWA ===== */
-        .install-banner {
+        /* ===== نوتیفیکیشن خوش‌آمدگویی ===== */
+        .welcome-notification {
             position: fixed;
-            bottom: 20px;
-            right: 20px;
-            left: 20px;
-            background: rgba(255, 215, 100, 0.08);
-            backdrop-filter: blur(16px);
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255, 255, 255, 0.06);
+            backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 215, 100, 0.15);
             border-radius: 20px;
-            padding: 1rem 1.5rem;
-            display: none;
-            align-items: center;
-            justify-content: space-between;
-            gap: 1rem;
-            z-index: 3000;
-            animation: slideUpBanner 0.5s cubic-bezier(0.22, 1, 0.36, 1);
-            box-shadow: 0 12px 40px -8px rgba(0, 0, 0, 0.5);
+            padding: 1.2rem 2rem;
+            z-index: 5000;
+            max-width: 500px;
+            width: 90%;
+            box-shadow: 0 16px 48px -12px rgba(0, 0, 0, 0.6);
+            animation: slideDownNotif 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+            transition: opacity 0.5s ease, transform 0.5s ease;
         }
 
-        .install-banner.active {
-            display: flex;
+        .welcome-notification.hide {
+            opacity: 0;
+            transform: translateX(-50%) translateY(-30px) scale(0.95);
+            pointer-events: none;
         }
 
-        @keyframes slideUpBanner {
+        @keyframes slideDownNotif {
             0% {
                 opacity: 0;
-                transform: translateY(40px) scale(0.96);
+                transform: translateX(-50%) translateY(-40px) scale(0.95);
             }
             100% {
                 opacity: 1;
-                transform: translateY(0) scale(1);
+                transform: translateX(-50%) translateY(0) scale(1);
             }
         }
 
-        .install-banner .banner-icon {
-            width: 44px;
-            height: 44px;
-            border-radius: 12px;
-            overflow: hidden;
-            flex-shrink: 0;
-            border: 1px solid rgba(255, 215, 100, 0.1);
+        .welcome-notification .notif-header {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 0.5rem;
         }
 
-        .install-banner .banner-icon img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+        .welcome-notification .notif-header i {
+            font-size: 1.8rem;
+            color: #f5b042;
+            animation: floatIcon 3s ease-in-out infinite;
         }
 
-        .install-banner .banner-text {
-            flex: 1;
+        .welcome-notification .notif-header h3 {
             font-family: 'Vazirmatn', sans-serif;
-        }
-
-        .install-banner .banner-text h4 {
+            font-weight: 800;
+            font-size: 1.2rem;
             color: #f5efe6;
-            font-size: 1rem;
-            font-weight: 700;
-            margin-bottom: 0.1rem;
-        }
-
-        .install-banner .banner-text p {
-            color: #b0a99b;
-            font-size: 0.85rem;
             margin: 0;
         }
 
-        .install-banner .banner-buttons {
-            display: flex;
-            gap: 0.6rem;
-            flex-shrink: 0;
+        .welcome-notification .notif-body {
+            font-family: 'Noto Sans Arabic', sans-serif;
+            font-size: 0.9rem;
+            color: #b0a99b;
+            line-height: 1.8;
+            padding-right: 0.5rem;
         }
 
-        .install-banner .banner-buttons button {
-            padding: 0.4rem 1.2rem;
-            border-radius: 40px;
-            font-family: 'Vazirmatn', sans-serif;
+        .welcome-notification .notif-body ul {
+            list-style: none;
+            padding-right: 0.5rem;
+            margin: 0.3rem 0;
+        }
+
+        .welcome-notification .notif-body ul li {
+            position: relative;
+            padding-right: 1.5rem;
+            margin-bottom: 0.2rem;
+            font-size: 0.85rem;
+        }
+
+        .welcome-notification .notif-body ul li::before {
+            content: '▹';
+            position: absolute;
+            right: 0;
+            color: #f5b042;
+        }
+
+        .welcome-notification .notif-body .notif-update-title {
+            color: #f5b042;
             font-weight: 600;
             font-size: 0.85rem;
-            cursor: pointer;
-            transition: 0.3s;
-            border: none;
-        }
-
-        .install-banner .banner-buttons .btn-install {
-            background: linear-gradient(145deg, #f5b042, #d48f2b);
-            color: #0b0b0e;
-        }
-
-        .install-banner .banner-buttons .btn-install:hover {
-            transform: scale(1.04);
-            box-shadow: 0 8px 24px -8px rgba(245, 176, 66, 0.3);
-        }
-
-        .install-banner .banner-buttons .btn-close {
-            background: rgba(255, 255, 255, 0.05);
-            color: #b0a99b;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        .install-banner .banner-buttons .btn-close:hover {
-            background: rgba(255, 255, 255, 0.08);
-            color: #f5efe6;
+            display: block;
+            margin-top: 0.3rem;
         }
 
         /* ========== ریسپانسیو ========== */
@@ -1430,21 +1417,19 @@
             .modal-content .modal-controls {
                 grid-template-columns: repeat(2, 1fr);
             }
-            .install-banner {
-                flex-wrap: wrap;
-                padding: 0.8rem 1rem;
-                bottom: 10px;
-                right: 10px;
-                left: 10px;
+            .welcome-notification {
+                top: 12px;
+                padding: 0.8rem 1.2rem;
+                width: 92%;
+                max-width: 400px;
             }
-            .install-banner .banner-buttons {
-                width: 100%;
-                justify-content: center;
+            .welcome-notification .notif-header h3 {
+                font-size: 1rem;
             }
-            .install-banner .banner-text h4 {
-                font-size: 0.9rem;
+            .welcome-notification .notif-body {
+                font-size: 0.8rem;
             }
-            .install-banner .banner-text p {
+            .welcome-notification .notif-body ul li {
                 font-size: 0.75rem;
             }
         }
@@ -1488,6 +1473,20 @@
             .modal-content .modal-controls button {
                 font-size: 0.8rem;
                 padding: 0.5rem 0.8rem;
+            }
+            .welcome-notification {
+                top: 10px;
+                padding: 0.6rem 1rem;
+                width: 94%;
+            }
+            .welcome-notification .notif-header h3 {
+                font-size: 0.9rem;
+            }
+            .welcome-notification .notif-body {
+                font-size: 0.75rem;
+            }
+            .welcome-notification .notif-body ul li {
+                font-size: 0.7rem;
             }
         }
     </style>
@@ -1710,18 +1709,18 @@
 
     </div>
 
-    <!-- ========== بنر نصب PWA ========== -->
-    <div class="install-banner" id="installBanner">
-        <div class="banner-icon">
-            <img src="https://uploadkon.ir/uploads/ee1b28_26Favicon.png" alt="آیکون برنامه" />
+    <!-- ========== نوتیفیکیشن خوش‌آمدگویی ========== -->
+    <div class="welcome-notification" id="welcomeNotif">
+        <div class="notif-header">
+            <i class="fas fa-hand-peace"></i>
+            <h3>سلام! به سایت خوش آمدید</h3>
         </div>
-        <div class="banner-text">
-            <h4>نصب برنامه</h4>
-            <p>این سایت رو مثل یه اپ روی گوشی نصب کن!</p>
-        </div>
-        <div class="banner-buttons">
-            <button class="btn-install" id="installBtn">نصب</button>
-            <button class="btn-close" id="closeBannerBtn">✕</button>
+        <div class="notif-body">
+            <span class="notif-update-title"><i class="fas fa-code" style="color:#f5b042; margin-left:0.3rem;"></i> لیست آپدیت‌ها:</span>
+            <ul>
+                <li>🔧 دیباگ و بد نسخه نشدن سایت</li>
+                <li>📱 درست کردن مشکل PWA</li>
+            </ul>
         </div>
     </div>
 
@@ -1969,40 +1968,24 @@
             }
         });
 
-        // ===== PWA - نصب =====
-        let deferredPrompt;
+        // ===== نوتیفیکیشن خوش‌آمدگویی =====
+        document.addEventListener('DOMContentLoaded', function() {
+            const notif = document.getElementById('welcomeNotif');
 
-        window.addEventListener('beforeinstallprompt', (e) => {
-            e.preventDefault();
-            deferredPrompt = e;
-            document.getElementById('installBanner').classList.add('active');
+            // بعد از ۵ ثانیه محو شدن با انیمیشن
+            setTimeout(() => {
+                notif.classList.add('hide');
+
+                // بعد از اتمام انیمیشن، از DOM حذفش کن
+                setTimeout(() => {
+                    notif.style.display = 'none';
+                }, 500);
+            }, 5000);
         });
 
-        document.getElementById('installBtn').addEventListener('click', async () => {
-            if (deferredPrompt) {
-                deferredPrompt.prompt();
-                const result = await deferredPrompt.userChoice;
-                if (result.outcome === 'accepted') {
-                    console.log('نصب شد!');
-                    document.getElementById('installBanner').classList.remove('active');
-                }
-                deferredPrompt = null;
-            }
-        });
-
-        document.getElementById('closeBannerBtn').addEventListener('click', () => {
-            document.getElementById('installBanner').classList.remove('active');
-        });
-
-        // ===== ثبت Service Worker =====
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('sw.js')
-                    .then(reg => console.log('Service Worker ثبت شد!'))
-                    .catch(err => console.log('خطا در ثبت Service Worker:', err));
-            });
-        }
+        // ===== PWA - نصب (حذف شد) =====
+        // بنر نصب حذف شد و با نوتیفیکیشن خوش‌آمدگویی جایگزین شد
     </script>
 
 </body>
-</html>
+    </html>
