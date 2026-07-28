@@ -1653,9 +1653,10 @@
                 <h2><i class="fas fa-palette" style="color:#f5b042; margin-left:0.8rem;"></i> طراحی‌هام</h2>
                 <p style="margin-bottom:1.5rem;">نمونه‌ای از طراحی‌های هنری و گرافیکی:</p>
 
+                <!-- کارت اول: اهواز -->
                 <div class="design-card-new">
-                    <div class="design-image" id="designImage" onclick="openModal()">
-                        <div class="image-wrapper" id="imageWrapper">
+                    <div class="design-image" id="designImage1" onclick="openModal('https://uploadkon.ir/uploads/99ce24_26jonoob-iran.png', 'اهواز... خاک غسل‌شده با شهیدانت')">
+                        <div class="image-wrapper">
                             <img src="https://uploadkon.ir/uploads/99ce24_26jonoob-iran.png" alt="طراحی جنوب ایران" />
                         </div>
                         <div class="image-overlay">
@@ -1684,7 +1685,44 @@
                             <i class="fas fa-download"></i> دانلود 1080p
                         </a>
                     </div>
-                    <!-- ===== کادر راهنمای 3D ===== -->
+                    <div class="design-3d-hint">
+                        <i class="fas fa-cube"></i>
+                        <span>حالت ۳ بعدی با کلیک روی تصویر فعال می‌شود</span>
+                    </div>
+                </div>
+
+                <!-- کارت دوم: گفتند زلف یار... -->
+                <div class="design-card-new">
+                    <div class="design-image" id="designImage2" onclick="openModal('https://uploadkon.ir/uploads/6d9428_26ya-ali-m-h-snti.jpg', 'گفتند زلف یار، شنیدم ذوالفقار...')">
+                        <div class="image-wrapper">
+                            <img src="https://uploadkon.ir/uploads/6d9428_26ya-ali-m-h-snti.jpg" alt="طراحی یا علی" />
+                        </div>
+                        <div class="image-overlay">
+                            <i class="fas fa-expand"></i>
+                            <span>برای مشاهده کلیک کن</span>
+                        </div>
+                    </div>
+                    <div class="design-header">
+                        <h3 class="design-title"><i class="fas fa-shield-alt"></i> گفتند زلف یار، شنیدم ذوالفقار...</h3>
+                        <button class="toggle-details" onclick="toggleDetails(this)">
+                            <span>توضیحات بیشتر</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                    </div>
+                    <div class="design-details">
+                        <p class="design-desc">
+                            بعضی عکس‌ها فقط برای دیدن نیستن، باید حسشون کنی... این کار فقط یه طراحی نیست؛ یه ادای احترامه به اونایی که با نام علی (ع) جنگیدن، ایستادن و جاودانه شدن.
+                        </p>
+                        <p class="design-author"><i class="fas fa-user-astronaut"></i> طراح: Mohamad Hossein SNTI</p>
+                    </div>
+                    <div class="download-buttons">
+                        <a href="https://uploadkon.ir/uploads/6d9428_26ya-ali-m-h-snti.jpg" download target="_blank">
+                            <i class="fas fa-download"></i> دانلود 4K
+                        </a>
+                        <a href="https://uploadkon.ir/uploads/e46c28_26m-h-snti-ya-ali.jpg" download target="_blank">
+                            <i class="fas fa-download"></i> دانلود 2K
+                        </a>
+                    </div>
                     <div class="design-3d-hint">
                         <i class="fas fa-cube"></i>
                         <span>حالت ۳ بعدی با کلیک روی تصویر فعال می‌شود</span>
@@ -1702,7 +1740,9 @@
             <div class="footer-social">
                 <a href="#" aria-label="ایمیل"><i class="fas fa-envelope"></i></a>
                 <a href="#" aria-label="لینکدین"><i class="fab fa-linkedin-in"></i></a>
-                <a href="#" aria-label="گیت‌هاب"><i class="fab fa-github"></i></a>
+                <a href="https://t.me/@mohamad_hossein_ev18" target="_blank" aria-label="تلگرام">
+                    <i class="fab fa-telegram-plane"></i>
+                </a>
                 <a href="https://www.instagram.com/mohamad_hossein_ev18" target="_blank" aria-label="اینستاگرام">
                     <i class="fab fa-instagram"></i>
                 </a>
@@ -1720,8 +1760,9 @@
         <div class="notif-body">
             <span class="notif-update-title"><i class="fas fa-code"></i> لیست آپدیت‌ها:</span>
             <ul>
-                <li><i class="fas fa-bug"></i> دیباگ و بد نسخه نشدن سایت</li>
-                <li><i class="fas fa-mobile-alt"></i> درست کردن مشکل PWA</li>
+                <li><i class="fas fa-palette"></i> طراحی جدید اضافه شد</li>
+                <li><i class="fab fa-telegram-plane"></i> افزودن لینک تلگرام</li>
+                <li><i class="fas fa-bug"></i> رفع باگ‌های جزئی</li>
             </ul>
         </div>
     </div>
@@ -1735,11 +1776,11 @@
 
             <div class="modal-image" id="modalImage">
                 <div class="modal-img-wrapper" id="modalImgWrapper">
-                    <img src="https://uploadkon.ir/uploads/99ce24_26jonoob-iran.png" alt="طراحی جنوب ایران" />
+                    <img id="modalImg" src="" alt="طراحی" />
                 </div>
             </div>
 
-            <h3 class="modal-title"><i class="fas fa-heart"></i> اهواز... خاک غسل‌شده با شهیدانت</h3>
+            <h3 class="modal-title" id="modalTitle"><i class="fas fa-heart"></i></h3>
 
             <div class="modal-controls">
                 <button onclick="rotate3D('left')">
@@ -1858,8 +1899,10 @@
         let currentRotationX = 0;
         let currentRotationY = 0;
 
-        function openModal() {
+        function openModal(imgSrc, title) {
             const overlay = document.getElementById('modalOverlay');
+            document.getElementById('modalImg').src = imgSrc;
+            document.getElementById('modalTitle').innerHTML = '<i class="fas fa-heart"></i> ' + title;
             overlay.classList.add('active');
             document.body.style.overflow = 'hidden';
             currentRotationX = 0;
@@ -1973,7 +2016,7 @@
         // ===== نوتیفیکیشن خوش‌آمدگویی (یک بار نمایش) =====
         document.addEventListener('DOMContentLoaded', function() {
             const notif = document.getElementById('welcomeNotif');
-            const APP_VERSION = '1.0.0';
+            const APP_VERSION = '1.1.0';
 
             const hasSeen = localStorage.getItem('mhs_notification_version');
 
@@ -1995,4 +2038,4 @@
     </script>
 
 </body>
-                </html>
+</html>
