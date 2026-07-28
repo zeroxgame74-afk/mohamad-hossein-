@@ -1198,6 +1198,32 @@
             transform: translateY(-2px) scale(1.1);
         }
 
+        /* ===== کادر راهنمای 3D ===== */
+        .design-3d-hint {
+            background: rgba(255, 215, 100, 0.04);
+            border: 1px solid rgba(255, 215, 100, 0.08);
+            border-radius: 16px;
+            padding: 0.6rem 1.2rem;
+            margin-top: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-family: 'Vazirmatn', sans-serif;
+            font-size: 0.85rem;
+            color: #b0a99b;
+            transition: 0.3s;
+        }
+
+        .design-3d-hint i {
+            color: #f5b042;
+            font-size: 1rem;
+        }
+
+        .design-3d-hint:hover {
+            background: rgba(255, 215, 100, 0.07);
+            border-color: rgba(255, 215, 100, 0.15);
+        }
+
         /* ===== فوتر ===== */
         .footer {
             margin-top: 2rem;
@@ -1495,6 +1521,10 @@
             .welcome-notification .notif-body ul li {
                 font-size: 0.7rem;
             }
+            .design-3d-hint {
+                font-size: 0.75rem;
+                padding: 0.4rem 0.8rem;
+            }
         }
     </style>
 </head>
@@ -1693,6 +1723,11 @@
                         <a href="https://uploadkon.ir/uploads/828624_26jonnob-mohamad-hossein-sanati-.png" download target="_blank">
                             <i class="fas fa-download"></i> دانلود 1080p
                         </a>
+                    </div>
+                    <!-- ===== کادر راهنمای 3D ===== -->
+                    <div class="design-3d-hint">
+                        <i class="fas fa-cube"></i>
+                        <span>💡 حالت ۳ بعدی با کلیک روی تصویر فعال می‌شود</span>
                     </div>
                 </div>
             </div>
@@ -1978,16 +2013,13 @@
         // ===== نوتیفیکیشن خوش‌آمدگویی (یک بار نمایش) =====
         document.addEventListener('DOMContentLoaded', function() {
             const notif = document.getElementById('welcomeNotif');
-            const APP_VERSION = '1.0.0'; // با هر آپدیت این عدد رو تغییر بده
+            const APP_VERSION = '1.0.0';
 
-            // چک کن که کاربر این نسخه رو دیده یا نه
             const hasSeen = localStorage.getItem('mhs_notification_version');
 
             if (hasSeen !== APP_VERSION) {
-                // نشون بده
                 notif.style.display = 'block';
 
-                // بعد از ۴ ثانیه مخفی کن
                 setTimeout(() => {
                     notif.classList.add('hide');
                     setTimeout(() => {
@@ -1995,17 +2027,12 @@
                     }, 500);
                 }, 4000);
 
-                // ذخیره کن که این نسخه رو دیده
                 localStorage.setItem('mhs_notification_version', APP_VERSION);
             } else {
-                // اگه دیده بود، اصلاً نشون نده
                 notif.style.display = 'none';
             }
         });
-
-        // ===== PWA - نصب (حذف شد) =====
-        // بنر نصب حذف شد و با نوتیفیکیشن خوش‌آمدگویی جایگزین شد
     </script>
 
 </body>
-            </html>
+    </html>
