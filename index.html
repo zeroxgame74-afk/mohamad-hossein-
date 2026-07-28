@@ -1716,7 +1716,7 @@
 
     </div>
 
-    <!-- ========== نوتیفیکیشن خوش‌آمدگویی (پایین صفحه) ========== -->
+    <!-- ========== نوتیفیکیشن خوش‌آمدگویی (پایین صفحه - یک بار نمایش) ========== -->
     <div class="welcome-notification" id="welcomeNotif">
         <div class="notif-header">
             <i class="fas fa-hand-peace"></i>
@@ -1975,19 +1975,32 @@
             }
         });
 
-        // ===== نوتیفیکیشن خوش‌آمدگویی (پایین صفحه - ۴ ثانیه) =====
+        // ===== نوتیفیکیشن خوش‌آمدگویی (یک بار نمایش) =====
         document.addEventListener('DOMContentLoaded', function() {
             const notif = document.getElementById('welcomeNotif');
+            const APP_VERSION = '1.0.0'; // با هر آپدیت این عدد رو تغییر بده
 
-            // بعد از ۴ ثانیه محو شدن با انیمیشن
-            setTimeout(() => {
-                notif.classList.add('hide');
+            // چک کن که کاربر این نسخه رو دیده یا نه
+            const hasSeen = localStorage.getItem('mhs_notification_version');
 
-                // بعد از اتمام انیمیشن، از DOM حذفش کن
+            if (hasSeen !== APP_VERSION) {
+                // نشون بده
+                notif.style.display = 'block';
+
+                // بعد از ۴ ثانیه مخفی کن
                 setTimeout(() => {
-                    notif.style.display = 'none';
-                }, 500);
-            }, 4000);
+                    notif.classList.add('hide');
+                    setTimeout(() => {
+                        notif.style.display = 'none';
+                    }, 500);
+                }, 4000);
+
+                // ذخیره کن که این نسخه رو دیده
+                localStorage.setItem('mhs_notification_version', APP_VERSION);
+            } else {
+                // اگه دیده بود، اصلاً نشون نده
+                notif.style.display = 'none';
+            }
         });
 
         // ===== PWA - نصب (حذف شد) =====
@@ -1995,4 +2008,4 @@
     </script>
 
 </body>
-</html>
+            </html>
