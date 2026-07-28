@@ -1249,10 +1249,10 @@
             letter-spacing: 0.5px;
         }
 
-        /* ===== نوتیفیکیشن خوش‌آمدگویی ===== */
+        /* ===== نوتیفیکیشن خوش‌آمدگویی (پایین صفحه) ===== */
         .welcome-notification {
             position: fixed;
-            top: 20px;
+            bottom: 30px;
             left: 50%;
             transform: translateX(-50%);
             background: rgba(255, 255, 255, 0.06);
@@ -1264,20 +1264,20 @@
             max-width: 500px;
             width: 90%;
             box-shadow: 0 16px 48px -12px rgba(0, 0, 0, 0.6);
-            animation: slideDownNotif 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+            animation: slideUpNotif 0.6s cubic-bezier(0.22, 1, 0.36, 1);
             transition: opacity 0.5s ease, transform 0.5s ease;
         }
 
         .welcome-notification.hide {
             opacity: 0;
-            transform: translateX(-50%) translateY(-30px) scale(0.95);
+            transform: translateX(-50%) translateY(30px) scale(0.95);
             pointer-events: none;
         }
 
-        @keyframes slideDownNotif {
+        @keyframes slideUpNotif {
             0% {
                 opacity: 0;
-                transform: translateX(-50%) translateY(-40px) scale(0.95);
+                transform: translateX(-50%) translateY(40px) scale(0.95);
             }
             100% {
                 opacity: 1;
@@ -1327,11 +1327,14 @@
             font-size: 0.85rem;
         }
 
-        .welcome-notification .notif-body ul li::before {
-            content: '▹';
+        .welcome-notification .notif-body ul li i {
             position: absolute;
             right: 0;
+            top: 4px;
             color: #f5b042;
+            font-size: 0.8rem;
+            width: 1.2rem;
+            text-align: center;
         }
 
         .welcome-notification .notif-body .notif-update-title {
@@ -1340,6 +1343,10 @@
             font-size: 0.85rem;
             display: block;
             margin-top: 0.3rem;
+        }
+
+        .welcome-notification .notif-body .notif-update-title i {
+            margin-left: 0.3rem;
         }
 
         /* ========== ریسپانسیو ========== */
@@ -1418,7 +1425,7 @@
                 grid-template-columns: repeat(2, 1fr);
             }
             .welcome-notification {
-                top: 12px;
+                bottom: 15px;
                 padding: 0.8rem 1.2rem;
                 width: 92%;
                 max-width: 400px;
@@ -1475,7 +1482,7 @@
                 padding: 0.5rem 0.8rem;
             }
             .welcome-notification {
-                top: 10px;
+                bottom: 10px;
                 padding: 0.6rem 1rem;
                 width: 94%;
             }
@@ -1709,17 +1716,17 @@
 
     </div>
 
-    <!-- ========== نوتیفیکیشن خوش‌آمدگویی ========== -->
+    <!-- ========== نوتیفیکیشن خوش‌آمدگویی (پایین صفحه) ========== -->
     <div class="welcome-notification" id="welcomeNotif">
         <div class="notif-header">
             <i class="fas fa-hand-peace"></i>
             <h3>سلام! به سایت خوش آمدید</h3>
         </div>
         <div class="notif-body">
-            <span class="notif-update-title"><i class="fas fa-code" style="color:#f5b042; margin-left:0.3rem;"></i> لیست آپدیت‌ها:</span>
+            <span class="notif-update-title"><i class="fas fa-code"></i> لیست آپدیت‌ها:</span>
             <ul>
-                <li>🔧 دیباگ و بد نسخه نشدن سایت</li>
-                <li>📱 درست کردن مشکل PWA</li>
+                <li><i class="fas fa-bug"></i> دیباگ و بد نسخه نشدن سایت</li>
+                <li><i class="fas fa-mobile-alt"></i> درست کردن مشکل PWA</li>
             </ul>
         </div>
     </div>
@@ -1968,11 +1975,11 @@
             }
         });
 
-        // ===== نوتیفیکیشن خوش‌آمدگویی =====
+        // ===== نوتیفیکیشن خوش‌آمدگویی (پایین صفحه - ۴ ثانیه) =====
         document.addEventListener('DOMContentLoaded', function() {
             const notif = document.getElementById('welcomeNotif');
 
-            // بعد از ۵ ثانیه محو شدن با انیمیشن
+            // بعد از ۴ ثانیه محو شدن با انیمیشن
             setTimeout(() => {
                 notif.classList.add('hide');
 
@@ -1980,7 +1987,7 @@
                 setTimeout(() => {
                     notif.style.display = 'none';
                 }, 500);
-            }, 5000);
+            }, 4000);
         });
 
         // ===== PWA - نصب (حذف شد) =====
@@ -1988,4 +1995,4 @@
     </script>
 
 </body>
-    </html>
+</html>
