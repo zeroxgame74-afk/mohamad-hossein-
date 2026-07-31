@@ -327,6 +327,145 @@
             padding: 2rem 0 1.5rem 0;
         }
 
+        /* ===== کارت خوش‌آمدگویی جدید با عکس فول‌وید ===== */
+        .hero-card {
+            position: relative;
+            border-radius: 32px;
+            overflow: hidden;
+            margin-bottom: 2.5rem;
+            box-shadow: 0 16px 48px -12px rgba(0, 0, 0, 0.4);
+            transition: 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            min-height: 260px;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-card .hero-bg {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+            transition: 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .hero-card:hover .hero-bg {
+            transform: scale(1.04);
+        }
+
+        .hero-card .hero-overlay {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(11, 11, 14, 0.85) 0%, rgba(11, 11, 14, 0.4) 50%, rgba(11, 11, 14, 0.7) 100%);
+            z-index: 1;
+            backdrop-filter: blur(2px);
+        }
+
+        .hero-card .hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 2.5rem 3rem;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .hero-card .hero-content h1 {
+            font-family: 'Vazirmatn', sans-serif;
+            font-weight: 800;
+            font-size: 2.2rem;
+            color: #f5efe6;
+            line-height: 1.3;
+            text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-card .hero-content h1 span {
+            color: #f5b042;
+        }
+
+        .hero-card .hero-content .hero-sub {
+            font-family: 'Noto Sans Arabic', sans-serif;
+            font-size: 1.05rem;
+            color: #d6d0c4;
+            max-width: 600px;
+            text-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-card .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 0.3rem;
+        }
+
+        .hero-card .hero-buttons a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 0.6rem 1.8rem;
+            border-radius: 40px;
+            font-family: 'Vazirmatn', sans-serif;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-decoration: none;
+            transition: 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            border: 1px solid rgba(255, 215, 100, 0.15);
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(8px);
+            color: #f5efe6;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-card .hero-buttons a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 0;
+            height: 100%;
+            background: rgba(255, 215, 100, 0.08);
+            transition: width 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .hero-card .hero-buttons a:hover::before {
+            width: 100%;
+        }
+
+        .hero-card .hero-buttons a i {
+            font-size: 1.1rem;
+            color: #f5b042;
+            transition: 0.3s;
+        }
+
+        .hero-card .hero-buttons a:hover {
+            border-color: rgba(255, 215, 100, 0.3);
+            transform: translateY(-2px) scale(1.03);
+            box-shadow: 0 8px 32px -8px rgba(245, 176, 66, 0.15);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .hero-card .hero-buttons a:hover i {
+            transform: scale(1.1) rotate(-4deg);
+        }
+
+        .hero-card .hero-buttons a.btn-primary {
+            background: linear-gradient(145deg, rgba(245, 176, 66, 0.15), rgba(212, 143, 43, 0.05));
+            border-color: rgba(245, 176, 66, 0.25);
+        }
+
+        .hero-card .hero-buttons a.btn-primary:hover {
+            background: linear-gradient(145deg, rgba(245, 176, 66, 0.25), rgba(212, 143, 43, 0.1));
+            border-color: rgba(245, 176, 66, 0.4);
+        }
+
+        /* ===== بخش‌های دیگر ===== */
         .tab-content {
             display: none;
             animation: fadeUp 0.5s cubic-bezier(0.22, 1, 0.36, 1);
@@ -1360,6 +1499,16 @@
         }
 
         /* ========== ریسپانسیو ========== */
+        @media (max-width: 992px) {
+            .hero-card .hero-content {
+                padding: 2rem 1.8rem;
+            }
+
+            .hero-card .hero-content h1 {
+                font-size: 1.8rem;
+            }
+        }
+
         @media (max-width: 768px) {
             .container {
                 padding: 1.5rem 1.5rem;
@@ -1449,6 +1598,24 @@
             .welcome-notification .notif-body ul li {
                 font-size: 0.75rem;
             }
+            .hero-card .hero-content {
+                padding: 1.5rem 1.2rem;
+                text-align: center;
+            }
+            .hero-card .hero-content h1 {
+                font-size: 1.4rem;
+            }
+            .hero-card .hero-content .hero-sub {
+                font-size: 0.9rem;
+                margin: 0 auto;
+            }
+            .hero-card .hero-buttons {
+                justify-content: center;
+            }
+            .hero-card .hero-buttons a {
+                padding: 0.5rem 1.2rem;
+                font-size: 0.85rem;
+            }
         }
 
         @media (max-width: 480px) {
@@ -1509,6 +1676,19 @@
                 font-size: 0.75rem;
                 padding: 0.4rem 0.8rem;
             }
+            .hero-card .hero-content h1 {
+                font-size: 1.2rem;
+            }
+            .hero-card .hero-content .hero-sub {
+                font-size: 0.8rem;
+            }
+            .hero-card .hero-buttons a {
+                padding: 0.4rem 1rem;
+                font-size: 0.75rem;
+            }
+            .hero-card .hero-buttons a i {
+                font-size: 0.9rem;
+            }
         }
     </style>
 </head>
@@ -1545,15 +1725,32 @@
         <!-- ========== محتوای اصلی ========== -->
         <main class="main-content">
 
+            <!-- ===== کارت خوش‌آمدگویی با عکس فول‌وید ===== -->
+            <div class="hero-card" id="heroCard">
+                <img class="hero-bg" src="https://uploadkon.ir/uploads/6d9428_26ya-ali-m-h-snti.jpg" alt="mohamad hossein" />
+                <div class="hero-overlay"></div>
+                <div class="hero-content">
+                    <h1>سلام! من <span>mohamad hossein</span> هستم</h1>
+                    <p class="hero-sub">به سایت من خوش آمدید! اینجا جاییه که هنر، کد و خلاقیت به هم می‌رسن.</p>
+                    <div class="hero-buttons">
+                        <a href="#" data-tab="about" class="btn-primary" onclick="switchTab('about')">
+                            <i class="fas fa-user-astronaut"></i> درباره من
+                        </a>
+                        <a href="#" data-tab="design" onclick="switchTab('design')">
+                            <i class="fas fa-palette"></i> نمونه کار
+                        </a>
+                    </div>
+                </div>
+            </div>
+
             <!-- ===== خانه ===== -->
             <div class="tab-content active" id="home">
                 <h2><i class="fas fa-home" style="color:#f5b042; margin-left:0.8rem;"></i> خانه</h2>
                 <div class="bio-intro">
-                    <p>سلام! من Mohamad Hossein SNTI هستم.</p>
-                    <p>کلاً عاشق ساختن و خلق کردنم؛ از طراحی سایت و گرافیک گرفته تا تولید محتوا و هر پروژه‌ی خلاقانه‌ای که بشه باهاش یه چیز باحال ساخت. بیشتر وقتم یا دارم یه چیز جدید یاد می‌گیرم، یا دارم ایده‌هامو تبدیل به واقعیت می‌کنم.</p>
-                    <p>این سایت هم یه جورایی دنیای منه؛ جایی که پروژه‌ها، نمونه‌کارها، مهارت‌ها و چیزایی که روشون کار کردم رو باهات به اشتراک می‌ذارم.</p>
-                    <p>اگه دوست داشتی بیشتر با کارام آشنا بشی، یه سر به بخش‌های مختلف سایت بزن. <strong style="color:#f5b042;">(منو رو بزن)</strong></p>
-                    <p style="font-weight: 600; color: #f5b042;">خوش اومدی!</p>
+                    <p>سلام! من mohamad hossein snti هستم.</p>
+                    <p>عاشق ساختن چیزهای جدیدم؛ از طراحی و توسعه وب‌سایت گرفته تا طراحی گرافیک، تولید محتوا و پروژه‌های خلاقانه. بیشتر وقتم را صرف یاد گرفتن، تجربه کردن و ساختن ایده‌هایی می‌کنم که هم زیبا باشند و هم کاربردی.</p>
+                    <p>این سایت جایی است که پروژه‌ها، نمونه‌کارها، مهارت‌ها و فعالیت‌هایم را با شما به اشتراک می‌گذارم. اگر دوست دارید با کارهایم بیشتر آشنا شوید، خوشحال می‌شوم نگاهی به بخش‌های مختلف سایت بیندازید.</p>
+                    <p style="font-weight: 600; color: #f5b042;">به دنیای من خوش آمدید.</p>
                 </div>
                 <div class="home-design-cards">
                     <div class="home-design-card">
@@ -1804,7 +2001,7 @@
 
     <!-- ========== اسکریپت ========== -->
     <script>
-        // ===== منو =====
+        // ===== منو و تب =====
         (function() {
             const hamburger = document.getElementById('hamburgerBtn');
             const overlay = document.getElementById('navOverlay');
@@ -1831,14 +2028,14 @@
                 });
             });
 
-            function activateTab(tabId) {
+            window.activateTab = function(tabId) {
                 tabContents.forEach(content => content.classList.remove('active'));
                 const target = document.getElementById(tabId);
                 if (target) target.classList.add('active');
                 navLinks.forEach(link => link.classList.remove('active'));
                 const activeLink = document.querySelector(`#navMenu a[data-tab="${tabId}"]`);
                 if (activeLink) activeLink.classList.add('active');
-            }
+            };
 
             const hash = window.location.hash.replace('#', '');
             if (hash && document.getElementById(hash)) {
@@ -1862,6 +2059,14 @@
                 if (e.key === 'Escape' && overlay.classList.contains('open')) toggleMenu();
             });
         })();
+
+        // ===== تابع switchTab برای دکمه‌های هدر =====
+        function switchTab(tabId) {
+            event.preventDefault();
+            activateTab(tabId);
+            document.querySelector(`#navMenu a[data-tab="${tabId}"]`)?.click();
+            document.querySelector('.main-content').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
 
         // ===== توضیحات بیشتر (کشویی) =====
         function toggleDetails(btn) {
@@ -1986,6 +2191,19 @@
                     }
                 });
             }, 100);
+
+            // انیمیشن کارت خوش‌آمدگویی
+            const heroCard = document.getElementById('heroCard');
+            if (heroCard) {
+                heroCard.style.opacity = '0';
+                heroCard.style.transform = 'translateY(30px) scale(0.97)';
+                setTimeout(() => {
+                    heroCard.style.transition =
+                        'opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1), transform 0.8s cubic-bezier(0.22, 1, 0.36, 1)';
+                    heroCard.style.opacity = '1';
+                    heroCard.style.transform = 'translateY(0) scale(1)';
+                }, 100);
+            }
         });
 
         // ===== کیبورد برای بستن مودال =====
@@ -2001,7 +2219,7 @@
         // ===== نوتیفیکیشن (۸ ثانیه) =====
         document.addEventListener('DOMContentLoaded', function() {
             const notif = document.getElementById('welcomeNotif');
-            const APP_VERSION = '1.3.0';
+            const APP_VERSION = '1.5.0';
 
             const hasSeen = localStorage.getItem('mhs_notification_version');
 
@@ -2023,4 +2241,4 @@
     </script>
 
 </body>
-            </html>
+    </html>
