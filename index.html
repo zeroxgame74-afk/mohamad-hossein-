@@ -327,7 +327,7 @@
             padding: 2rem 0 1.5rem 0;
         }
 
-        /* ===== کارت خوش‌آمدگویی جدید با عکس فول‌وید ===== */
+        /* ===== کارت خوش‌آمدگویی با عکس فول‌وید ===== */
         .hero-card {
             position: relative;
             border-radius: 32px;
@@ -1725,26 +1725,28 @@
         <!-- ========== محتوای اصلی ========== -->
         <main class="main-content">
 
-            <!-- ===== کارت خوش‌آمدگویی با عکس فول‌وید ===== -->
-            <div class="hero-card" id="heroCard">
-                <img class="hero-bg" src="https://uploadkon.ir/uploads/6d9428_26ya-ali-m-h-snti.jpg" alt="mohamad hossein" />
-                <div class="hero-overlay"></div>
-                <div class="hero-content">
-                    <h1>سلام! من <span>mohamad hossein</span> هستم</h1>
-                    <p class="hero-sub">به سایت من خوش آمدید! اینجا جاییه که هنر، کد و خلاقیت به هم می‌رسن.</p>
-                    <div class="hero-buttons">
-                        <a href="#" data-tab="about" class="btn-primary" onclick="switchTab('about')">
-                            <i class="fas fa-user-astronaut"></i> درباره من
-                        </a>
-                        <a href="#" data-tab="design" onclick="switchTab('design')">
-                            <i class="fas fa-palette"></i> نمونه کار
-                        </a>
+            <!-- ===== تب خانه (شامل کارت خوش‌آمدگویی + محتوای خانه) ===== -->
+            <div class="tab-content active" id="home">
+
+                <!-- کارت خوش‌آمدگویی با عکس فول‌وید -->
+                <div class="hero-card" id="heroCard">
+                    <img class="hero-bg" src="https://uploadkon.ir/uploads/6d9428_26ya-ali-m-h-snti.jpg" alt="mohamad hossein" />
+                    <div class="hero-overlay"></div>
+                    <div class="hero-content">
+                        <h1>سلام! من <span>mohamad hossein</span> هستم</h1>
+                        <p class="hero-sub">به سایت من خوش آمدید! اینجا جاییه که هنر، کد و خلاقیت به هم می‌رسن.</p>
+                        <div class="hero-buttons">
+                            <a href="#" data-tab="about" class="btn-primary" onclick="switchTab('about')">
+                                <i class="fas fa-user-astronaut"></i> درباره من
+                            </a>
+                            <a href="#" data-tab="design" onclick="switchTab('design')">
+                                <i class="fas fa-palette"></i> نمونه کار
+                            </a>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- ===== خانه ===== -->
-            <div class="tab-content active" id="home">
+                <!-- محتوای خانه -->
                 <h2><i class="fas fa-home" style="color:#f5b042; margin-left:0.8rem;"></i> خانه</h2>
                 <div class="bio-intro">
                     <p>سلام! من mohamad hossein snti هستم.</p>
@@ -2219,7 +2221,7 @@
         // ===== نوتیفیکیشن (۸ ثانیه) =====
         document.addEventListener('DOMContentLoaded', function() {
             const notif = document.getElementById('welcomeNotif');
-            const APP_VERSION = '1.5.0';
+            const APP_VERSION = '1.6.0';
 
             const hasSeen = localStorage.getItem('mhs_notification_version');
 
