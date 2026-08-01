@@ -665,6 +665,7 @@
         /* ===== بخش VOD (سایت‌های طراحی شده به سبک نت‌فلیکس) ===== */
         .vod-section {
             margin: 1.5rem 0;
+            text-align: center;
         }
 
         .vod-section .vod-title {
@@ -675,6 +676,8 @@
             margin-bottom: 1rem;
             padding-right: 1rem;
             border-right: 4px solid #f5b042;
+            display: inline-block;
+            text-align: right;
         }
 
         /* ===== بنر اصلی (اسلایدر خودکار) ===== */
@@ -682,9 +685,10 @@
             position: relative;
             border-radius: 24px;
             overflow: hidden;
-            margin-bottom: 2rem;
+            margin: 0 auto 2rem auto;
             aspect-ratio: 16/9;
             min-height: 220px;
+            max-width: 100%;
             box-shadow: 0 12px 40px -8px rgba(0, 0, 0, 0.5);
         }
 
@@ -2061,7 +2065,7 @@
                     <div class="vod-hero-slider" id="heroSlider">
                         <!-- اسلاید ۱: ZEROX -->
                         <div class="hero-slide active" data-index="0">
-                            <img class="hero-img" src="https://uploadkon.ir/uploads/0ddf24_26Negar-1780305389092.png" alt="ZEROX" />
+                            <img class="hero-img" src="https://uploadkon.ir/uploads/511301_26Zerox-۱۲۱۲.jpg" alt="ZEROX" />
                             <div class="hero-overlay">
                                 <h3>🎮 سایت خفن دنیای گیم با زروکس</h3>
                                 <p>پلتفرم تخصصی گیم و اخبار با طراحی مدرن و جذاب</p>
@@ -2072,7 +2076,7 @@
                         </div>
                         <!-- اسلاید ۲: کالفود -->
                         <div class="hero-slide" data-index="1">
-                            <img class="hero-img" src="https://uploadkon.ir/uploads/bb4824_26IMG-20260616-172831.jpg" alt="کالفود" />
+                            <img class="hero-img" src="https://uploadkon.ir/uploads/481d01_26call-food-۱۲۱۲۳.jpg" alt="کالفود" />
                             <div class="hero-overlay">
                                 <h3>🍔 سایت خفن کالفود!</h3>
                                 <p>پلتفرم خاص برای سفارش غذای لذیذ!</p>
@@ -2083,7 +2087,7 @@
                         </div>
                         <!-- اسلاید ۳: کوروش گیم -->
                         <div class="hero-slide" data-index="2">
-                            <img class="hero-img" src="https://uploadkon.ir/uploads/91fa01_26Kourosh-Gi.png" alt="کوروش گیم" />
+                            <img class="hero-img" src="https://uploadkon.ir/uploads/d66b01_26Kourosh-Gameir۱۲.jpg" alt="کوروش گیم" />
                             <div class="hero-overlay">
                                 <h3>🎮 کوروش گیم!</h3>
                                 <p>یک سایت مثل دیوار اما با چاشنی گیم!</p>
@@ -2124,10 +2128,10 @@
                         </div>
                         <div class="slider-track-wrapper" id="sitesSlider">
                             <div class="slider-track">
-                                <!-- ZEROX (تکراری) -->
+                                <!-- ZEROX -->
                                 <div class="slider-item">
                                     <a href="https://zeroxgame74-afk.github.io/zeroxgamee/" target="_blank" class="item-overlay-link"></a>
-                                    <img class="item-img" src="https://uploadkon.ir/uploads/0ddf24_26Negar-1780305389092.png" alt="ZEROX" />
+                                    <img class="item-img" src="https://uploadkon.ir/uploads/511301_26Zerox-۱۲۱۲.jpg" alt="ZEROX" />
                                     <div class="item-info">
                                         <h5>🎮 ZEROX</h5>
                                         <p>پلتفرم گیم</p>
@@ -2136,7 +2140,7 @@
                                 <!-- کالفود -->
                                 <div class="slider-item">
                                     <a href="https://zeroxgame74-afk.github.io/call-food.ir/" target="_blank" class="item-overlay-link"></a>
-                                    <img class="item-img" src="https://uploadkon.ir/uploads/bb4824_26IMG-20260616-172831.jpg" alt="کالفود" />
+                                    <img class="item-img" src="https://uploadkon.ir/uploads/481d01_26call-food-۱۲۱۲۳.jpg" alt="کالفود" />
                                     <div class="item-info">
                                         <h5>🍔 کالفود</h5>
                                         <p>پلتفرم سفارش غذا</p>
@@ -2145,7 +2149,7 @@
                                 <!-- کوروش گیم -->
                                 <div class="slider-item">
                                     <a href="https://zeroxgame74-afk.github.io/Kourosh-Game.ir/" target="_blank" class="item-overlay-link"></a>
-                                    <img class="item-img" src="https://uploadkon.ir/uploads/91fa01_26Kourosh-Gi.png" alt="کوروش گیم" />
+                                    <img class="item-img" src="https://uploadkon.ir/uploads/d66b01_26Kourosh-Gameir۱۲.jpg" alt="کوروش گیم" />
                                     <div class="item-info">
                                         <h5>🎮 کوروش گیم</h5>
                                         <p>فروشگاه اکانت</p>
@@ -2638,7 +2642,7 @@
         // ===== نوتیفیکیشن (۸ ثانیه) - فقط آپدیت‌های جدید =====
         document.addEventListener('DOMContentLoaded', function() {
             const notif = document.getElementById('welcomeNotif');
-            const APP_VERSION = '2.1.0';
+            const APP_VERSION = '2.2.0';
 
             const hasSeen = localStorage.getItem('mhs_notification_version');
 
@@ -2660,4 +2664,4 @@
     </script>
 
 </body>
-                                                                        </html>
+    </html>
