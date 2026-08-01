@@ -662,7 +662,7 @@
             margin: 0;
         }
 
-        /* ===== بخش VOD (سایت‌های طراحی شده به سبک نت‌فلیکس) ===== */
+        /* ===== بخش VOD (سایت‌های طراحی شده) - بازطراحی شده ===== */
         .vod-section {
             margin: 1.5rem 0;
             text-align: center;
@@ -673,7 +673,7 @@
             font-weight: 800;
             font-size: 2rem;
             color: #f5efe6;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
             padding-right: 1rem;
             border-right: 4px solid #f5b042;
             display: inline-block;
@@ -690,6 +690,7 @@
             min-height: 220px;
             max-width: 100%;
             box-shadow: 0 12px 40px -8px rgba(0, 0, 0, 0.5);
+            background: #0b0b0e;
         }
 
         .vod-hero-slider .hero-slide {
@@ -712,6 +713,20 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+            transition: 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .vod-hero-slider .hero-slide.active .hero-img {
+            animation: zoomIn 8s ease-in-out infinite alternate;
+        }
+
+        @keyframes zoomIn {
+            0% {
+                transform: scale(1);
+            }
+            100% {
+                transform: scale(1.08);
+            }
         }
 
         .vod-hero-slider .hero-slide .hero-overlay {
@@ -720,11 +735,26 @@
             right: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.4) 50%, rgba(0, 0, 0, 0.1) 100%);
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.4) 50%, rgba(0, 0, 0, 0.1) 100%);
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
-            padding: 2rem;
+            padding: 2.5rem 2rem;
+        }
+
+        .vod-hero-slider .hero-slide .hero-overlay .hero-badge {
+            display: inline-block;
+            background: rgba(245, 176, 66, 0.15);
+            border: 1px solid rgba(245, 176, 66, 0.2);
+            border-radius: 40px;
+            padding: 0.2rem 1rem;
+            font-family: 'Vazirmatn', sans-serif;
+            font-weight: 600;
+            font-size: 0.7rem;
+            color: #f5b042;
+            margin-bottom: 0.5rem;
+            align-self: flex-start;
+            backdrop-filter: blur(4px);
         }
 
         .vod-hero-slider .hero-slide .hero-overlay h3 {
@@ -741,7 +771,7 @@
             font-size: 0.95rem;
             color: #d6d0c4;
             max-width: 80%;
-            margin-bottom: 0.8rem;
+            margin-bottom: 1rem;
             text-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
         }
 
@@ -778,8 +808,8 @@
             top: 50%;
             transform: translateY(-50%);
             z-index: 5;
-            background: rgba(0, 0, 0, 0.4);
-            backdrop-filter: blur(4px);
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(8px);
             border: 1px solid rgba(255, 215, 100, 0.1);
             color: #f5efe6;
             width: 40px;
@@ -795,9 +825,10 @@
         }
 
         .hero-slider-nav:hover {
-            background: rgba(0, 0, 0, 0.6);
+            background: rgba(0, 0, 0, 0.7);
             border-color: rgba(255, 215, 100, 0.3);
             transform: translateY(-50%) scale(1.05);
+            color: #f5b042;
         }
 
         .hero-slider-nav.prev {
@@ -808,10 +839,10 @@
             left: 12px;
         }
 
-        /* ===== نقطه‌های ناوبری (وسط) ===== */
+        /* نقطه‌های ناوبری */
         .hero-slider-dots {
             position: absolute;
-            bottom: 12px;
+            bottom: 16px;
             left: 50%;
             transform: translateX(-50%);
             z-index: 5;
@@ -830,6 +861,7 @@
             transition: 0.3s;
             border: none;
             padding: 0;
+            backdrop-filter: blur(4px);
         }
 
         .hero-slider-dots .dot.active {
@@ -842,9 +874,9 @@
             background: rgba(255, 215, 100, 0.5);
         }
 
-        /* ===== اسلایدر افقی ===== */
+        /* ===== اسلایدر افقی (سایت‌های پیشنهادی) ===== */
         .vod-slider {
-            margin-top: 0.5rem;
+            margin-top: 1rem;
         }
 
         .vod-slider .slider-header {
@@ -923,17 +955,19 @@
             width: 160px;
             border-radius: 16px;
             overflow: hidden;
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 215, 100, 0.05);
-            transition: 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 215, 100, 0.06);
+            transition: 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
             cursor: pointer;
             position: relative;
+            backdrop-filter: blur(4px);
         }
 
         .vod-slider .slider-item:hover {
-            transform: translateY(-4px) scale(1.02);
-            border-color: rgba(255, 215, 100, 0.15);
-            box-shadow: 0 8px 24px -8px rgba(0, 0, 0, 0.4);
+            transform: translateY(-6px) scale(1.03);
+            border-color: rgba(255, 215, 100, 0.2);
+            box-shadow: 0 12px 32px -8px rgba(0, 0, 0, 0.5);
+            background: rgba(255, 255, 255, 0.05);
         }
 
         .vod-slider .slider-item .item-img {
@@ -942,11 +976,18 @@
             object-fit: cover;
             display: block;
             background: #0b0b0e;
+            transition: 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .vod-slider .slider-item:hover .item-img {
+            transform: scale(1.04);
         }
 
         .vod-slider .slider-item .item-info {
             padding: 0.6rem 0.8rem;
             text-align: center;
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(4px);
         }
 
         .vod-slider .slider-item .item-info h5 {
@@ -2056,7 +2097,7 @@
                 <p>الان به عنوان فریلنسر و هم‌بنیان‌گذار یه استارتاپ کوچیک، روزانه دارم روی پروژه‌های فرانت‌اند و بک‌اند کار می‌کنم. عاشق یادگیری تکنولوژی‌های جدید و به‌اشتراک‌گذاری دانشم.</p>
             </div>
 
-            <!-- ===== سایت‌های طراحی شده (به سبک VOD با اسلایدر خودکار) ===== -->
+            <!-- ===== سایت‌های طراحی شده (بازطراحی شده) ===== -->
             <div class="tab-content" id="sites">
                 <div class="vod-section">
                     <h2 class="vod-title"><i class="fas fa-laptop-code" style="color:#f5b042; margin-left:0.8rem;"></i> سایت‌های طراحی شده</h2>
@@ -2067,6 +2108,7 @@
                         <div class="hero-slide active" data-index="0">
                             <img class="hero-img" src="https://uploadkon.ir/uploads/511301_26Zerox-۱۲۱۲.jpg" alt="ZEROX" />
                             <div class="hero-overlay">
+                                <span class="hero-badge"><i class="fas fa-fire"></i> جدید</span>
                                 <h3>🎮 سایت خفن دنیای گیم با زروکس</h3>
                                 <p>پلتفرم تخصصی گیم و اخبار با طراحی مدرن و جذاب</p>
                                 <a href="https://zeroxgame74-afk.github.io/zeroxgamee/" target="_blank" class="hero-btn">
@@ -2078,6 +2120,7 @@
                         <div class="hero-slide" data-index="1">
                             <img class="hero-img" src="https://uploadkon.ir/uploads/481d01_26call-food-۱۲۱۲۳.jpg" alt="کالفود" />
                             <div class="hero-overlay">
+                                <span class="hero-badge"><i class="fas fa-star"></i> محبوب</span>
                                 <h3>🍔 سایت خفن کالفود!</h3>
                                 <p>پلتفرم خاص برای سفارش غذای لذیذ!</p>
                                 <a href="https://zeroxgame74-afk.github.io/call-food.ir/" target="_blank" class="hero-btn">
@@ -2089,6 +2132,7 @@
                         <div class="hero-slide" data-index="2">
                             <img class="hero-img" src="https://uploadkon.ir/uploads/d66b01_26Kourosh-Gameir۱۲.jpg" alt="کوروش گیم" />
                             <div class="hero-overlay">
+                                <span class="hero-badge"><i class="fas fa-gamepad"></i> جدید</span>
                                 <h3>🎮 کوروش گیم!</h3>
                                 <p>یک سایت مثل دیوار اما با چاشنی گیم!</p>
                                 <a href="https://zeroxgame74-afk.github.io/Kourosh-Game.ir/" target="_blank" class="hero-btn">
@@ -2302,9 +2346,9 @@
         <div class="notif-body">
             <span class="notif-update-title"><i class="fas fa-list"></i> لیست آپدیت‌ها:</span>
             <ul>
+                <li><i class="fas fa-paint-brush"></i> بازطراحی بخش VOD</li>
                 <li><i class="fas fa-gamepad"></i> اضافه شدن سایت کوروش گیم</li>
                 <li><i class="fas fa-sliders-h"></i> اسلایدر خودکار در بخش سایت‌ها</li>
-                <li><i class="fas fa-paint-brush"></i> بهبود ظاهر بخش VOD</li>
             </ul>
         </div>
     </div>
@@ -2642,7 +2686,7 @@
         // ===== نوتیفیکیشن (۸ ثانیه) - فقط آپدیت‌های جدید =====
         document.addEventListener('DOMContentLoaded', function() {
             const notif = document.getElementById('welcomeNotif');
-            const APP_VERSION = '2.2.0';
+            const APP_VERSION = '2.3.0';
 
             const hasSeen = localStorage.getItem('mhs_notification_version');
 
